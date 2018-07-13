@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
         
         //Inputs
         CheckInput();
+
     }
 
     bool lastAiming = false;
@@ -50,6 +51,8 @@ public class PlayerMovement : MonoBehaviour {
         {
             transposer.m_FollowOffset.y = 0;
             composer.m_TrackedObjectOffset.y = 0;
+            //Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            //transform.forward = ray.GetPoint(20) - spine.position;
         }
 
         if (aiming)
