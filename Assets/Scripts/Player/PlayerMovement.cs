@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour {
     PlayerView playerView;
     Transform spine;
 
+    [Header("Ik")]
+    public Transform ikLeftHand;
+    public Transform ikRightHand;
+
     bool aiming;
 
     private void Start()
@@ -23,7 +27,9 @@ public class PlayerMovement : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         playerView = GetComponent<PlayerView>();
         animator = GetComponent<Animator>();
+
         spine = animator.GetBoneTransform(HumanBodyBones.Spine);
+
         composer = camAim.GetCinemachineComponent<Cinemachine.CinemachineComposer>();
         transposer = camAim.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();
     }
@@ -51,8 +57,6 @@ public class PlayerMovement : MonoBehaviour {
         {
             transposer.m_FollowOffset.y = 0;
             composer.m_TrackedObjectOffset.y = 0;
-            //Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            //transform.forward = ray.GetPoint(20) - spine.position;
         }
 
         if (aiming)
@@ -72,7 +76,25 @@ public class PlayerMovement : MonoBehaviour {
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             spine.forward = ray.GetPoint(20) - spine.position;
             spine.Rotate(Vector3.up, spineRotation);
+
         }
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if (aiming)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, ikRightHand.position);
+            animator.SetIKRotation(AvatarIKGoal.RightHand, ikRightHand.rotation);
+
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, ikLeftHand.position);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeftHand.rotation);
+        }
+        
     }
 
     private float Vertical {get { return Input.GetAxis("Vertical"); } }
