@@ -9,6 +9,8 @@ public class UpdateManager: MonoBehaviour
     public static UpdateManager instance { get { return _instance; } }
     private static UpdateManager _instance;
 
+    public bool pause;
+
     public void Awake()
     {
         if (_instance == null)
@@ -27,7 +29,7 @@ public class UpdateManager: MonoBehaviour
 
     public void Update()
     {
-        if (!GameManager.instance.onPause)
+        if (!pause)
         {
             for (int i = 0; i < toUpdate.Count; i++)
             {
