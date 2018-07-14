@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
+public class PlayerStats : MonoBehaviour
+{
 
     public RangeValue hp;
 
@@ -21,13 +22,15 @@ public class PlayerStats : MonoBehaviour {
     //Mp
     public Action<float> OnMpChange = delegate { };
 
-    void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        
+    }
 
     public void TakeDamage(float damage)
     {
@@ -42,7 +45,7 @@ public class PlayerStats : MonoBehaviour {
         hp.CurrentValue += amount;
         OnLifeChange(hp.Percentage);
     }
-    
+
     public void ConsumeMp(float amount)
     {
         mp.CurrentValue -= amount;
@@ -54,7 +57,6 @@ public class PlayerStats : MonoBehaviour {
         mp.CurrentValue += amount;
         OnMpChange(mp.Percentage);
     }
-
 
 }
 
