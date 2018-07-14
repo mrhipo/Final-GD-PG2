@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour ,IUpdate
 {
     public LifeObject lifeObject;
 
@@ -17,7 +17,17 @@ public class PlayerStats : MonoBehaviour
 
     //MP EVENT
     public Action<float> OnMpChange = delegate { };
-  
+
+    private void Start()
+    {
+        UpdateManager.instance.AddUpdate(this);
+    }
+
+    private void Destroy()
+    {
+        UpdateManager.instance.RemoveUpdate(this);
+    }
+
     public void ConsumeMp(float amount)
     {
         mp.CurrentValue -= amount;
@@ -30,5 +40,9 @@ public class PlayerStats : MonoBehaviour
         OnMpChange(mp.Percentage);
     }
 
+    void IUpdate.Update()
+    {
+        mp.CurrentValue += Time.deltaTime * mpRecovery;
+    }
 }
 
