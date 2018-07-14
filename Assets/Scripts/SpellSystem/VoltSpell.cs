@@ -45,8 +45,7 @@ public class VoltSpell : MonoBehaviour, IUpdate
                                 .Select(c => c.gameObject.GetComponent<HitObject>())
                                 .Where(ho => ho != null)
                                 .Where(ho => !_hitedEnemys.Contains(ho))
-                                .OrderBy(ho => Vector3.Distance(transform.position, ho.gameObject.transform.position))
-                                .ToList();
+                                .OrderBy(ho => Vector3.Distance(transform.position, ho.gameObject.transform.position));
 
         if (!nearEnemy.Any() || durability <= 0)
         {
