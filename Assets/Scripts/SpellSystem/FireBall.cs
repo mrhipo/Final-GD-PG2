@@ -25,8 +25,17 @@ public class FireBall : MonoBehaviour, IUpdate
 
     private void Exploit()
     {
-        var nearEnemys = Physics.OverlapSphere(transform.position, explosionRadius);
+        var nearEnemys = Physics.OverlapSphere(transform.position, explosionRadius, 1 << LayerMask.NameToLayer("Enemy"));
+
+        foreach (var item in nearEnemys)
+        {
+            Debug.Log("Enemy -> DoDamage()");
+        }
+
         //ToDo.
         //Agarrar cada enemigo y hacerles un DoDamage.
+        //Destruirme.
+
+        Destroy(gameObject);
     }
 }
