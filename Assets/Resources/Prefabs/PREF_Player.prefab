@@ -2601,9 +2601,6 @@ MonoBehaviour:
   spineRotation: 40
   animator: {fileID: 95333634271806114}
   camAim: {fileID: 0}
-  idleIk:
-    leftHand: {fileID: 4841854335225030}
-    rightHand: {fileID: 4668535289269742}
   aimIk:
     leftHand: {fileID: 4767985431702296}
     rightHand: {fileID: 4937718746518684}

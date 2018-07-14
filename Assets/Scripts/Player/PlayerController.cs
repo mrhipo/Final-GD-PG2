@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour {
 
     
     [Header("Ik")]
-    HandIk currentIK;
-    public HandIk idleIk;
     public HandIk aimIk;
 
     bool aiming;
@@ -29,7 +27,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
-        currentIK = idleIk;
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
 
@@ -60,43 +57,34 @@ public class PlayerController : MonoBehaviour {
         //On Aimgin Toggle
         if (lastAiming != aiming)
         {
-            ToggleIk(!aiming);
-
             if (aiming)
             {
-                transposer.m_FollowOffset.y = 0;
-                composer.m_TrackedObjectOffset.y = 0;
+                camAim.m_Lens.FieldOfView = 35;
                 speedMultiplier = .5f;
             }
             else
             {
+                camAim.m_Lens.FieldOfView = 70;
                 speedMultiplier = 1;
             }
         }
+       
+        composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY, -1, 1);
+        transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY, -1,1);
 
-        if (aiming)
+        if (input.Shooting)
         {
-            composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY, -1, 1);
-            transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY, -1,1);
-
-            if (input.Shooting)
-            {
-                print("SHOOT");
-            }
-        } 
+            print("SHOOT");
+        }
 
         lastAiming = aiming;
-        camAim.enabled = aiming;
     }
 
     private void LateUpdate()
     {
-        if (aiming)
-        {
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            spine.forward = ray.GetPoint(20) - spine.position;
-            spine.Rotate(Vector3.up, spineRotation);
-        }
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        spine.forward = ray.GetPoint(20) - spine.position;
+        spine.Rotate(Vector3.up, spineRotation);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -104,22 +92,16 @@ public class PlayerController : MonoBehaviour {
         
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
         animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKPosition(AvatarIKGoal.RightHand, currentIK.rightHand.position);
-        animator.SetIKRotation(AvatarIKGoal.RightHand, currentIK.rightHand.rotation);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, aimIk.rightHand.position);
+        animator.SetIKRotation(AvatarIKGoal.RightHand, aimIk.rightHand.rotation);
 
         animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
         animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-        animator.SetIKPosition(AvatarIKGoal.LeftHand, currentIK.leftHand.position);
-        animator.SetIKRotation(AvatarIKGoal.LeftHand, currentIK.leftHand.rotation);
+        animator.SetIKPosition(AvatarIKGoal.LeftHand, aimIk.leftHand.position);
+        animator.SetIKRotation(AvatarIKGoal.LeftHand, aimIk.leftHand.rotation);
         
     }
-
-
-    private void ToggleIk(bool idle)
-    {
-        currentIK = idle ? idleIk : aimIk;
-    }
-
+ 
 }
 
 [System.Serializable]
