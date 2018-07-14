@@ -74,10 +74,15 @@ public class PlayerController : MonoBehaviour {
 
         if (input.Shooting)
         {
-            print("SHOOT");
+            Shoot();
         }
 
         lastAiming = aiming;
+    }
+
+    private void Shoot()
+    {
+        
     }
 
     private void LateUpdate()
