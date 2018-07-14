@@ -599,7 +599,7 @@ MonoBehaviour:
   - name: FireBall
     coolDown: 2
     mpCost: 5
-    spellPrefab: {fileID: 1104669539657606, guid: 5b675ae23546c184d8d3487f4fcf3c1d,
+    spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
       type: 2}
 --- !u!4 &2017487953
 Transform:
