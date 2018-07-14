@@ -10,7 +10,7 @@ public class FreezeSpell : MonoBehaviour, IUpdate
         UpdateManager.instance.AddUpdate(this);
     }
 
-    public void Update()
+    void IUpdate.Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
@@ -38,5 +38,6 @@ public class FreezeSpell : MonoBehaviour, IUpdate
 
         Destroy(gameObject);
     }
+
 
 }

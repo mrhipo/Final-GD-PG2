@@ -55,8 +55,8 @@ GameObject:
   - component: {fileID: 135206491337908728}
   - component: {fileID: 54110006370874122}
   - component: {fileID: 114003894711064590}
-  m_Layer: 0
-  m_Name: FireBall
+  m_Layer: 10
+  m_Name: FireBallSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 2
   explosionRadius: 2.5
-  speed: 5
+  speed: 3
   fireExplosion: {fileID: 1443689167551410, guid: 654d6ed2096f1364785a3bfeb88b9276,
     type: 2}
 --- !u!135 &135206491337908728
