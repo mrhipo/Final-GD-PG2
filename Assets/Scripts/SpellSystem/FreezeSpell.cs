@@ -21,8 +21,8 @@ public class FreezeSpell : MonoBehaviour, IUpdate
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            //ToDo: DoDamage.
-            //collision.gameObject.GetComponent<Enemy>().DoDamage(power);
+            HitObject ho = collision.gameObject.GetComponent<HitObject>();
+            if (ho) ho.OnTakeDamage(new Damage(gameObject, power));
 
             //ToDo: Do Freeze.
             Freeze freeze = collision.gameObject.GetComponent<Freeze>();

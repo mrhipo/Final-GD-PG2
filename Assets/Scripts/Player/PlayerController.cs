@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float mouseSensitivity = 5;
     public float spineRotation = 40;
     public Animator animator;
+    public Transform bulletSpawn;
 
     public Cinemachine.CinemachineVirtualCamera camAim;
     Cinemachine.CinemachineComposer composer;
@@ -22,11 +23,18 @@ public class PlayerController : MonoBehaviour {
     bool aiming;
 
     PlayerInput input = new PlayerInput();
-
+    PlayerStats stats;
     float speedMultiplier = 1;
+
+    bool canShoot = true;
+
+    Pool<GameObject> bullets;
+
 
     private void Start()
     {
+        bullets = new Pool<GameObject>(5, Bullet.Factory, Bullet.OnInit, Bullet.OnStore, true);
+        stats = GetComponent<PlayerStats>();
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
 
@@ -60,7 +68,7 @@ public class PlayerController : MonoBehaviour {
             if (aiming)
             {
                 camAim.m_Lens.FieldOfView = 35;
-                speedMultiplier = .5f;
+                speedMultiplier = .75f;
             }
             else
             {
@@ -72,7 +80,7 @@ public class PlayerController : MonoBehaviour {
         composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY, -1, 1);
         transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY, -1,1);
 
-        if (input.Shooting)
+        if (canShoot && input.Shooting)
         {
             Shoot();
         }
@@ -82,16 +90,27 @@ public class PlayerController : MonoBehaviour {
 
     private void Shoot()
     {
+        var bullet = bullets.GetObjectFromPool().GetComponent<Bullet>();
+        bullet.OnDead += () => bullets.DisablePoolObject(bullet.gameObject);
+
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray,out hit,500f))
         {
-            var ho = hit.collider.gameObject.GetComponent<HitObject>();
-            if (ho != null)
-            {
-                ho.OnTakeDamage(new Damage(gameObject, 1));
-            }
+            bullet.Initialize(bulletSpawn.position, hit.point);
         }
+        else
+        {
+            bullet.Initialize(bulletSpawn.position, ray.GetPoint(100));
+        }
+        StartCoroutine(ToggleShoot());
+    }
+
+    private IEnumerator ToggleShoot()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(stats.attackSpeed);
+        canShoot = true;
     }
 
     private void LateUpdate()
