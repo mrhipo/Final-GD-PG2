@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour {
     Cinemachine.CinemachineComposer composer;
     Cinemachine.CinemachineTransposer transposer;
 
-    PlayerView playerView;
     Transform spine;
 
     [Header("Ik")]
@@ -25,7 +24,6 @@ public class PlayerMovement : MonoBehaviour {
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        playerView = GetComponent<PlayerView>();
         animator = GetComponent<Animator>();
 
         spine = animator.GetBoneTransform(HumanBodyBones.Spine);
