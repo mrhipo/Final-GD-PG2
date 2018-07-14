@@ -15,9 +15,11 @@ public class PlayerController : MonoBehaviour {
 
     Transform spine;
 
+    
     [Header("Ik")]
-    public Transform ikLeftHand;
-    public Transform ikRightHand;
+    HandIk currentIK;
+    public HandIk idleIk;
+    public HandIk aimIk;
 
     bool aiming;
 
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
+        currentIK = idleIk;
         Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
 
@@ -47,7 +50,6 @@ public class PlayerController : MonoBehaviour {
         
         //Aiming
         CheckAiming();
-
     }
 
     bool lastAiming = false;
@@ -58,6 +60,8 @@ public class PlayerController : MonoBehaviour {
         //On Aimgin Toggle
         if (lastAiming != aiming)
         {
+            ToggleIk(!aiming);
+
             if (aiming)
             {
                 transposer.m_FollowOffset.y = 0;
@@ -97,23 +101,30 @@ public class PlayerController : MonoBehaviour {
 
     private void OnAnimatorIK(int layerIndex)
     {
-        if (aiming)
-        {
-            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-            animator.SetIKPosition(AvatarIKGoal.RightHand, ikRightHand.position);
-            animator.SetIKRotation(AvatarIKGoal.RightHand, ikRightHand.rotation);
+        
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, currentIK.rightHand.position);
+        animator.SetIKRotation(AvatarIKGoal.RightHand, currentIK.rightHand.rotation);
 
-            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-            animator.SetIKPosition(AvatarIKGoal.LeftHand, ikLeftHand.position);
-            animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeftHand.rotation);
-        }
+        animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+        animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+        animator.SetIKPosition(AvatarIKGoal.LeftHand, currentIK.leftHand.position);
+        animator.SetIKRotation(AvatarIKGoal.LeftHand, currentIK.leftHand.rotation);
         
     }
 
-    
 
+    private void ToggleIk(bool idle)
+    {
+        currentIK = idle ? idleIk : aimIk;
+    }
 
+}
 
+[System.Serializable]
+public class HandIk
+{
+    public Transform leftHand;
+    public Transform rightHand;
 }
