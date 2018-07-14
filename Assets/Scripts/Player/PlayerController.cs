@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
 
     PlayerInput input = new PlayerInput();
 
+    float speedMultiplier = 1;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
         //Movement
         animator.SetFloat("Horizontal", input.Horizontal);
-        animator.SetFloat("Vertical", input.Vertical);
+        animator.SetFloat("Vertical", input.Vertical * speedMultiplier);
 
         //Rotation
         transform.Rotate(Vector3.up, input.RotationX);
@@ -53,10 +55,19 @@ public class PlayerController : MonoBehaviour {
     {
         aiming = input.Aiming;
 
-        if (aiming && lastAiming != aiming)
+        //On Aimgin Toggle
+        if (lastAiming != aiming)
         {
-            transposer.m_FollowOffset.y = 0;
-            composer.m_TrackedObjectOffset.y = 0;
+            if (aiming)
+            {
+                transposer.m_FollowOffset.y = 0;
+                composer.m_TrackedObjectOffset.y = 0;
+                speedMultiplier = .5f;
+            }
+            else
+            {
+                speedMultiplier = 1;
+            }
         }
 
         if (aiming)
