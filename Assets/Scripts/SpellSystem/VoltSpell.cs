@@ -39,6 +39,7 @@ public class VoltSpell : MonoBehaviour, IUpdate
         _hitedEnemys.Add(collision.GetComponent<HitObject>());
         hitObject.OnTakeDamage(new Damage(gameObject, power));
         transform.localScale *= _decrementSize;
+        speed *= 1.25f;
 
         var nearEnemy = Physics.OverlapSphere(transform.position, radius)
                                 .Select(c => c.gameObject.GetComponent<HitObject>())
