@@ -14,6 +14,8 @@ public class PlayerStats : MonoBehaviour
     public float damage;
     public float attackSpeed;
 
+    public float magicPower = 1;
+
     //-------Events-------------
     //Hp
     public Action OnTakeDamage = delegate { };

@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour {
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             spine.forward = ray.GetPoint(20) - spine.position;
             spine.Rotate(Vector3.up, spineRotation);
-
         }
     }
 
