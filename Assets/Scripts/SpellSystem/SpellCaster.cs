@@ -26,5 +26,7 @@ public class SpellCaster : MonoBehaviour, IUpdate
     {
         if (Input.GetKeyDown(KeyCode.F1))
             UseSpell(_availableSpells[0]);
+        if (Input.GetKeyDown(KeyCode.F2))
+            UseSpell(_availableSpells[1]);
     }
 }
