@@ -89,7 +89,7 @@ public class EditorWallWaypoints : Editor {
 
         foreach (var item in myTarget.waypoints)
         {
-            var newColumn = Instantiate((GameObject)Resources.Load("Column"));
+            var newColumn = Instantiate((GameObject)Resources.Load("Prefabs/PREF_Column"));
             newColumn.transform.position = item;
             myTarget.walls.Add(newColumn);
             newColumn.transform.SetParent(myTarget.room.transform, true);
@@ -109,10 +109,10 @@ public class EditorWallWaypoints : Editor {
 
             for (int j = 0; j < count; j++)
             {
-
                 var newWall = Instantiate(myTarget.basicWall);
                 newWall.transform.position = crr + direction * j * size;
                 newWall.transform.rotation = Quaternion.LookRotation (normal);
+                newWall.transform.Rotate(Vector3.right, -90);
                 newWall.transform.eulerAngles += Vector3.up * extraRot;
                 newWall.transform.SetParent (myTarget.room.transform, true);
                 myTarget.walls.Add(newWall);
