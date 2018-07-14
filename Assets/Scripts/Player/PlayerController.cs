@@ -82,7 +82,11 @@ public class PlayerController : MonoBehaviour {
 
     private void Shoot()
     {
-        
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        if (Physics.Raycast(ray,1000))
+        {
+
+        }
     }
 
     private void LateUpdate()

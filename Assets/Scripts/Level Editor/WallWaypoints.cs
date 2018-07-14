@@ -9,7 +9,7 @@ public class WallWaypoints : MonoBehaviour
     [HideInInspector]
     public List<GameObject> walls = new List<GameObject>();
     [HideInInspector]
-    public List<Vector3> waypoints = new List<Vector3>();
+    public List<Transform> waypoints = new List<Transform>();
     [HideInInspector]
     public GameObject room;
     [HideInInspector]

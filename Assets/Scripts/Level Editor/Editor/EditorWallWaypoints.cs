@@ -33,7 +33,10 @@ public class EditorWallWaypoints : Editor {
 
         if (GUILayout.Button ("Add Waypoint"))
         {
-            myTarget.waypoints.Add(new Vector3(myTarget.transform.position.x + 4, myTarget.transform.position.y, myTarget.transform.position.z+1));
+            var go = new GameObject("Waypoint - " + myTarget.waypoints.Count);
+            var v3 = new Vector3(myTarget.transform.position.x + 4, myTarget.transform.position.y, myTarget.transform.position.z + 1);
+            go.transform.position = v3;
+            myTarget.waypoints.Add(go.transform);
         }
 
        
@@ -82,7 +85,7 @@ public class EditorWallWaypoints : Editor {
         myTarget.room = new GameObject(roomName);
         Vector3 cohesion = Vector3.zero;
         for (int i = 0; i < myTarget.waypoints.Count; i++) {
-            cohesion += myTarget.waypoints[i];
+            cohesion += myTarget.waypoints[i].position;
         }
         cohesion /= myTarget.waypoints.Count;
         myTarget.room.transform.position = cohesion;
@@ -90,7 +93,7 @@ public class EditorWallWaypoints : Editor {
         foreach (var item in myTarget.waypoints)
         {
             var newColumn = Instantiate((GameObject)Resources.Load("Prefabs/PREF_Column"));
-            newColumn.transform.position = item;
+            newColumn.transform.position = item.position;
             myTarget.walls.Add(newColumn);
             newColumn.transform.SetParent(myTarget.room.transform, true);
         }
@@ -100,7 +103,7 @@ public class EditorWallWaypoints : Editor {
            
             var crr = myTarget.waypoints[i];
             var next = myTarget.waypoints[(i + 1) % myTarget.waypoints.Count];
-            Vector3 deltaPos = next - crr;
+            Vector3 deltaPos = next.position - crr.position;
             var normal = Vector3.Cross(deltaPos, Vector3.up);
             float magnitude = deltaPos.magnitude;
             Vector3 direction = deltaPos / magnitude;
@@ -110,7 +113,7 @@ public class EditorWallWaypoints : Editor {
             for (int j = 0; j < count; j++)
             {
                 var newWall = Instantiate(myTarget.basicWall);
-                newWall.transform.position = crr + direction * j * size;
+                newWall.transform.position = crr.position + direction * j * size;
                 newWall.transform.rotation = Quaternion.LookRotation (normal);
                 newWall.transform.Rotate(Vector3.right, -90);
                 newWall.transform.eulerAngles += Vector3.up * extraRot;
@@ -123,7 +126,7 @@ public class EditorWallWaypoints : Editor {
     void GenerateFloor ()
     {
 
-        Vector2[] vertices2D = myTarget.waypoints.Select (a => new Vector2 (a.x, a.z)).ToArray();
+        Vector2[] vertices2D = myTarget.waypoints.Select (a => new Vector2 (a.position.x, a.position.z)).ToArray();
 
         // Use the triangulator to get indices for creating triangles
         Triangulator tr = new Triangulator(vertices2D);
@@ -171,13 +174,13 @@ public class EditorWallWaypoints : Editor {
         Handles.BeginGUI ();
 
         for (int i = 0; i < myTarget.waypoints.Count; i++) {
-            Handles.Label (myTarget.waypoints [i],"("+i+")");
+            Handles.Label (myTarget.waypoints [i].position, "("+i+")");
         }
 
         for (int i = 0; i < myTarget.waypoints.Count; i++) {
-            var pos = Handles.PositionHandle (myTarget.waypoints [i], Quaternion.identity);
+            var pos = Handles.PositionHandle (myTarget.waypoints [i].position, Quaternion.identity);
             pos.y = 0;
-            myTarget.waypoints[i] = pos;
+            myTarget.waypoints[i].position = pos;
         }
 
         Handles.EndGUI ();
