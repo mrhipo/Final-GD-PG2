@@ -95,13 +95,13 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
-    private float Vertical {get { return Input.GetAxis("Vertical"); } }
-
-    private float Horizontal { get { return Input.GetAxis("Horizontal"); } }
-
-    private float RotationX { get { return Input.GetAxis("Mouse X"); } }
-
-    private float RotationY { get { return Input.GetAxis("Mouse Y") * Time.deltaTime; } }
+    protected virtual float Vertical {get { return Input.GetAxis("Vertical"); } }
+    
+    protected virtual float Horizontal { get { return Input.GetAxis("Horizontal"); } }
+    
+    protected virtual float RotationX { get { return Input.GetAxis("Mouse X"); } }
+    
+    protected virtual float RotationY { get { return Input.GetAxis("Mouse Y") * Time.deltaTime; } }
 
 
 
