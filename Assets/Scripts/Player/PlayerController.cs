@@ -83,9 +83,14 @@ public class PlayerController : MonoBehaviour {
     private void Shoot()
     {
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        if (Physics.Raycast(ray,1000))
+        RaycastHit hit;
+        if (Physics.Raycast(ray,out hit,500f))
         {
-
+            var ho = hit.collider.gameObject.GetComponent<HitObject>();
+            if (ho != null)
+            {
+                ho.OnTakeDamage(new Damage(gameObject, 1));
+            }
         }
     }
 
