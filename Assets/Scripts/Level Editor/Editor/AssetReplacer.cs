@@ -27,7 +27,7 @@ public class AssetReplacer : EditorWindow
     void OnGUI()
     {
         type = (PropType)EditorGUILayout.EnumPopup("Filter:", type);
-        var path = "Assets/Resources/" + type.ToString() + "/";
+        var path = "Assets/Resources/Prefabs/" + type.ToString() + "/";
 
         DirectoryInfo dirInfo = new DirectoryInfo(path);
         FileInfo[] fileInf = dirInfo.GetFiles("*.prefab");
@@ -54,7 +54,7 @@ public class AssetReplacer : EditorWindow
                 if (GUILayout.Button(preview, GUILayout.Width(50), GUILayout.Height(50)))
                 {
                     GameObject goToDelete = ((GameObject)Selection.activeObject);
-                    goToDelete = FindGameObject(goToDelete);
+                    //goToDelete = FindGameObject(goToDelete);
 
                     Vector3 pos = Selection.activeTransform.position;
                     Quaternion rot = Selection.activeTransform.rotation;
