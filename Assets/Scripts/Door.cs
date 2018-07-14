@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
     {
         if(other.gameObject.layer == 11)
         {
+            SoundManager.instance.PlayFX("Door");
             _anim.Play("ANIM_Door Open");
         }
     }
@@ -23,6 +24,7 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.layer == 11)
         {
+            SoundManager.instance.PlayFX("Door");
             _anim.Play("ANIM_Door Close");
         }
     }

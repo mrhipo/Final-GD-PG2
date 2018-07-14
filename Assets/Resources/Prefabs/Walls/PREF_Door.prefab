@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114012914113239168}
   - component: {fileID: 111234348301323588}
   m_Layer: 10
-  m_Name: PREF_Door(Clone)
+  m_Name: PREF_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

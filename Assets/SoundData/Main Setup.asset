@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e7fec88082ada45adb55e24935e8ac, type: 3}
+  m_Name: Main Setup
+  m_EditorClassIdentifier: 
+  music:
+    name: Music Level 1
+    clip: {fileID: 8300000, guid: 925b6f74e2ffa2e458060d4c8d7784cd, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 1
+    mixer: {fileID: 243068067461577414, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
+  sounds:
+  - name: Door
+    clip: {fileID: 8300000, guid: dc37e4f87a98b4d4fa16b62705cb5a07, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 0
+    mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
