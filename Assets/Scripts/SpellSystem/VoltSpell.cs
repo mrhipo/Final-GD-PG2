@@ -8,7 +8,7 @@ public class VoltSpell : MonoBehaviour, IUpdate
     public float power; //Daño que causa al impactar.
 
     public int durability; //Cuantos enemigos daña hasta destruirse.
-    private float _decrementSize; //Cuanto se achica luego de impactar con un enemigo.
+    public float _decrementSize; //Cuanto se achica luego de impactar con un enemigo.
 
     public float radius; //Radio para buscar al siguiente objetivo.
 
@@ -18,7 +18,7 @@ public class VoltSpell : MonoBehaviour, IUpdate
     // Use this for initialization
     void Start()
     {
-        _decrementSize = 1 - 1 / durability;
+        _decrementSize = 1 - (1 / (float)durability);
 
         _hitedEnemys = new HashSet<HitObject>();
         UpdateManager.instance.AddUpdate(this);
@@ -37,6 +37,8 @@ public class VoltSpell : MonoBehaviour, IUpdate
         }
 
         _hitedEnemys.Add(collision.GetComponent<HitObject>());
+        hitObject.OnTakeDamage(new Damage(gameObject, power));
+        transform.localScale *= _decrementSize;
 
         var nearEnemy = Physics.OverlapSphere(transform.position, radius)
                                 .Select(c => c.gameObject.GetComponent<HitObject>())
@@ -50,11 +52,8 @@ public class VoltSpell : MonoBehaviour, IUpdate
             DestroySpell();
         } else
         {
-            _hitedEnemys.Add(nearEnemy.First());
             transform.forward = nearEnemy.First().transform.position - transform.position;
             durability--;
-
-            transform.localScale *= _decrementSize;
         }
     }
 

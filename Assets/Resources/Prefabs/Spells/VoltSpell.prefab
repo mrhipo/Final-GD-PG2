@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4798817986491680}
   - component: {fileID: 54415325404331194}
   - component: {fileID: 135398640198018610}
-  m_Layer: 0
+  - component: {fileID: 114259760196307308}
+  m_Layer: 10
   m_Name: VoltSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +216,21 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114259760196307308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021645480995152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083a9b0bd2ec88f40ae59ea389cf2488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  power: 1
+  durability: 3
+  radius: 5
 --- !u!135 &135398640198018610
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -222,7 +238,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021645480995152}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.35
