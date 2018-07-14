@@ -13,13 +13,13 @@ public class PlayerStats : MonoBehaviour {
     public float damage;
     public float attackSpeed;
 
-    //** Events
+    //-------Events-------------
     //Hp
     public Action OnTakeDamage = delegate { };
     public Action OnDead = delegate { };
-    public Action OnLifeChange = delegate { };
+    public Action<float> OnLifeChange = delegate { };
     //Mp
-    public Action OnMpChange = delegate { };
+    public Action<float> OnMpChange = delegate { };
 
     void Start () {
 		
@@ -33,26 +33,26 @@ public class PlayerStats : MonoBehaviour {
     {
         hp.CurrentValue -= damage;
         OnTakeDamage();
-        OnLifeChange();
+        OnLifeChange(hp.Percentage);
         if (hp.CurrentValue == 0) OnDead();
     }
 
     public void Heal(float amount)
     {
         hp.CurrentValue += amount;
-        OnLifeChange();
+        OnLifeChange(hp.Percentage);
     }
     
     public void ConsumeMp(float amount)
     {
         mp.CurrentValue -= amount;
-        OnMpChange();
+        OnMpChange(mp.Percentage);
     }
 
     public void RecoverMp(float amount)
     {
         mp.CurrentValue += amount;
-        OnMpChange();
+        OnMpChange(mp.Percentage);
     }
 
 
