@@ -6,6 +6,8 @@ public class FireBallSpell : MonoBehaviour, IUpdate
     public float explosionRadius;
     public float speed;
 
+    public GameObject fireExplosion;
+
     // Use this for initialization
     void Start()
     {
@@ -25,6 +27,10 @@ public class FireBallSpell : MonoBehaviour, IUpdate
 
     private void Exploit()
     {
+        GameObject explosion = Instantiate(fireExplosion, transform.position, Quaternion.identity);
+
+        Destroy(explosion, 1.5f);
+
         var nearEnemys = Physics.OverlapSphere(transform.position, explosionRadius, 1 << LayerMask.NameToLayer("Enemy"));
 
         foreach (var item in nearEnemys)
