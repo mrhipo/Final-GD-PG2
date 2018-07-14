@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     public float mouseSensitivity = 5;
     public float spineRotation = 40;
@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour {
 
     bool aiming;
 
+    PlayerInput input = new PlayerInput();
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -35,21 +37,21 @@ public class PlayerMovement : MonoBehaviour {
     void Update () {
 
         //Movement
-        animator.SetFloat("Horizontal", Horizontal);
-        animator.SetFloat("Vertical", Vertical);
+        animator.SetFloat("Horizontal", input.Horizontal);
+        animator.SetFloat("Vertical", input.Vertical);
 
         //Rotation
-        transform.Rotate(Vector3.up, RotationX );
+        transform.Rotate(Vector3.up, input.RotationX);
         
-        //Inputs
-        CheckInput();
+        //Aiming
+        CheckAiming();
 
     }
 
     bool lastAiming = false;
-    private void CheckInput()
+    private void CheckAiming()
     {
-        aiming = Input.GetKey(KeyCode.Mouse1);
+        aiming = input.Aiming;
 
         if (aiming && lastAiming != aiming)
         {
@@ -59,8 +61,13 @@ public class PlayerMovement : MonoBehaviour {
 
         if (aiming)
         {
-            composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + RotationY, -1, 1);
-            transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - RotationY, -1,1);
+            composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY, -1, 1);
+            transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY, -1,1);
+
+            if (input.Shooting)
+            {
+                print("SHOOT");
+            }
         } 
 
         lastAiming = aiming;
@@ -95,13 +102,7 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
-    protected virtual float Vertical {get { return Input.GetAxis("Vertical"); } }
     
-    protected virtual float Horizontal { get { return Input.GetAxis("Horizontal"); } }
-    
-    protected virtual float RotationX { get { return Input.GetAxis("Mouse X"); } }
-    
-    protected virtual float RotationY { get { return Input.GetAxis("Mouse Y") * Time.deltaTime; } }
 
 
 
