@@ -28,5 +28,7 @@ public class SpellCaster : MonoBehaviour, IUpdate
             UseSpell(_availableSpells[0]);
         if (Input.GetKeyDown(KeyCode.F2))
             UseSpell(_availableSpells[1]);
+        if (Input.GetKeyDown(KeyCode.F3))
+            UseSpell(_availableSpells[2]);
     }
 }

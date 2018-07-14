@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class FireBallSpell : MonoBehaviour, IUpdate
 {
@@ -28,19 +29,14 @@ public class FireBallSpell : MonoBehaviour, IUpdate
     private void Exploit()
     {
         GameObject explosion = Instantiate(fireExplosion, transform.position, Quaternion.identity);
-
         Destroy(explosion, 1.5f);
 
-        var nearEnemys = Physics.OverlapSphere(transform.position, explosionRadius, 1 << LayerMask.NameToLayer("Enemy"));
+        var nearEnemys = Physics.OverlapSphere(transform.position, explosionRadius)
+                              .Select(c => c.gameObject.GetComponent<HitObject>())
+                              .Where(ho => ho != null);
 
-        foreach (var item in nearEnemys)
-        {
-            Debug.Log("Enemy -> DoDamage()");
-        }
-
-        //ToDo.
-        //Agarrar cada enemigo y hacerles un DoDamage.
-        //Destruirme.
+        foreach (HitObject hitObject in nearEnemys)
+            hitObject.OnTakeDamage(new Damage(gameObject, power));
 
         Destroy(gameObject);
     }
