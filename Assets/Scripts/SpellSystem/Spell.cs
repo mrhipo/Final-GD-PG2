@@ -1,32 +1,43 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Spell : MonoBehaviour
+[System.Serializable]
+public class Spell : IUpdate
 {
+    public string name;
     public float coolDown;
     public float mpCost;
-    public bool canUseSpell;
+    public bool CanUseSpell { get; private set; }
 
     public GameObject spellPrefab;
 
-    private WaitForSeconds coolDownWait;
+    //private WaitForSeconds coolDownWait;
+    private float timer;
 
-    private void Start()
+    public Spell()
     {
-        coolDownWait = new WaitForSeconds(coolDown);
+        CanUseSpell = true;
     }
 
-    public void UseSpell()
+    public void UseSpell(Vector3 position, Vector3 direction)
     {
-        GameObject spell = Instantiate(spellPrefab);
-        canUseSpell = false;
+        GameObject spell = Object.Instantiate(spellPrefab, position, Quaternion.identity);
 
-        StartCoroutine(CoolDownTimer());
+        spell.transform.forward = direction;
+        CanUseSpell = false;
+
+        timer = 0;
+        UpdateManager.instance.AddUpdate(this);
     }
 
-    private IEnumerator CoolDownTimer()
+    public void Update()
     {
-        yield return coolDownWait;
-        canUseSpell = true;
+        timer += Time.deltaTime;
+
+        if (timer >= coolDown)
+        {
+            CanUseSpell = true;
+            UpdateManager.instance.RemoveUpdate(this);
+        }
+
     }
 }
