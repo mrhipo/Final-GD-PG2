@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FireBall : MonoBehaviour, IUpdate
+public class FireBallSpell : MonoBehaviour, IUpdate
 {
     public float power;
     public float explosionRadius;
