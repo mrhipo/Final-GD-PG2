@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public float speed = 5;
     public float mouseSensitivity = 5;
     public float spineRotation = 40;
     public Animator animator;
     public Transform bulletSpawn;
-
     public Cinemachine.CinemachineVirtualCamera camAim;
     Cinemachine.CinemachineComposer composer;
     Cinemachine.CinemachineTransposer transposer;
@@ -48,8 +48,10 @@ public class PlayerController : MonoBehaviour {
 
         //Movement
         animator.SetFloat("Horizontal", input.Horizontal);
-        animator.SetFloat("Vertical", input.Vertical * speedMultiplier);
-
+        animator.SetFloat("Vertical", input.Vertical*speedMultiplier);
+        
+        transform.position += (input.Horizontal * transform.right + input.Vertical * transform.forward).normalized * speed * Time.deltaTime * speedMultiplier * (input.Vertical <0?.7f:1); 
+        
         //Rotation
         transform.Rotate(Vector3.up, input.RotationX);
         
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour {
             if (aiming)
             {
                 camAim.m_Lens.FieldOfView = 35;
-                speedMultiplier = .75f;
+                speedMultiplier = .5f;
             }
             else
             {

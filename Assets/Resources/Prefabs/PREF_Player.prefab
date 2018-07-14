@@ -2495,7 +2495,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3ad542c416533844bb387306492bd5f9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2523,6 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdbf8664507f224bb97a8123130fb43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 4
   mouseSensitivity: 5
   spineRotation: 40
   animator: {fileID: 95333634271806114}
@@ -2544,7 +2545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeObject: {fileID: 114984833895909736}
   mp:
-    crrValue: 100
+    crrValue: 0
     maxValue: 100
   mpRecovery: 5
   damage: 1
