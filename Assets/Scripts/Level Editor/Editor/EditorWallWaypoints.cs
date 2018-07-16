@@ -53,7 +53,7 @@ public class EditorWallWaypoints : Editor {
         if (GUILayout.Button ("GenerateWalls"))
         {
             GenerateWalls ();
-            GenerateFloor ();
+            //GenerateFloor ();
         }
 
         if (GUILayout.Button ("Remove Walls"))
@@ -123,6 +123,7 @@ public class EditorWallWaypoints : Editor {
         }
     }
 
+    
     void GenerateFloor ()
     {
 

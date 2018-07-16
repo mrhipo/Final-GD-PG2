@@ -21,6 +21,14 @@ MonoBehaviour:
     loopable: 1
     mixer: {fileID: 243068067461577414, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   sounds:
+  - name: Normal Shot
+    clip: {fileID: 8300000, guid: 1a6a887a64a6fae4481e35f5723901aa, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 0
+    mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   - name: Door
     clip: {fileID: 8300000, guid: dc37e4f87a98b4d4fa16b62705cb5a07, type: 3}
     volume: 1

@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Shoot()
     {
+        SoundManager.instance.PlayFX("Normal Shot");
         var bullet = bullets.GetObjectFromPool().GetComponent<Bullet>();
         bullet.OnDead += () => bullets.DisablePoolObject(bullet.gameObject);
 
