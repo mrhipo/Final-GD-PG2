@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: AchievementsFactory
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementsFactory
+  allAchievements:
+  - {fileID: 11400000, guid: 0e073968a30f14403b14bada11d3dfcb, type: 2}
+  - {fileID: 11400000, guid: 4b96e307050504e4dae68f78cb71fc14, type: 2}
+  - {fileID: 11400000, guid: 2a6a18591fe2e4f30ab34c185f7d18ba, type: 2}
+  - {fileID: 11400000, guid: 54a4cf5b34e564e5d99c51369b320f29, type: 2}
+  - {fileID: 11400000, guid: 6fe31d02c52d04c3a99dfc9d31dbc0b0, type: 2}
+  achievementPopUp: {fileID: 114117586966762782, guid: dccc3750b86e945dc87e6c71e1f4ae94,
+    type: 2}
