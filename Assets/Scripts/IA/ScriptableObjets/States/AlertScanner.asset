@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a400b2fd0d22fe4fb7643817b3eec9f, type: 3}
-  m_Name: AlertScan
+  m_Name: AlertScanner
   m_EditorClassIdentifier: 
   actions: []
   transitions: []

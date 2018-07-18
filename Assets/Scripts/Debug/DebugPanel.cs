@@ -51,7 +51,7 @@ public class DebugPanel : MonoBehaviour {
             playerStats.OnMpChange -= FillMp;
     }
 
-    private void FillMp(float p)
+    private void FillMp()
     {
         playerStats.mp.CurrentValue += 100000;
     }
