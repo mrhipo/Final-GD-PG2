@@ -13,19 +13,9 @@ public class LifeObject : MonoBehaviour {
     public Action OnDead = delegate { };
     public Action OnLifeChange = delegate { };
 
-
     private void Start()
     {
-        foreach (var item in hitObjects)
-        {
-            item.OnTakeDamage += OnTakeDamage_;
-        }
-    }
-
-    private void OnTakeDamage_(Damage damage)
-    {
-        OnTakeDamage(damage);
-        Takedamage(damage.Amount);
+        Active();
     }
 
     public void Takedamage(float amount)
@@ -41,4 +31,32 @@ public class LifeObject : MonoBehaviour {
         hp.CurrentValue += amount;
         OnLifeChange();
     }
+
+    private void OnTakeDamage_(Damage damage)
+    {
+        OnTakeDamage(damage);
+        Takedamage(damage.Amount);
+    }
+
+    private void Active()
+    {
+        foreach (var item in hitObjects)
+            item.OnTakeDamage += OnTakeDamage_;
+    }
+
+    private void Desactive()
+    {
+        foreach (var item in hitObjects)
+            item.OnTakeDamage -= OnTakeDamage_;
+    }
+
+    public void SetActive(bool active)
+    {
+        if (active)
+            Active();
+        else
+            Desactive();
+    }
+
+   
 }
