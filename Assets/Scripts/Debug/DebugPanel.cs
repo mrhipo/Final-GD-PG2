@@ -15,15 +15,37 @@ public class DebugPanel : MonoBehaviour {
     [Header("UI")]
     public Toggle playerLifeToggle;
     public Toggle wizzarToggle;
+    
+    [Header("Skills")]
+    public Toggle Sk1;
+    public Toggle Sk2;
+    public Toggle Sk3;
+    public Toggle Sk4;
 
-    public void OnToggleLife()
+    private void Start()
     {
-        playerLife.SetActive(!playerLifeToggle.isOn);
+        playerLifeToggle.onValueChanged.AddListener(OnToggleLife);
+        wizzarToggle.onValueChanged.AddListener(OnToggleWizzard);
+
+        Sk1.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,1));
+        Sk2.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,2));
+        Sk3.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,3));
+        Sk4.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,4));
     }
 
-    public void OnToggleWizzard()
+    private void OnChangeToggleSkill(bool boolean, int i)
     {
-        if (wizzarToggle.isOn)
+        print(String.Format("TODO LOGIC!!! Skill {0} is now {1}",i,boolean));
+    }
+
+    private void OnToggleLife(bool isOn)
+    {
+        playerLife.SetActive(!isOn);
+    }
+
+    private void OnToggleWizzard(bool isOn)
+    {
+        if (isOn)
             playerStats.OnMpChange += FillMp;
         else
             playerStats.OnMpChange -= FillMp;
