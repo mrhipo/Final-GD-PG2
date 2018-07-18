@@ -21,6 +21,12 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     private void Start()
     {
         UpdateManager.instance.AddUpdate(this);
+        lifeObject.OnDead += OnDead;
+    }
+
+    private void OnDead()
+    {
+        GlobalEvent.Instance.Dispatch(new PlayerDeadEvent());
     }
 
     private void Destroy()
