@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour, IUpdate
+public class HudEventHandler : MonoBehaviour, IUpdate
 {
     PlayerStats playerStats;
     SpellCaster spellCaster;
@@ -42,3 +42,4 @@ public class UIManager : MonoBehaviour, IUpdate
 
     }
 }
+
