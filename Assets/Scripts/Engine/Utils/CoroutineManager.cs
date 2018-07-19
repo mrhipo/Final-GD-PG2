@@ -41,7 +41,23 @@ public static class FrameUtil
 		CoroutineManager.Instance.RunCoroutine(RunAfterDelay(delayInSeconds, action));
 	}
 
-	private static IEnumerator RunAtEndOfFrame(Action action)
+    public static void RepeatAction(float delayInSeconds, int count,Action action)
+    {
+        CoroutineManager.Instance.RunCoroutine(RepeatActionCoroutine(delayInSeconds,count, action));
+    }
+
+    private static IEnumerator RepeatActionCoroutine(float delayInSeconds, int count, Action action)
+    {
+        var waitSeconds = new WaitForSeconds(delayInSeconds);
+        for (int i = 0; i < count; i++)
+        {
+            action();
+            yield return waitSeconds;
+        }
+    }
+
+
+    private static IEnumerator RunAtEndOfFrame(Action action)
 	{
 		yield return new WaitForEndOfFrame();
 
