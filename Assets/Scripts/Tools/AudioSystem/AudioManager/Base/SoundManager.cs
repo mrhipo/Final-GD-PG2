@@ -61,4 +61,17 @@ public class SoundManager : MonoBehaviour
         soundData.music.Stop();
     }
 
+    public void StopFX(string name)
+    {
+
+        foreach (Sound item in soundData.sounds)
+        {
+            if (item.name == name)
+            {
+                item.Stop();
+                return;
+            }
+        }
+    }
+
 }
