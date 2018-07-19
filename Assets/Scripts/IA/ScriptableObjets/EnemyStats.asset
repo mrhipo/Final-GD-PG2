@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2512e9742d80a2c488d74a4c918e1746, type: 3}
-  m_Name: New Enemy Stats
+  m_Name: EnemyStats
   m_EditorClassIdentifier: 
   moveSpeed: 1
   lookRange: 40
