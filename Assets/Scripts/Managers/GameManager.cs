@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour, IUpdate
 
     [HideInInspector]
     public bool onPause;
-        
+    GlobalEvent globalEvent = new GlobalEvent();
+
     public void Awake()
     {
         if (_instance == null)
