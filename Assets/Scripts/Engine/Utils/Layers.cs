@@ -1,16 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Layers : MonoBehaviour {
 
-    public static LayerMask enemies;
-    public static LayerMask player;
+    public static MyLayer enemies;
+    public static MyLayer player;
 
     static Layers()
     {
-        enemies = 1 << LayerMask.NameToLayer("Enemy");
-        player = 1 << LayerMask.NameToLayer("Player");
+        enemies = new MyLayer("Enemy");
+        player = new MyLayer("Player");
+    }
+
+}
+
+public class MyLayer
+{
+    
+    private LayerMask mask;
+    private int index;
+
+    public MyLayer(params string[] layerName)
+    {
+        foreach (var layer in layerName)
+        {
+            index = LayerMask.NameToLayer(layer);
+            mask |= 1 << index;
+            
+        }
+
+        if (layerName.Length > 1)
+            index = -1;
+
+    }
+    
+    public LayerMask Mask
+    {
+        get { return mask; }
+    }
+
+    public int Index
+    {
+        get
+        {
+            if(index == -1) Debug.LogError("NO NO NO ! Soy un Layer Multiple. No tengo un Valor de indice unico!");
+            return index;
+        }
     }
 
 }

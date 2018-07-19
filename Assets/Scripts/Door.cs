@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 8)
+        if(other.gameObject.layer == Layers.player.Index)
         {
             SoundManager.instance.PlayFX("Door");
             _anim.Play("ANIM_Door Open");
@@ -23,7 +23,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.gameObject.layer == Layers.player.Index)
         {
             SoundManager.instance.PlayFX("Door");
             _anim.Play("ANIM_Door Close");
