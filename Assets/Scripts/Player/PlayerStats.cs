@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     public float magicPower = 1;
 
     //MP EVENT
-    public Action<float> OnMpChange = delegate { };
+    public Action OnMpChange = delegate { };
 
     private void Start()
     {
@@ -37,18 +37,28 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     public void ConsumeMp(float amount)
     {
         mp.CurrentValue -= amount;
-        OnMpChange(mp.Percentage);
+        OnMpChange();
     }
 
     public void RecoverMp(float amount)
     {
         mp.CurrentValue += amount;
-        OnMpChange(mp.Percentage);
+        OnMpChange();
     }
 
     void IUpdate.Update()
     {
         mp.CurrentValue += Time.deltaTime * mpRecovery;
+    }
+
+    public int HealthPercentage()
+    {
+        return 0;
+    }
+
+    public int ManaPercentage()
+    {
+        return 0;
     }
 }
 

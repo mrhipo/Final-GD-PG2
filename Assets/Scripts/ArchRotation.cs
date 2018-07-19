@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArchRotation : MonoBehaviour
+public class ArchRotation : MonoBehaviour, IUpdate
 {
     public int angle;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    public void Start()
+    {
+        UpdateManager.instance.AddUpdate(this);
+    }
+
+    public void Update()
     {
         transform.Rotate(Vector3.up, angle);
         transform.Rotate(Vector3.right, angle);
-	}
+    }
 }
