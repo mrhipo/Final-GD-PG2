@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class NewSkillEventHandler : MonoBehaviour
 {
     GameObject obj;
+    public GameObject newSkillUI;
+
 	void Start ()
     {
         GlobalEvent.Instance.AddEventHandler<NewSkillEvent>(OnSkillAcquired);
@@ -16,7 +18,8 @@ public class NewSkillEventHandler : MonoBehaviour
     {
         obj = skillEvent.skillObj;
         obj.SetActive(true);
-        var text = skillEvent.skillObj.GetComponentInChildren<Text>();
+        newSkillUI.SetActive(true);
+        var text = newSkillUI.GetComponentInChildren<Text>();
         text.text = "New Skill Acquired: " + skillEvent.skillName;
         text.GetComponentInChildren<Outline>().effectColor = skillEvent.skillColor;
         SoundManager.instance.PlayFX("New Skill");
@@ -26,6 +29,6 @@ public class NewSkillEventHandler : MonoBehaviour
 
     void Clear()
     {
-        obj.SetActive(false);
+        newSkillUI.SetActive(false);
     }
 }

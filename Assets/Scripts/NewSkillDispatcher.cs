@@ -10,7 +10,7 @@ public class NewSkillDispatcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.gameObject.layer == Layers.player.Index)
         {
             GlobalEvent.Instance.Dispatch(new NewSkillEvent(skilName, skillColor, skillObj));
             Destroy(gameObject);
