@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,14 +10,12 @@ public class StateController : MonoBehaviour, IUpdate
     public Transform eyes;
     public State reminState;
 
-    [HideInInspector] public NavMeshAgent navMeshAgent;
-    //Componente para dañar enemigo.
-    /*[HideInInspector]*/
     public List<Transform> wayPointList;
 
-    public int nextWayPoint;
-    public Transform chaseTarget;
-    public float stateTimeElapsed;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
+    [HideInInspector] public Transform chaseTarget;
+    [HideInInspector] public float stateTimeElapsed;
+    [HideInInspector] public int nextWayPoint;
 
     private bool _aiActive;
 
@@ -35,9 +32,8 @@ public class StateController : MonoBehaviour, IUpdate
         SetupAI(true);
     }
 
-    public void SetupAI(bool aiActivationFromManager/*, List<Transform> wayPointFromManager*/)
+    public void SetupAI(bool aiActivationFromManager)
     {
-        //wayPointList = wayPointFromManager;
         navMeshAgent.enabled = _aiActive = aiActivationFromManager;
     }
 
@@ -58,7 +54,7 @@ public class StateController : MonoBehaviour, IUpdate
         if (nextState != reminState)
         {
             currentState = nextState;
-            OnExitState();
+            OnExitCurrentState();
         }
     }
 
@@ -69,7 +65,7 @@ public class StateController : MonoBehaviour, IUpdate
         return (stateTimeElapsed >= duration);
     }
 
-    private void OnExitState()
+    private void OnExitCurrentState()
     {
         stateTimeElapsed = 0;
     }
