@@ -21,6 +21,22 @@ MonoBehaviour:
     loopable: 1
     mixer: {fileID: 243068067461577414, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   sounds:
+  - name: Use Battery
+    clip: {fileID: 8300000, guid: 3035b35cb97f04d42a7b7d29ff06ae01, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 0
+    mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
+  - name: Portal Activated
+    clip: {fileID: 8300000, guid: fad77ac86bafb07409f7f433cb12a7c8, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 1
+    mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   - name: New Skill
     clip: {fileID: 8300000, guid: 290f3fd1cfeb6c54faf39604702aa969, type: 3}
     volume: 1

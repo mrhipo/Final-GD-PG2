@@ -10,7 +10,6 @@ public class Portal : MonoBehaviour
     public float spawnDelay;
 
     Effects _effects;
-    int _count;
     bool _triggered;
 
 	// Use this for initialization
@@ -18,7 +17,8 @@ public class Portal : MonoBehaviour
     {
         //enemyType = new List<Enemies>();
         _effects = GetComponentInChildren<Effects>();
-	}
+        _effects.gameObject.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -27,28 +27,27 @@ public class Portal : MonoBehaviour
 	}
 
     public void SpwanEnemies()
-    {
+    {        
         if (!_triggered)
         {
+            _triggered = true;
             _effects.gameObject.SetActive(true);
             SoundManager.instance.PlayFX("Portal Activated");
-            FrameUtil.AfterDelay(spawnDelay, null);
-            while(_count < amountToSpwan)
-            {
-                Spawn();
-                _count++;
-                FrameUtil.AfterDelay(spawnRate, null);
-            }
-            _count = 0;
-            _effects.gameObject.SetActive(false);
-            SoundManager.instance.StopFX("Portal Activated");
+
+            FrameUtil.RepeatAction(spawnRate, amountToSpwan, Spawn, ClosePortal);
         }
     }
 
     void Spawn()
     {
         //Instanciar enemigo.
-        print("spwan" + _count);
+        print("spwan");
+    }
+
+    void ClosePortal()
+    {
+        _effects.gameObject.SetActive(false);
+        SoundManager.instance.StopFX("Portal Activated");
     }
 
 }
