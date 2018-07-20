@@ -1,23 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoroutineManager : MonoBehaviour
-{
-	public static CoroutineManager Instance { get; private set; }
-
-	void Awake()
-	{
-		Instance = this;
-	}
-	
-	public Coroutine RunCoroutine(IEnumerator enumerator)
-	{
-		return Instance.StartCoroutine(enumerator);
-	}
-	
-}
 
 public static class FrameUtil
 {
@@ -41,24 +25,24 @@ public static class FrameUtil
 		CoroutineManager.Instance.RunCoroutine(RunAfterDelay(delayInSeconds, action));
 	}
 
-    public static void RepeatAction(float delayInSeconds, int count,Action action, Action lastAction)
-    {
-        CoroutineManager.Instance.RunCoroutine(RepeatActionCoroutine(delayInSeconds,count, action, lastAction));
-    }
+	public static void RepeatAction(float delayInSeconds, int count,Action action, Action lastAction)
+	{
+		CoroutineManager.Instance.RunCoroutine(RepeatActionCoroutine(delayInSeconds,count, action, lastAction));
+	}
 
-    private static IEnumerator RepeatActionCoroutine(float delayInSeconds, int count, Action action, Action lastAction)
-    {
-        var waitSeconds = new WaitForSeconds(delayInSeconds);
-        for (int i = 0; i < count; i++)
-        {
-            action();
-            yield return waitSeconds;
-        }
-        lastAction();
-    }
+	private static IEnumerator RepeatActionCoroutine(float delayInSeconds, int count, Action action, Action lastAction)
+	{
+		var waitSeconds = new WaitForSeconds(delayInSeconds);
+		for (int i = 0; i < count; i++)
+		{
+			action();
+			yield return waitSeconds;
+		}
+		lastAction();
+	}
 
 
-    private static IEnumerator RunAtEndOfFrame(Action action)
+	private static IEnumerator RunAtEndOfFrame(Action action)
 	{
 		yield return new WaitForEndOfFrame();
 
