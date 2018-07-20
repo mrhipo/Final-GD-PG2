@@ -15,6 +15,7 @@ public class AchievementsEventHandler : MonoBehaviour
 	void Start()
 	{
 		GlobalEvent.Instance.AddEventHandler<FinderCollectEvent>(OnFinderCollect);
+		
 		GlobalEvent.Instance.AddEventHandler<FireBallKillEvent>(OnFireballKill);
 	
 		GlobalEvent.Instance.AddEventHandler<VoltKillEvent>(OnVoltKill);
@@ -23,16 +24,15 @@ public class AchievementsEventHandler : MonoBehaviour
 		GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnLevelComplete);
 		
 		achievements.Init();
-		
 	}
 
-	private void OnVoltKill(VoltKillEvent voltKillEvent)
+	private static void OnVoltKill(VoltKillEvent voltKillEvent)
 	{
 		if (voltKillEvent.killed >= 3)
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.ShellShock});
 	}
 
-	private void OnFireballKill(FireBallKillEvent fireBallEvent)
+	private static void OnFireballKill(FireBallKillEvent fireBallEvent)
 	{
 		if (fireBallEvent.killed >= 3)
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.Parrillero});
