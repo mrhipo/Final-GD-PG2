@@ -18,6 +18,11 @@ public class AchievementsFactory : ScriptableObject
 		GlobalEvent.Instance.AddEventHandler<AchievementCompleteEvent>(OnAchievementCompleteEvent);
 	}
 
+	public void Remove()
+	{
+		GlobalEvent.Instance.RemoveEventHandler<AchievementCompleteEvent>(OnAchievementCompleteEvent);
+	}
+	
 	private void OnAchievementCompleteEvent(AchievementCompleteEvent gameEvent)
 	{
 		CompleteAchievement(gameEvent.type);
@@ -46,5 +51,7 @@ public class AchievementsFactory : ScriptableObject
 		} while (achievementsQueue.Count > 0);
 		
 	}
+
+	
 }
 
