@@ -34,14 +34,14 @@ public class Portal : MonoBehaviour
             _effects.gameObject.SetActive(true);
             SoundManager.instance.PlayFX("Portal Activated");
 
-            FrameUtil.RepeatAction(spawnRate, amountToSpwan, Spawn, ClosePortal);
+            FrameUtil.RepeatAction(spawnRate, amountToSpwan, Spawn);
         }
     }
 
     void Spawn()
     {
         //Instanciar enemigo.
-        print("spwan");
+       
     }
 
     void ClosePortal()

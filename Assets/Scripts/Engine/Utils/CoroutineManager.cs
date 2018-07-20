@@ -41,12 +41,12 @@ public static class FrameUtil
 		CoroutineManager.Instance.RunCoroutine(RunAfterDelay(delayInSeconds, action));
 	}
 
-    public static void RepeatAction(float delayInSeconds, int count,Action action, Action lastAction)
+    public static void RepeatAction(float delayInSeconds, int count,Action action)
     {
-        CoroutineManager.Instance.RunCoroutine(RepeatActionCoroutine(delayInSeconds,count, action, lastAction));
+        CoroutineManager.Instance.RunCoroutine(RepeatActionCoroutine(delayInSeconds,count, action));
     }
 
-    private static IEnumerator RepeatActionCoroutine(float delayInSeconds, int count, Action action, Action lastAction)
+    private static IEnumerator RepeatActionCoroutine(float delayInSeconds, int count, Action action)
     {
         var waitSeconds = new WaitForSeconds(delayInSeconds);
         for (int i = 0; i < count; i++)
@@ -54,7 +54,6 @@ public static class FrameUtil
             action();
             yield return waitSeconds;
         }
-        lastAction();
     }
 
 
