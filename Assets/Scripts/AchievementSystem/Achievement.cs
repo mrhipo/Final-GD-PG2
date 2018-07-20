@@ -23,7 +23,7 @@ public enum AchievementType{
 	Finder,
 	Parrillero,
 	ShellShock,
-	Flash
+	IceAndFire
 }
 
 public class AchievementCompleteEvent:GameEvent

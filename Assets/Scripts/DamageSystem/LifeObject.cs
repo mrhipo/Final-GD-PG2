@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeObject : HitObject {
+public class LifeObject : MonoBehaviour {
 
     public List<HitObject> hitObjects;
 
     public RangeValue hp;
 
+    public Action<Damage> OnTakeDamage = delegate { };
     public Action OnDead = delegate { };
     public Action OnLifeChange = delegate { };
 
@@ -39,7 +40,6 @@ public class LifeObject : HitObject {
 
     private void Active()
     {
-        OnTakeDamage += OnTakeDamage_;
         foreach (var item in hitObjects)
             item.OnTakeDamage += OnTakeDamage_;
     }

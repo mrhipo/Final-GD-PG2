@@ -15,7 +15,6 @@ public class VoltSpell : MonoBehaviour, IUpdate
     //ToDo: Change for Enemy.
     private HashSet<HitObject> _hitedEnemys;
 
-    private int kills = 0;
     // Use this for initialization
     void Start()
     {
@@ -48,18 +47,9 @@ public class VoltSpell : MonoBehaviour, IUpdate
                                 .Where(ho => !_hitedEnemys.Contains(ho))
                                 .OrderBy(ho => Vector3.Distance(transform.position, ho.gameObject.transform.position));
 
-        
-        
-        //Achievement
-        var life = hitObject as LifeObject;
-        if(life != null && life.hp.CurrentValue == 0)
-            kills++;
-        //End Achievement
-        
         if (!nearEnemy.Any() || durability <= 0)
         {
             DestroySpell();
-            GlobalEvent.Instance.Dispatch(new VoltKillEvent{killed = kills});
         } else
         {
             transform.forward = nearEnemy.First().transform.position - transform.position;

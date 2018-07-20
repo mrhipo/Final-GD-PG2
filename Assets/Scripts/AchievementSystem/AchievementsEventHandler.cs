@@ -11,67 +11,28 @@ public class AchievementsEventHandler : MonoBehaviour
 
 	public int finder;
 	public bool playerDead;
-	public float limitTime;
-	
-	float startTime;
 	
 	void Start()
 	{
 		GlobalEvent.Instance.AddEventHandler<FinderCollectEvent>(OnFinderCollect);
-		
 		GlobalEvent.Instance.AddEventHandler<FireBallKillEvent>(OnFireballKill);
 	
 		GlobalEvent.Instance.AddEventHandler<VoltKillEvent>(OnVoltKill);
 
 		GlobalEvent.Instance.AddEventHandler<PlayerDeadEvent>(OnPlayerDead);
-		
-		GlobalEvent.Instance.AddEventHandler<LevelStartEvent>(OnLevelStart);
-
 		GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnLevelComplete);
 		
 		achievements.Init();
-	}
-
-	void OnDestroy()
-	{
-		GlobalEvent.Instance.RemoveEventHandler<FinderCollectEvent>(OnFinderCollect);
 		
-		GlobalEvent.Instance.RemoveEventHandler<FireBallKillEvent>(OnFireballKill);
-	
-		GlobalEvent.Instance.RemoveEventHandler<VoltKillEvent>(OnVoltKill);
-
-		GlobalEvent.Instance.RemoveEventHandler<PlayerDeadEvent>(OnPlayerDead);
-		
-		GlobalEvent.Instance.RemoveEventHandler<LevelStartEvent>(OnLevelStart);
-
-		GlobalEvent.Instance.RemoveEventHandler<LevelCompletedEvent>(OnLevelComplete);
-
-		GlobalEvent.Instance.RemoveEventHandler<LevelCompletedEvent>(OnLevelCompleteTimer);
-		
-		achievements.Remove();
-
-	}
-	
-
-	private void OnLevelStart(LevelStartEvent obj)
-	{
-		startTime = Time.time;
-		GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnLevelCompleteTimer);
 	}
 
-	private void OnLevelCompleteTimer()
-	{
-		if (Time.time - startTime < limitTime)
-			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.Flash});
-	}
-
-	private static void OnVoltKill(VoltKillEvent voltKillEvent)
+	private void OnVoltKill(VoltKillEvent voltKillEvent)
 	{
 		if (voltKillEvent.killed >= 3)
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.ShellShock});
 	}
 
-	private static void OnFireballKill(FireBallKillEvent fireBallEvent)
+	private void OnFireballKill(FireBallKillEvent fireBallEvent)
 	{
 		if (fireBallEvent.killed >= 3)
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.Parrillero});

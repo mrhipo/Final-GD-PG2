@@ -14,6 +14,5 @@ public class ChaseAction : ActionBase
     {
         controller.navMeshAgent.destination = controller.chaseTarget.position;
         controller.navMeshAgent.isStopped = false;
-        controller.Move();
     }
 }

@@ -637,9 +637,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4131680327086902}
   - component: {fileID: 95445221735194722}
-  - component: {fileID: 114314825363101362}
-  - component: {fileID: 114180952151828168}
-  - component: {fileID: 195047443811920876}
   m_Layer: 0
   m_Name: PREF_Zombie Female
   m_TagString: Untagged
@@ -702,21 +699,6 @@ GameObject:
   - component: {fileID: 4025670318517110}
   m_Layer: 0
   m_Name: LeftHandThumb1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1733217547402728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4834454048493012}
-  m_Layer: 0
-  m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1069,7 +1051,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354173919388948}
-  m_LocalRotation: {x: -0.014586621, y: -0.2242282, z: 0.16459686, w: 0.9604254}
+  m_LocalRotation: {x: -0.01458662, y: -0.22422819, z: 0.16459684, w: 0.9604253}
   m_LocalPosition: {x: 0.104027666, y: -0.03244045, z: -0.090205856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1140,15 +1122,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625906488055446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.43, y: 0, z: -38.35}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.446451, y: 0, z: 2.3233223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4422356086121580}
   - {fileID: 4778906755811482}
   - {fileID: 4805777915035390}
   - {fileID: 4744394247158498}
-  - {fileID: 4834454048493012}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1186,7 +1167,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768289845372772}
-  m_LocalRotation: {x: -0.016201138, y: 0.14306904, z: -0.23909988, w: 0.96026045}
+  m_LocalRotation: {x: -0.016201137, y: 0.14306903, z: -0.23909986, w: 0.9602604}
   m_LocalPosition: {x: -0.115439355, y: -0.05493081, z: -0.060560685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1570,7 +1551,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151158677188614}
-  m_LocalRotation: {x: -0.09654786, y: 0.08656663, z: -0.0051688906, w: 0.9915433}
+  m_LocalRotation: {x: -0.09654785, y: 0.08656662, z: -0.00516889, w: 0.99154323}
   m_LocalPosition: {x: -0.015068842, y: -0.015115157, z: 0.028328385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1638,7 +1619,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1824901404984392}
-  m_LocalRotation: {x: 0.059196774, y: 0.02687189, z: 0.09949214, w: 0.9929124}
+  m_LocalRotation: {x: 0.05919677, y: 0.026871888, z: 0.09949213, w: 0.99291235}
   m_LocalPosition: {x: 0.030161519, y: -0.0052167973, z: -0.016537117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1752,19 +1733,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4459356910410280}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4834454048493012
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1733217547402728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4131680327086902}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4891242422358294
 Transform:
@@ -1942,7 +1910,7 @@ Animator:
   m_GameObject: {fileID: 1625906488055446}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f979e43d74603f14dbfd1c1cf05905be, type: 3}
-  m_Controller: {fileID: 9100000, guid: 09f84615549dacd49b53e6d3799498d2, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1951,38 +1919,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114180952151828168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625906488055446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a100c08ecb35775479eb3cd4ae19288a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 81440fecf8ce74121b95e53ebe8fab68, type: 2}
-  enemyStats: {fileID: 11400000, guid: 3bc41d0cf63b232498df4e62290cb200, type: 2}
-  eyes: {fileID: 4834454048493012}
-  reminState: {fileID: 11400000, guid: 206600bee274d0540945576786e6858e, type: 2}
-  animator: {fileID: 95445221735194722}
-  wayPointList: []
-  navMeshAgent: {fileID: 0}
-  chaseTarget: {fileID: 0}
-  stateTimeElapsed: 0
-  nextWayPoint: 0
---- !u!114 &114314825363101362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625906488055446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a722791d5e44506bfc6367af455930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &137399888905095500
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2216,24 +2152,3 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0009863675, y: -0.32266435, z: -0.013418734}
     m_Extent: {x: 0.22451816, y: 0.45342514, z: 0.16404743}
   m_DirtyAABB: 0
---- !u!195 &195047443811920876
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625906488055446}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
