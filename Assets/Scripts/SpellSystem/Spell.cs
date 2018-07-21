@@ -10,12 +10,15 @@ public class Spell : IUpdate
 
     public GameObject spellPrefab;
 
+    public bool IsUnlocked { get; set; }
+
     //private WaitForSeconds coolDownWait;
     private float timer;
 
     public Spell()
     {
         CanUseSpell = true;
+        IsUnlocked = false;
     }
 
     public void UseSpell(Vector3 position, Vector3 direction)

@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour {
     bool aiming;
 
     PlayerInput input = new PlayerInput();
+
     PlayerStats stats;
     float speedMultiplier = 1;
 
     bool canShoot = true;
 
     Pool<GameObject> bullets;
-
 
     private void Start()
     {
