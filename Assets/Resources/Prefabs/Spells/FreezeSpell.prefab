@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 54040339090721506}
   - component: {fileID: 135508413947363076}
   - component: {fileID: 114526496208268922}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: FreezeSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
