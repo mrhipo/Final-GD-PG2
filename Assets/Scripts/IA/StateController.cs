@@ -24,6 +24,7 @@ public class StateController : MonoBehaviour, IUpdate
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.speed = enemyStats.moveSpeed;
     }
 
     private void Start()

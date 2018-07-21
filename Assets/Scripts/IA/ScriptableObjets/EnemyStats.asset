@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2512e9742d80a2c488d74a4c918e1746, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
   lookRange: 40
-  lookSphereCastRadius: 1
+  lookSphereCastRadius: 0.2
   attackRange: 1
   attackRate: 1
   attackForce: 15
