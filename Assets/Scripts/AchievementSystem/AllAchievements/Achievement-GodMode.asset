@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   sprite: {fileID: 0}
-  text: You are God!
+  text: God Mode
   completed: 0
