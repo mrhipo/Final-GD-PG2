@@ -19,3 +19,7 @@ MonoBehaviour:
   attackDamage: 50
   searchDuration: 4
   searchingTurnSpeed: 120
+  specialAttackRange:
+    crrValue: 0
+    maxValue: 0
+  specialAttackRate: 3

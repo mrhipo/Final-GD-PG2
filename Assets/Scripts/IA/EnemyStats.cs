@@ -15,4 +15,7 @@ public class EnemyStats : ScriptableObject
 
     public float searchDuration = 4f;
     public float searchingTurnSpeed = 120f;
+
+    public RangeValue specialAttackRange; //> current Value es el minimo, Max Value = Max Value.
+    public float specialAttackRate = 3f;
 }

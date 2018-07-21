@@ -70,7 +70,9 @@ public class StateController : MonoBehaviour, IUpdate
             currentState = nextState;
     }
 
+    //Checkear distancia del especial attack
     public bool PlayerInAttackRange { get { return Target != null && Vector3.Distance(Target.transform.position, transform.position) < enemyStats.attackRange; } }
+    public bool PlayerInSpecialAttackRange { get { return Target != null && Vector3.Distance(Target.transform.position, transform.position) > enemyStats.specialAttackRange.CurrentValue && Vector3.Distance(Target.transform.position, transform.position) < enemyStats.specialAttackRange.MaxValue; } }
 
     public bool CheckIfCountDownElapsed(CoolDownID id , float duration)
     {
@@ -107,5 +109,6 @@ public class StateController : MonoBehaviour, IUpdate
 
 public enum CoolDownID
 {
-    Attack
+    Attack,
+    SpecialAttack
 }
