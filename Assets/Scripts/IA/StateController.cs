@@ -2,13 +2,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StateController : MonoBehaviour, IUpdate
+public class StateController : MonoBehaviour, IUpdate 
 {
     public State currentState;
 
     public EnemyStats enemyStats;
     public Transform eyes;
     public State reminState;
+    public Animator animator;
+    
 
     public List<Transform> wayPointList;
 
@@ -16,6 +18,8 @@ public class StateController : MonoBehaviour, IUpdate
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public int nextWayPoint;
+
+    private Dictionary<CoolDownID, float> coolDowns = new Dictionary<CoolDownID, float>();
 
     private bool _aiActive;
 
@@ -53,22 +57,14 @@ public class StateController : MonoBehaviour, IUpdate
     public void TransitionToState(State nextState)
     {
         if (nextState != reminState)
-        {
             currentState = nextState;
-            OnExitCurrentState();
-        }
     }
 
-    public bool CheckIfCountDownElapsed(float duration)
+    public bool CheckIfCountDownElapsed(CoolDownID id , float duration)
     {
-        stateTimeElapsed += Time.deltaTime;
-
-        return (stateTimeElapsed >= duration);
-    }
-
-    private void OnExitCurrentState()
-    {
-        stateTimeElapsed = 0;
+        var result = (coolDowns[id] == 0 || Time.time > coolDowns[id] + duration);
+        coolDowns[id] = Time.time;
+        return result;
     }
 
     private void OnDrawGizmos()
@@ -79,4 +75,35 @@ public class StateController : MonoBehaviour, IUpdate
             Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
         }
     }
+
+    public virtual void Attack()
+    {
+        animator.SetTrigger("Attack");
+    }
+
+    public virtual void Move()
+    {
+        animator.SetTrigger("Move");
+    }
+
+    public virtual void Idle()
+    {
+        animator.SetTrigger("Idle");
+    }
+
+    public virtual void SpecialAttack()
+    {
+        animator.SetTrigger("SpecialAttack");
+    }
+
+    public virtual void Dead()
+    {
+        animator.SetTrigger("Dead");
+    }
+
+}
+
+public enum CoolDownID
+{
+    Attack
 }
