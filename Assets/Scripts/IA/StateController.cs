@@ -107,5 +107,6 @@ public class StateController : MonoBehaviour, IUpdate
 
 public enum CoolDownID
 {
-    Attack
+    Attack,
+    SpecialAttack
 }
