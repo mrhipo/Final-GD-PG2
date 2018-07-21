@@ -123,6 +123,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4724768390945268}
+  - component: {fileID: 114399306592546574}
   m_Layer: 0
   m_Name: PREF_Portal
   m_TagString: Untagged
@@ -138,6 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4131783474857602}
+  - component: {fileID: 114128314539682144}
   m_Layer: 0
   m_Name: Effects
   m_TagString: Untagged
@@ -151,7 +153,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427741551981218}
-  m_LocalRotation: {x: -0.60691833, y: 0.36283624, z: 0.36283624, w: 0.60691833}
+  m_LocalRotation: {x: -0.20001122, y: 0.67822975, z: 0.67822975, w: 0.20001122}
   m_LocalPosition: {x: 0, y: 0.82, z: -0}
   m_LocalScale: {x: 4.3740754, y: 4.3740788, z: 4.3740788}
   m_Children: []
@@ -193,7 +195,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832991939949064}
-  m_LocalRotation: {x: -0.3347428, y: 0.6228542, z: -0.6228542, w: -0.3347428}
+  m_LocalRotation: {x: 0.5939575, y: 0.38368547, z: -0.38368547, w: 0.5939575}
   m_LocalPosition: {x: 0, y: 0.44, z: 0}
   m_LocalScale: {x: 1.7217813, y: 1.7217818, z: 1.7217818}
   m_Children:
@@ -234,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1915669434733342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.92, y: 0, z: 5.16}
+  m_LocalPosition: {x: -33.730747, y: 0, z: -41.19}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4793551469500988}
@@ -376,6 +378,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114128314539682144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967949462827448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb3d25a361bcc640a755d20575078d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114359465803822062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +401,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotateAxis: {x: 0, y: 0, z: 15}
+--- !u!114 &114399306592546574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915669434733342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca2886e51f3e334ead0c7b5a4aa9fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToSpwan: 4
+  spawnRate: 2
+  spawnDelay: 0
 --- !u!114 &114551852413646808
 MonoBehaviour:
   m_ObjectHideFlags: 1
