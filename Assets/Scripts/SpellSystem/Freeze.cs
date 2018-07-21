@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Freeze : MonoBehaviour, IUpdate
 {
@@ -12,15 +13,14 @@ public class Freeze : MonoBehaviour, IUpdate
     //ToDo: True name.
     //private Enemy owner;
 
+    private StateController _enemy;
+
     void Start()
     {
+        _enemy = GetComponent<StateController>();
+        _enemy.navMeshAgent.velocity = Vector3.zero;
+        _enemy.SetupAI(false);
         UpdateManager.instance.AddUpdate(this);
-
-        //owner = GetComponent<Enemy>();
-        //ToDo: Chupar speed de enemy
-        //_enemySpeed = owner.speed;
-        //ToDo: Setear speed del enemigo en 0.
-        //owner.speed = 0;
     }
 
     public void RestartTime() { _timer = 0; }
@@ -31,8 +31,7 @@ public class Freeze : MonoBehaviour, IUpdate
 
         if (_timer >= duration)
         {
-            //Setear speed del enemigo a la original.
-            //owner.speed = _enemySpeed;
+            _enemy.SetupAI(true);
 
             UpdateManager.instance.RemoveUpdate(this);
             Destroy(this);
