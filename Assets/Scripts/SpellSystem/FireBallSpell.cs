@@ -20,7 +20,7 @@ public class FireBallSpell : MonoBehaviour, IUpdate
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         UpdateManager.instance.RemoveUpdate(this);
         Exploit();

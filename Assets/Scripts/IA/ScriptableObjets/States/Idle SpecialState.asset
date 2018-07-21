@@ -9,11 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a400b2fd0d22fe4fb7643817b3eec9f, type: 3}
-  m_Name: Idle State
+  m_Name: Idle SpecialState
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: f15deccd446a94ef8801864bb9be2880, type: 2}
   - {fileID: 11400000, guid: 8de0b73de3edd1b44b0f99a19057305b, type: 2}
+  - {fileID: 11400000, guid: b99df38d95d65d24195f66180f92a554, type: 2}
   transitions:
   - decision:
     - {fileID: 11400000, guid: 381f2993e03ede5449d5c4ceaaa7356b, type: 2}
