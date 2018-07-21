@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour, IUpdate {
     public float speed = 10;
     public float lifeTime = 10;
 
-    public Action OnDead = delegate { };
+    public Action BulletDestroy = delegate { };
 
 
     public void Initialize(Vector3 init, Vector3 dest)
@@ -25,18 +25,18 @@ public class Bullet : MonoBehaviour, IUpdate {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         var hitObject = other.gameObject.GetComponent<HitObject>();
         if (hitObject != null)
         {
-            Dead();
+            BulletDead();
         }
     }
 
-    private void Dead()
+    private void BulletDead()
     {
-        OnDead();
+        BulletDestroy();
         StopCoroutine(lifeTimeCoroutine);
     }
 
@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour, IUpdate {
     private IEnumerator LifeTime()
     {
         yield return new WaitForSeconds(lifeTime);
-        Dead();
+        BulletDead();
     }
 
     public static GameObject Factory()

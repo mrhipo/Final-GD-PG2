@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 4219674630794990}
   - component: {fileID: 135217904737160936}
   - component: {fileID: 114175531752926292}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,6 +656,8 @@ GameObject:
   - component: {fileID: 95445221735194722}
   - component: {fileID: 114180952151828168}
   - component: {fileID: 195047443811920876}
+  - component: {fileID: 114941940451232192}
+  - component: {fileID: 136099444089765858}
   m_Layer: 0
   m_Name: PREF_Zombie Female
   m_TagString: Untagged
@@ -703,6 +705,8 @@ GameObject:
   - component: {fileID: 4339134771078610}
   - component: {fileID: 135591922184454584}
   - component: {fileID: 114263826067858016}
+  - component: {fileID: 135827134546212756}
+  - component: {fileID: 114180218626508804}
   m_Layer: 11
   m_Name: Los
   m_TagString: Untagged
@@ -2022,6 +2026,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 5
+--- !u!114 &114180218626508804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672149270853184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812f3d6a3f4225945af8d1aa37f1ea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114180952151828168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2053,6 +2068,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812f3d6a3f4225945af8d1aa37f1ea16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114941940451232192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625906488055446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685a72bf65d57034c9977260944546fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitObjects: []
+  hp:
+    crrValue: 10
+    maxValue: 10
 --- !u!135 &135217904737160936
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2077,6 +2107,31 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135827134546212756
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672149270853184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136099444089765858
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625906488055446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137399888905095500
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
