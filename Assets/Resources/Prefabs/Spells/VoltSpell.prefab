@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 54415325404331194}
   - component: {fileID: 135398640198018610}
   - component: {fileID: 114259760196307308}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: VoltSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
