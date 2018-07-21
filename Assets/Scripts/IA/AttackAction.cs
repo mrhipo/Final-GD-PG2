@@ -16,12 +16,11 @@ public class AttackAction : ActionBase
 
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * controller.enemyStats.attackRange, Color.red);
 
-        //ToDo Check compare tag.
-        if (Physics.SphereCast(controller.eyes.position, controller.enemyStats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.enemyStats.attackRange) && hit.collider.CompareTag("Player"))
+        if (Physics.SphereCast(controller.eyes.position, controller.enemyStats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.enemyStats.attackRange,Layers.player.Mask))
         {
-            if (controller.CheckIfCountDownElapsed(controller.enemyStats.attackRate))
+            if (controller.CheckIfCountDownElapsed(CoolDownID.Attack,controller.enemyStats.attackRate))
             {
-                //ToDo comportamiento de atake,.
+                Debug.Log("ATTACK");
             }
         }
     }

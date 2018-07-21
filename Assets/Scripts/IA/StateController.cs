@@ -17,6 +17,8 @@ public class StateController : MonoBehaviour, IUpdate
     [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public int nextWayPoint;
 
+    private Dictionary<CoolDownID, float> coolDowns = new Dictionary<CoolDownID, float>();
+
     private bool _aiActive;
 
     private void Awake()
@@ -53,22 +55,14 @@ public class StateController : MonoBehaviour, IUpdate
     public void TransitionToState(State nextState)
     {
         if (nextState != reminState)
-        {
             currentState = nextState;
-            OnExitCurrentState();
-        }
     }
 
-    public bool CheckIfCountDownElapsed(float duration)
+    public bool CheckIfCountDownElapsed(CoolDownID id , float duration)
     {
-        stateTimeElapsed += Time.deltaTime;
-
-        return (stateTimeElapsed >= duration);
-    }
-
-    private void OnExitCurrentState()
-    {
-        stateTimeElapsed = 0;
+        var result = (coolDowns[id] == 0 || Time.time > coolDowns[id] + duration);
+        coolDowns[id] = Time.time;
+        return result;
     }
 
     private void OnDrawGizmos()
@@ -79,4 +73,10 @@ public class StateController : MonoBehaviour, IUpdate
             Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
         }
     }
+
+}
+
+public enum CoolDownID
+{
+    Attack
 }
