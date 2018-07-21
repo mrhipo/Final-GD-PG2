@@ -35,8 +35,10 @@ public class PlayerController : MonoBehaviour {
     {
         bullets = new Pool<GameObject>(5, Bullet.Factory, Bullet.OnInit, Bullet.OnStore, true);
         stats = GetComponent<PlayerStats>();
-        Cursor.lockState = CursorLockMode.Locked;
+
         animator = GetComponent<Animator>();
+
+        Mouse.ShowCursor(false);
 
         spine = animator.GetBoneTransform(HumanBodyBones.Spine);
 

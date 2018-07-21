@@ -33,6 +33,7 @@ public class DebugPanel : MonoBehaviour {
         Sk4.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,4));
     }
 
+
     private void OnChangeToggleSkill(bool boolean, int i)
     {
         print(String.Format("TODO LOGIC!!! Skill {0} is now {1}",i,boolean));
@@ -59,7 +60,10 @@ public class DebugPanel : MonoBehaviour {
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5))
+        {
             panel.SetActive(!panel.activeSelf);
+            Mouse.ShowCursor(panel.activeSelf);
+        }
     }
 
 }
