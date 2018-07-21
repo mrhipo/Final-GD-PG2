@@ -516,6 +516,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4245680193979498}
   - component: {fileID: 95945577424351194}
+  - component: {fileID: 136538873476818880}
+  - component: {fileID: 195869387923657544}
+  - component: {fileID: 114441539830476042}
   m_Layer: 0
   m_Name: PREF_Grunt
   m_TagString: Untagged
@@ -578,6 +581,21 @@ GameObject:
   - component: {fileID: 4818941515465394}
   m_Layer: 0
   m_Name: Neck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1545943410378428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4342198748462514}
+  m_Layer: 0
+  m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1232,11 +1250,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456420147662638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.1040382, y: 0, z: 5.1528673}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4394138962063594}
   - {fileID: 4297206633875184}
+  - {fileID: 4342198748462514}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1279,6 +1298,19 @@ Transform:
   - {fileID: 4916114671190380}
   m_Father: {fileID: 4650370486116264}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4342198748462514
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545943410378428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.409, z: 0.692}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4245680193979498}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4365734373825082
 Transform:
@@ -1989,7 +2021,7 @@ Animator:
   m_GameObject: {fileID: 1456420147662638}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6e35e43867e72ca4fb752f02d78de4c1, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: a57655bcd000f324094bb77d34c765ce, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1998,6 +2030,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114441539830476042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456420147662638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a100c08ecb35775479eb3cd4ae19288a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 11400000, guid: fd3f1062caf0828448dbe9656f81c663, type: 2}
+  enemyStats: {fileID: 11400000, guid: 3bc41d0cf63b232498df4e62290cb200, type: 2}
+  eyes: {fileID: 4342198748462514}
+  reminState: {fileID: 11400000, guid: 206600bee274d0540945576786e6858e, type: 2}
+  animator: {fileID: 95945577424351194}
+  wayPointList: []
+  navMeshAgent: {fileID: 0}
+  stateTimeElapsed: 0
+  nextWayPoint: 0
+--- !u!136 &136538873476818880
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456420147662638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137723693253528016
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2110,3 +2175,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000062584877, y: 0.007499516, z: 0.0032339543}
     m_Extent: {x: 1.4727759, y: 1.0212235, z: 0.359397}
   m_DirtyAABB: 0
+--- !u!195 &195869387923657544
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456420147662638}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.29
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

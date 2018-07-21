@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "PluggableAI/Actions/ChargeSpecialAttack")]
-public class ChargeSpecialAttack : SpecialAttackAction
+public class ChargeSpecialAttack : ActionBase
 {
-    protected override void Attack()
+    public override void Act(StateController controller)
+    {
+        Attack();
+    }
+
+    protected void Attack()
     {
         Debug.Log("Not Implemented yet");
     }
