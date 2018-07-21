@@ -14,8 +14,8 @@ public class AttackAction : ActionBase
     {
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * controller.enemyStats.attackRange, Color.red);
 
-        if (controller.PlayerInAttackRange)
-            if (controller.CheckIfCountDownElapsed(CoolDownID.Attack,controller.enemyStats.attackRate))
+        if (controller.HasTarget && controller.PlayerInAttackRange)
+            if (controller.CheckIfCountDownElapsed(CoolDownID.Attack, controller.enemyStats.attackRate))
                 controller.Attack();
     }
 }

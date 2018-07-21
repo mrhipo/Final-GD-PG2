@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StateController : MonoBehaviour, IUpdate 
+public class StateController : MonoBehaviour, IUpdate
 {
     public State currentState;
 
@@ -19,6 +19,8 @@ public class StateController : MonoBehaviour, IUpdate
     [HideInInspector] public GameObject Target { get { return lineOfSight.Target; } }
     [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public int nextWayPoint;
+
+    public bool HasTarget { get { return lineOfSight.Target != null; } }
 
     private Dictionary<CoolDownID, float> coolDowns = new Dictionary<CoolDownID, float>();
 
@@ -74,10 +76,10 @@ public class StateController : MonoBehaviour, IUpdate
     public bool PlayerInAttackRange { get { return Target != null && Vector3.Distance(Target.transform.position, transform.position) < enemyStats.attackRange; } }
     public bool PlayerInSpecialAttackRange { get { return Target != null && Vector3.Distance(Target.transform.position, transform.position) > enemyStats.specialAttackRange.CurrentValue && Vector3.Distance(Target.transform.position, transform.position) < enemyStats.specialAttackRange.MaxValue; } }
 
-    public bool CheckIfCountDownElapsed(CoolDownID id , float duration)
+    public bool CheckIfCountDownElapsed(CoolDownID id, float duration)
     {
 
-        if(Time.time > coolDowns[id] + duration)
+        if (Time.time > coolDowns[id] + duration)
         {
             coolDowns[id] = Time.time;
             return true;
