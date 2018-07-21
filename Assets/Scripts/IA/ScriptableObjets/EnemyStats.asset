@@ -13,13 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   lookRange: 40
-  attackRange: 1
+  attackRange: 2
   attackRate: 2
   attackForce: 15
   attackDamage: 50
   searchDuration: 4
   searchingTurnSpeed: 120
   specialAttackRange:
-    crrValue: 0
-    maxValue: 0
+    crrValue: 1.5
+    maxValue: 3
   specialAttackRate: 3

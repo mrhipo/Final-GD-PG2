@@ -5,11 +5,12 @@ public class ChargeSpecialAttack : ActionBase
 {
     public override void Act(StateController controller)
     {
-        Attack();
+        Attack(controller);
     }
 
-    protected void Attack()
+    protected void Attack(StateController controller)
     {
+        controller.SpecialAttack();
         Debug.Log("Not Implemented yet");
     }
 }
