@@ -7,6 +7,6 @@ public class ActivaStateDecision : Decision
 {
     public override bool Decide(StateController controller)
     {
-        return controller.chaseTarget.gameObject.activeSelf;
+        return controller.lineOfSight.Target.activeSelf;
     }
 }

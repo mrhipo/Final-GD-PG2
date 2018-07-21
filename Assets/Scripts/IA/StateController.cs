@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,12 +11,12 @@ public class StateController : MonoBehaviour, IUpdate
     public Transform eyes;
     public State reminState;
     public Animator animator;
-    
+    public ILineOfSight lineOfSight;
 
     public List<Transform> wayPointList;
 
     [HideInInspector] public NavMeshAgent navMeshAgent;
-    [HideInInspector] public Transform chaseTarget;
+    [HideInInspector] public GameObject Target { get { return lineOfSight.Target; } }
     [HideInInspector] public float stateTimeElapsed;
     [HideInInspector] public int nextWayPoint;
 
@@ -26,6 +27,7 @@ public class StateController : MonoBehaviour, IUpdate
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        lineOfSight = GetComponentInChildren<ILineOfSight>();
         navMeshAgent.speed = enemyStats.moveSpeed;
     }
 
@@ -35,6 +37,13 @@ public class StateController : MonoBehaviour, IUpdate
 
         //For Test!
         SetupAI(true);
+        InitCoolDowns();
+    }
+
+    private void InitCoolDowns()
+    {
+        foreach (CoolDownID item in Enum.GetValues(typeof(CoolDownID)))
+            coolDowns.Add(item, float.MinValue);
     }
 
     public void SetupAI(bool aiActivationFromManager)
@@ -47,6 +56,7 @@ public class StateController : MonoBehaviour, IUpdate
         if (!_aiActive) return;
 
         currentState.UpdateState(this);
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 
     private void OnDestroy()
@@ -60,30 +70,22 @@ public class StateController : MonoBehaviour, IUpdate
             currentState = nextState;
     }
 
+    public bool PlayerInAttackRange { get { return Target != null && Vector3.Distance(Target.transform.position, transform.position) < enemyStats.attackRange; } }
+
     public bool CheckIfCountDownElapsed(CoolDownID id , float duration)
     {
-        var result = (coolDowns[id] == 0 || Time.time > coolDowns[id] + duration);
-        coolDowns[id] = Time.time;
-        return result;
-    }
 
-    private void OnDrawGizmos()
-    {
-        if (currentState != null && eyes != null)
+        if(Time.time > coolDowns[id] + duration)
         {
-            Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
+            coolDowns[id] = Time.time;
+            return true;
         }
+        return false;
     }
 
     public virtual void Attack()
     {
         animator.SetTrigger("Attack");
-    }
-
-    public virtual void Move()
-    {
-        animator.SetTrigger("Move");
     }
 
     public virtual void Idle()

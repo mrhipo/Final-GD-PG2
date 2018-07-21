@@ -12,17 +12,15 @@ public class LookDecision : Decision
 
     private bool Look(StateController controller)
     {
-        RaycastHit hit;
-
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * controller.enemyStats.lookRange, Color.green);
 
-        //ToDo Check compare tag.
-        if (Physics.SphereCast(controller.eyes.position, controller.enemyStats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.enemyStats.lookRange,Layers.player.Mask))
-        {
-            controller.chaseTarget = hit.transform;
-            return true;
-        }
+        var target = controller.Target;
+        if (target == null) return false;
 
-        return false;
+        var deltaPos = target.transform.position - controller.transform.position;
+        var rayCast = Physics.Raycast(controller.eyes.position, deltaPos, controller.enemyStats.lookRange, Layers.player.Mask);
+
+        return  rayCast;
     }
+
 }

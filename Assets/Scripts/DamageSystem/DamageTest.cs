@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DamageTest : MonoBehaviour {
 
+    public float amount = 1;
     private void OnTriggerEnter(Collider other)
     {
         LifeObject lo = null;
         if((lo = other.GetComponent<LifeObject>())!= null)
-            lo.OnTakeDamage(new Damage(gameObject, 2));
+            lo.OnTakeDamage(new Damage(gameObject, amount));
     }
 }

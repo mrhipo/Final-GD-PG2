@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PluggableAI/State")]
@@ -25,7 +26,7 @@ public class State : ScriptableObject
     {
         for (int i = 0; i < transitions.Length; i++)
         {
-            bool decisionSucceded = transitions[i].decision.Decide(controller);
+            bool decisionSucceded = transitions[i].decision.All(d => d.Decide(controller));
 
             if (decisionSucceded)
             {
