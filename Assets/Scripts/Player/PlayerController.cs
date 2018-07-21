@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
     {
         SoundManager.instance.PlayFX("Normal Shot");
         var bullet = bullets.GetObjectFromPool().GetComponent<Bullet>();
-        bullet.OnDead += () => bullets.DisablePoolObject(bullet.gameObject);
+        bullet.BulletDestroy += () => bullets.DisablePoolObject(bullet.gameObject);
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
