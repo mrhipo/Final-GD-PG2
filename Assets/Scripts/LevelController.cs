@@ -1,23 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    List<Portal> _portals = new List<Portal>();
+    int _closedPortals;
 
-	// Use this for initialization
+    public Door exitDoor;
+
 	void Start ()
     {
-        GlobalEvent.Instance.AddEventHandler<EnemyKilledEvent>(OnKilledEnemy);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        _portals.AddRange(FindObjectsOfType<Portal>());
+
+        GlobalEvent.Instance.AddEventHandler<PortalClosedEvent>(OnPortalClosed);
 	}
 
-    private void OnKilledEnemy(GameEvent enemyKilledEvent)
+    private void OnPortalClosed(PortalClosedEvent portalClosedEvent)
     {
-      
+        _closedPortals++;
+        if(_closedPortals >= _portals.Count)
+        {
+            _closedPortals = 0;
+            UnlockLevelExit();
+        }
     }
+
+    void UnlockLevelExit()
+    {
+        exitDoor.GetComponent<Animation>().Play("ANIM_Door Open");
+    }
+    
 }

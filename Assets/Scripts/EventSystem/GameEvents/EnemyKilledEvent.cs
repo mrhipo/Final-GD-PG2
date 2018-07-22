@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyKilledEvent : GameEvent
 {
-    GameObject _enemy; //cambiar GO por la clase enemies generica
+    public Enemies enemy; 
 
-	public EnemyKilledEvent(GameObject enemy)
+	public EnemyKilledEvent(Enemies enemy)
     {
-        _enemy = enemy;
+        this.enemy = enemy;
     }
 }
