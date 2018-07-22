@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music:
     name: Music Level 1
-    clip: {fileID: 0}
-    volume: 0.1
+    clip: {fileID: 8300000, guid: a897ec5ecc9973245978668928878ab1, type: 3}
+    volume: 1
     pitch: 1
     randomVolume: 0
     randomPitch: 0
