@@ -18,6 +18,12 @@ public class MainMenu : MonoBehaviour
         //Cargar escenas.
     }
 
+    public void Multiplayer()
+    {
+        click.Play();
+        //TO DO
+    }
+
     public void Credits()
     {
         click.Play();
