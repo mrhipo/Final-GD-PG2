@@ -336,6 +336,7 @@ MonoBehaviour:
   achievements: {fileID: 11400000, guid: 86208877e7095b34c9939f0bd1f5da8d, type: 2}
   finder: 0
   playerDead: 0
+  limitTime: 0
 --- !u!114 &114893827479540644
 MonoBehaviour:
   m_ObjectHideFlags: 1
