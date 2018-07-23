@@ -53,6 +53,7 @@ public class Portal : MonoBehaviour
     {
         _effects.gameObject.SetActive(false);
         SoundManager.instance.StopFX("Portal Activated");
+        //Save Game
     }
 
     void OnKilledEnemy(EnemyKilledEvent enemyKilledEvent)
