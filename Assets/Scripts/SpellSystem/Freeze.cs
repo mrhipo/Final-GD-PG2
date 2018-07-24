@@ -13,13 +13,11 @@ public class Freeze : MonoBehaviour, IUpdate
     //ToDo: True name.
     //private Enemy owner;
 
-    private StateController _enemy;
+    private EnemyStats _enemy;
 
     void Start()
     {
-        _enemy = GetComponent<StateController>();
-        _enemy.navMeshAgent.velocity = Vector3.zero;
-        _enemy.SetupAI(false);
+        _enemy.agent.velocity = Vector3.zero;
         UpdateManager.instance.AddUpdate(this);
     }
 
@@ -31,8 +29,6 @@ public class Freeze : MonoBehaviour, IUpdate
 
         if (_timer >= duration)
         {
-            _enemy.SetupAI(true);
-
             UpdateManager.instance.RemoveUpdate(this);
             Destroy(this);
         }
