@@ -19,10 +19,11 @@ public class EnemyStats : MonoBehaviour {
 
     public float speed;
     public float damage;
+    
     private void Start()
     {
         target = FindObjectOfType<PlayerController>().transform;
-        agent = GetComponentInChildren<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         agent.speed = speed;
     }

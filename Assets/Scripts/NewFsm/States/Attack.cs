@@ -6,17 +6,21 @@ public class Attack : StateMachineBehaviour {
 
     private EnemyStats enemyStats;
 
-    bool canAttack;
+	private bool canAttack = true;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
-    }
+		enemyStats.agent.velocity = Vector3.zero;
+		enemyStats.animator.SetFloat("Speed",0);
+
+	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         if (canAttack)
         {
             Debug.Log("Attack");
+	        enemyStats.animator.SetTrigger("Attack");
             canAttack = false;
             FrameUtil.AfterDelay(enemyStats.attackRate, () => canAttack = true);
         }

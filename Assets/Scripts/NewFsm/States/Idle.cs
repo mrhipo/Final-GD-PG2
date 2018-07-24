@@ -8,6 +8,7 @@ public class Idle : StateMachineBehaviour {
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
+		enemyStats.animator.SetTrigger("Idle");
     }
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
