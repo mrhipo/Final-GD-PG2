@@ -10,6 +10,7 @@ public class SpecialAttack : StateMachineBehaviour {
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
 		enemyStats.currentState = state;
+		enemyStats.animator.SetTrigger("SpecialAttack");
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
