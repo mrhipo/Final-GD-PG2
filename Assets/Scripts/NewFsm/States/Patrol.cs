@@ -5,9 +5,11 @@ using UnityEngine;
 public class Patrol : StateMachineBehaviour {
 
     private EnemyStats enemyStats;
-
+	public EnemyStates state;
+	
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
+		enemyStats.currentState = state;
     }
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

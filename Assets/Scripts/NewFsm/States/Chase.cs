@@ -7,8 +7,12 @@ public class Chase : StateMachineBehaviour {
 
     private EnemyStats enemyStats;
 
+	public EnemyStates state;
+	
 	public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
+		enemyStats.currentState = state;
+
     }
 
 	public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

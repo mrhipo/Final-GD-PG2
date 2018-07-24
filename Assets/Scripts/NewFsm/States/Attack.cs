@@ -5,12 +5,15 @@ using UnityEngine;
 public class Attack : StateMachineBehaviour {
 
     private EnemyStats enemyStats;
-
+	public EnemyStates state;
+	
 	private bool canAttack = true;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
+		enemyStats.currentState = state;
 		enemyStats.agent.velocity = Vector3.zero;
+
 		enemyStats.animator.SetFloat("Speed",0);
 
 	}
