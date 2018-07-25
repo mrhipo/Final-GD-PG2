@@ -9,8 +9,11 @@ public class AchievementsEventHandler : MonoBehaviour
 	public AchievementsFactory achievements;
 	GlobalEvent ge = new GlobalEvent();
 
+    [HideInInspector]
 	public int finder;
+	[HideInInspector]
 	public bool playerDead;
+	
 	public float limitTime;
 	
 	float startTime;
