@@ -18,7 +18,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Condition)
+        if ((enemyStats.currentState & statesCondition) > 0 && Condition)
         {
             enemyStats.fsm.SetTrigger("SpecialAttack");
             ExecuteSpecialAttack();
