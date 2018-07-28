@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour  , ISpeed {
 
     public float speed = 5;
     public float mouseSensitivity = 5;
@@ -62,6 +62,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     bool lastAiming = false;
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+
+        set
+        {
+            speed = value;
+        }
+    }
+
     private void CheckAiming()
     {
         aiming = input.Aiming;

@@ -1,34 +1,53 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ReaperSpecial : SpecialAttackBehaviour
 {
+    [Header("TimeToExitState")]
+    public float finishTime = 3;
+    [Header("Distance To Execute Attack")]
+    public float minDistance;
 
-    //Cabeceada para testeo
-    public bool active;
+    [Header("Time to cast effect")]
+    public float timeCastInjure = 1.5f;
+    [Header("Range affected")]
+    public float rangeAffected = 5;
+    [Header("how many time")]
+    public float freezeDuration = 3;
 
-    //Cabeceada para testeo
     public override bool Condition
     {
         get
         {
-            var b = (enemyStats.currentState & statesCondition) > 0 && active;
-            if (b)
-            {
-                //Cabeceada para testeo
-                active = false;
-                //Cabeceada para testeo
-                FrameUtil.AfterDelay(8, () => active = true);
-                //Cabeceada para testeo
-                FrameUtil.AfterDelay(4, () => enemyStats.fsm.SetTrigger("SpecialFinish"));
-            }
-            return b;
+            return enemyStats.TargetDistance < minDistance;
         }
     }
 
     public override void ExecuteSpecialAttack()
     {
-        print("//TODO MAGIC");
+        //TODO CAST SPEHERE TO FrEEZE PLAYER
+        //instanciar q si toca alplayer lo frene
+        FrameUtil.AfterDelay(timeCastInjure, CastFreezeSpell);
+    }
+
+    private void CastFreezeSpell()
+    {
+        if(enemyStats.TargetDistance < rangeAffected)
+        {
+            Freeze freeze = enemyStats.target.GetComponent<Freeze>();
+
+            if (freeze)
+                freeze.RestartTime();
+            else
+            {
+                freeze = enemyStats.target.gameObject.AddComponent<Freeze>();
+                freeze.duration = freezeDuration;
+            }
+        }
+
+        FrameUtil.AfterDelay(finishTime, SpecialFinish);
     }
 }

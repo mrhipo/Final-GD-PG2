@@ -7,7 +7,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
     [EnumFlagsAttribute]
     public EnemyStates statesCondition;
 
-    public bool canAttack;
+    public bool canAttack = true;
     public float cdAttack = 6;
 
     public abstract bool Condition { get; }

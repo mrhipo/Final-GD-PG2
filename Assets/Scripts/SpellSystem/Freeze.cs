@@ -13,12 +13,17 @@ public class Freeze : MonoBehaviour, IUpdate
     //ToDo: True name.
     //private Enemy owner;
 
-    private EnemyStats _enemy;
+    ISpeed speeder;
+    Animator animator;
 
     void Start()
     {
-        _enemy.agent.velocity = Vector3.zero;
+        speeder = GetComponent<ISpeed>();
+        _enemySpeed = speeder.Speed;
+        speeder.Speed = 0;
         UpdateManager.instance.AddUpdate(this);
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
     }
 
     public void RestartTime() { _timer = 0; }
@@ -31,6 +36,8 @@ public class Freeze : MonoBehaviour, IUpdate
         {
             UpdateManager.instance.RemoveUpdate(this);
             Destroy(this);
+            speeder.Speed = _enemySpeed;
+            animator.enabled = true;
         }
     }
 }

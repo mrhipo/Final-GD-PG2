@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyStats : MonoBehaviour {
+        
+public class EnemyStats : MonoBehaviour ,ISpeed{
 
     [HideInInspector]
     public NavMeshAgent agent;
@@ -15,17 +16,18 @@ public class EnemyStats : MonoBehaviour {
     public Animator fsm;
     [HideInInspector]
     public EnemyStates currentState;
-
     
     public float attackRate;
     public float attackRange;
+    public float specialAttackRate;
 
     public float sightDistance;
 
     public float speed;
     public float damage;
 
-    
+
+
     private void Start()
     {
         target = FindObjectOfType<PlayerController>().transform;
@@ -39,4 +41,18 @@ public class EnemyStats : MonoBehaviour {
     public Vector3 Position { get { return transform.position; } }
     public float TargetDistance { get { return Vector3.Distance(TargetPosition, Position); } }
 
+    public float Speed
+    {
+        get
+        {
+            return agent.speed;
+        }
+
+        set
+        {
+            agent.speed = value;
+            if (value == 0)
+                agent.velocity = Vector3.zero;
+        }
+    }
 }
