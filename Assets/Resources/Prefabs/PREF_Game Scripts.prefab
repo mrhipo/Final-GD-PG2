@@ -109,6 +109,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1888857674413314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4536179350205806}
+  - component: {fileID: 114403613329282844}
+  m_Layer: 0
+  m_Name: UpgradeStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4090871661166292
 Transform:
   m_ObjectHideFlags: 1
@@ -147,6 +163,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4913453197192388}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4536179350205806
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888857674413314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4913453197192388}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4574348846528112
 Transform:
@@ -189,6 +218,7 @@ Transform:
   - {fileID: 4263289679073468}
   - {fileID: 4574348846528112}
   - {fileID: 4763888853797364}
+  - {fileID: 4536179350205806}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,6 +247,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   auxioMixer: {fileID: 24300002, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   soundData: {fileID: 11400000, guid: b4894fb8dd03cf84ab672aa39a8db097, type: 2}
+--- !u!114 &114403613329282844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888857674413314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7d8af6918700b41b9b647f1e16e7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStatsValue: 0
+  noSpellReward: 2
+  levelTimeReward: 1
+  noDamageReward: 2
+  noDeadReward: 1
+  levelCompleteReward: 1
+  levelTime: 0
 --- !u!114 &114633283988645236
 MonoBehaviour:
   m_ObjectHideFlags: 1
