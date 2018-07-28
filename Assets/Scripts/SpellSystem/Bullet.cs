@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour, IUpdate {
         if (hitObject != null)
         {
             BulletDead();
-            hitObject.OnTakeDamage(new Damage(gameObject, amount));
+            hitObject.OnTakeDamage(damage);
         }
     }
 

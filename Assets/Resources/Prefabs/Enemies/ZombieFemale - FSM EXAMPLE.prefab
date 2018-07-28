@@ -731,8 +731,8 @@ GameObject:
   - component: {fileID: 4493897234469514}
   - component: {fileID: 95621243003468938}
   - component: {fileID: 114624250653421344}
-  - component: {fileID: 195805931114618958}
   - component: {fileID: 114915003738951082}
+  - component: {fileID: 195805931114618958}
   - component: {fileID: 136852079124843122}
   m_Layer: 0
   m_Name: ZombieFemale - FSM EXAMPLE
@@ -1451,7 +1451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723242786511378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.4, y: 0, z: -80.367}
+  m_LocalPosition: {x: -27.4, y: 0, z: -77.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4763078896141120}
@@ -2053,8 +2053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjects: []
   hp:
-    crrValue: 0
-    maxValue: 0
+    crrValue: 10
+    maxValue: 10
 --- !u!135 &135590790062936796
 SphereCollider:
   m_ObjectHideFlags: 1

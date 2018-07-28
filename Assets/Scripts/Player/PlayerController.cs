@@ -116,11 +116,11 @@ public class PlayerController : MonoBehaviour  , ISpeed {
         RaycastHit hit;
         if (Physics.Raycast(ray,out hit,500f))
         {
-            bullet.Initialize(bulletSpawn.position, hit.point);
+            bullet.Initialize(bulletSpawn.position, hit.point, stats.damage);
         }
         else
         {
-            bullet.Initialize(bulletSpawn.position, ray.GetPoint(100));
+            bullet.Initialize(bulletSpawn.position, ray.GetPoint(100), stats.damage);
         }
         StartCoroutine(ToggleShoot());
     }
