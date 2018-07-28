@@ -13,11 +13,11 @@ public class Chase : StateMachineBehaviour {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
 		enemyStats.currentState = state;
 
+		Debug.Log("Chanse enter");
     }
 
 	public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		Debug.Log(enemyStats.TargetDistance);
         if(enemyStats.TargetDistance < enemyStats.attackRange)
         {
             animator.SetTrigger("Attack");

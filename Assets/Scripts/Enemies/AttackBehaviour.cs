@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class AttackBehaviour : MonoBehaviour
 {
     public float delayToActivateAttack;
+    public float attackDuration;
     
     public abstract void Attack();
 }
