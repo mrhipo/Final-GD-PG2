@@ -28,7 +28,7 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public float speed;
     public float damage;
 
-    private void Start()
+    private void Awake()
     {
         target = FindObjectOfType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
@@ -36,6 +36,7 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
         animator = transform.GetChild(0).GetComponent<Animator>();
         lifeObject = GetComponent<LifeObject>();
         agent.speed = speed;
+        lifeObject.OnDead += () => fsm.SetTrigger("Dead");
     }
 
     public Vector3 TargetPosition { get { return target.position; } }

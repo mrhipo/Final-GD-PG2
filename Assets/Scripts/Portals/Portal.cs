@@ -16,7 +16,6 @@ public class Portal : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        enemyType = new List<GameObject>();
         _effects = GetComponentInChildren<Effects>();
         _effects.gameObject.SetActive(false);
     }
@@ -44,6 +43,7 @@ public class Portal : MonoBehaviour
     {
         var enemyStats = Instantiate(enemyType[UnityEngine.Random.Range(0, enemyType.Count)]).GetComponent<EnemyStats>();
         enemyStats.lifeObject.OnDead += OnKilledEnemy;
+        enemyStats.transform.position = transform.position + offset;
     }
 
     void ClosePortal()

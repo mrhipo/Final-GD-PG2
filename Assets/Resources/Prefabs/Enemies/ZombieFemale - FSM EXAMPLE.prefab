@@ -523,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1489249773425436
 GameObject:
   m_ObjectHideFlags: 1
@@ -734,6 +734,7 @@ GameObject:
   - component: {fileID: 114915003738951082}
   - component: {fileID: 195805931114618958}
   - component: {fileID: 136852079124843122}
+  - component: {fileID: 114445407421253740}
   m_Layer: 0
   m_Name: ZombieFemale - FSM EXAMPLE
   m_TagString: Untagged
@@ -1249,7 +1250,7 @@ Transform:
   m_GameObject: {fileID: 1482635800969094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.134, y: -0.031, z: -0.025}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4836922618030220}
   m_RootOrder: 4
@@ -2017,6 +2018,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 5
+--- !u!114 &114445407421253740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723242786511378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabe396fa69d1c64195bcf2bee0809a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayToActivateAttack: 0.2
+  sphereCollider: {fileID: 1482635800969094}
+  attackDuration: 2
 --- !u!114 &114624250653421344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2053,8 +2068,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjects: []
   hp:
-    crrValue: 10
-    maxValue: 10
+    crrValue: 4
+    maxValue: 4
 --- !u!135 &135590790062936796
 SphereCollider:
   m_ObjectHideFlags: 1
