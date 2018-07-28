@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour, IUpdate {
 
     public Action BulletDestroy = delegate { };
 
-
     public void Initialize(Vector3 init, Vector3 dest)
     {
         transform.position = init;
