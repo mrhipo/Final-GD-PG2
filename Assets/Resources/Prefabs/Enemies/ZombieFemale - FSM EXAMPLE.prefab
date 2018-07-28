@@ -732,6 +732,8 @@ GameObject:
   - component: {fileID: 95621243003468938}
   - component: {fileID: 114624250653421344}
   - component: {fileID: 195805931114618958}
+  - component: {fileID: 114915003738951082}
+  - component: {fileID: 136852079124843122}
   m_Layer: 0
   m_Name: ZombieFemale - FSM EXAMPLE
   m_TagString: Untagged
@@ -763,8 +765,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4763078896141120}
   - component: {fileID: 95528922470090988}
-  - component: {fileID: 114769702239514446}
-  - component: {fileID: 136120778977639592}
   m_Layer: 0
   m_Name: PREF_Zombie Female
   m_TagString: Untagged
@@ -1451,7 +1451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723242786511378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.4, y: 0, z: -77.03}
+  m_LocalPosition: {x: -27.4, y: 0, z: -80.367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4763078896141120}
@@ -1726,7 +1726,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1769389360472844}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.032, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4218307751419890}
@@ -2031,17 +2031,21 @@ MonoBehaviour:
   agent: {fileID: 0}
   target: {fileID: 0}
   animator: {fileID: 0}
+  fsm: {fileID: 0}
+  currentState: 0
+  lifeObject: {fileID: 0}
   attackRate: 1
   attackRange: 1.5
+  specialAttackRate: 0
   sightDistance: 3
   speed: 3
   damage: 1
---- !u!114 &114769702239514446
+--- !u!114 &114915003738951082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1769389360472844}
+  m_GameObject: {fileID: 1723242786511378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 685a72bf65d57034c9977260944546fc, type: 3}
@@ -2049,8 +2053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjects: []
   hp:
-    crrValue: 10
-    maxValue: 10
+    crrValue: 0
+    maxValue: 0
 --- !u!135 &135590790062936796
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2063,19 +2067,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136120778977639592
+--- !u!136 &136852079124843122
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1769389360472844}
+  m_GameObject: {fileID: 1723242786511378}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 2
+  m_Radius: 0.2
+  m_Height: 1.6
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!137 &137488066225058150
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

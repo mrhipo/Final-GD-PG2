@@ -11,9 +11,13 @@ public class Bullet : MonoBehaviour, IUpdate {
 
     public Action BulletDestroy = delegate { };
 
+    private Damage damage;
 
-    public void Initialize(Vector3 init, Vector3 dest)
+    public void Initialize(Vector3 init, Vector3 dest, float damageAmount)
     {
+        damage = damage ?? new Damage(gameObject, damageAmount);
+        damage.Amount = damageAmount;
+
         transform.position = init;
         transform.forward = dest - init;
         if (lifeTimeCoroutine != null) StopCoroutine(lifeTimeCoroutine);
@@ -27,10 +31,11 @@ public class Bullet : MonoBehaviour, IUpdate {
 
     public void OnTriggerEnter(Collider other)
     {
-        var hitObject = other.gameObject.GetComponent<HitObject>();
+       var hitObject = other.gameObject.GetComponent<HitObject>();
         if (hitObject != null)
         {
             BulletDead();
+            hitObject.OnTakeDamage(new Damage(gameObject, amount));
         }
     }
 

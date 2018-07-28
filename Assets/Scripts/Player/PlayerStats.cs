@@ -22,6 +22,12 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     {
         UpdateManager.instance.AddUpdate(this);
         lifeObject.OnDead += OnDead;
+        lifeObject.OnTakeDamage += OnTakeDamage;
+    }
+
+    private void OnTakeDamage(Damage obj)
+    {
+        GlobalEvent.Instance.Dispatch(new PlayerTakeDamageEvent());
     }
 
     private void OnDead()

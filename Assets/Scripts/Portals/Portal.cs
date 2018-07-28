@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public List<EnemyStats> enemyType;
+    public List<GameObject> enemyType;
     public int amountToSpwan;
     public float spawnRate;
     public float spawnDelay;
 
-    List<EnemyStats> _enemiesSpwaned;
     Effects _effects;
     bool _triggered;
     int _count;
@@ -17,12 +16,9 @@ public class Portal : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        enemyType = new List<EnemyStats>();
-        _enemiesSpwaned = new List<EnemyStats>();
+        enemyType = new List<GameObject>();
         _effects = GetComponentInChildren<Effects>();
         _effects.gameObject.SetActive(false);
-
-        GlobalEvent.Instance.AddEventHandler<EnemyKilledEvent>(OnKilledEnemy);
     }
 	
 	// Update is called once per frame
@@ -43,30 +39,27 @@ public class Portal : MonoBehaviour
         }
     }
 
+    Vector3 offset = Vector3.up * .2f;
     void Spawn()
     {
-        //Enemies _enemy = //Instanciar enemigo.
-       //_enemiesSpwaned.Add(_enemy);
+        var enemyStats = Instantiate(enemyType[UnityEngine.Random.Range(0, enemyType.Count)]).GetComponent<EnemyStats>();
+        enemyStats.lifeObject.OnDead += OnKilledEnemy;
     }
 
     void ClosePortal()
     {
         _effects.gameObject.SetActive(false);
         SoundManager.instance.StopFX("Portal Activated");
-        //Save Game
     }
 
-    void OnKilledEnemy(EnemyKilledEvent enemyKilledEvent)
+    void OnKilledEnemy()
     {
-        if (_enemiesSpwaned.Contains(enemyKilledEvent.enemy))
+        _count++;
+        if (_count >= amountToSpwan)
         {
-            _count++;
-            if (_count >= amountToSpwan)
-            {
-                GlobalEvent.Instance.Dispatch(new PortalClosedEvent());
-                ClosePortal();
-                _count = 0;
-            }
+            GlobalEvent.Instance.Dispatch(new PortalClosedEvent());
+            ClosePortal();
+            _count = 0;
         }
     }
 

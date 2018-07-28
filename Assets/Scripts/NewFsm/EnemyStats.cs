@@ -16,6 +16,8 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public Animator fsm;
     [HideInInspector]
     public EnemyStates currentState;
+    [HideInInspector]
+    public LifeObject lifeObject;
     
     public float attackRate;
     public float attackRange;
@@ -26,14 +28,13 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public float speed;
     public float damage;
 
-
-
     private void Start()
     {
         target = FindObjectOfType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
         fsm = GetComponent<Animator>();
         animator = transform.GetChild(0).GetComponent<Animator>();
+        lifeObject = GetComponent<LifeObject>();
         agent.speed = speed;
     }
 

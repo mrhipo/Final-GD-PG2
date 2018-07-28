@@ -14,6 +14,6 @@ public class Damage {
     }
 
     public GameObject Owner { get { return owner; } }
-    public float Amount { get { return amount; } }
+    public float Amount { get { return amount; } set { amount = value; } }
 
 }
