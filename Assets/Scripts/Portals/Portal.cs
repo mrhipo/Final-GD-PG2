@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public List<Enemies> enemyType;
+    public List<EnemyStats> enemyType;
     public int amountToSpwan;
     public float spawnRate;
     public float spawnDelay;
 
-    List<Enemies> _enemiesSpwaned;
+    List<EnemyStats> _enemiesSpwaned;
     Effects _effects;
     bool _triggered;
     int _count;
@@ -17,8 +17,8 @@ public class Portal : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        enemyType = new List<Enemies>();
-        _enemiesSpwaned = new List<Enemies>();
+        enemyType = new List<EnemyStats>();
+        _enemiesSpwaned = new List<EnemyStats>();
         _effects = GetComponentInChildren<Effects>();
         _effects.gameObject.SetActive(false);
 

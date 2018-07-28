@@ -27,4 +27,8 @@ public class ReaperSpecial : SpecialAttackBehaviour
         }
     }
 
+    public override void ExecuteSpecialAttack()
+    {
+        print("//TODO MAGIC");
+    }
 }

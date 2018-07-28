@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyKilledEvent : GameEvent
 {
-    public Enemies enemy; 
+    public EnemyStats enemy; 
 
-	public EnemyKilledEvent(Enemies enemy)
+	public EnemyKilledEvent(EnemyStats enemy)
     {
         this.enemy = enemy;
     }
