@@ -25,6 +25,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
         {
             enemyStats.fsm.SetTrigger("SpecialAttack");
             ExecuteSpecialAttack();
+            ToggleCanAttack();
         }
     }
 
