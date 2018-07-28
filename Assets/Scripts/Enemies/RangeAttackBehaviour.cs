@@ -16,7 +16,11 @@ public class RangeAttackBehaviour : AttackBehaviour
 
     public override void Attack()
     {
-        var warlockBullet = Instantiate(bulletPrfab);
-        warlockBullet.Initialize(spawnPoint.position, _enemyStats.TargetPosition, _enemyStats.damage);
+        FrameUtil.AfterDelay(delayToActivateAttack, () =>
+        {
+            var warlockBullet = Instantiate(bulletPrfab);
+            warlockBullet.Initialize(spawnPoint.position, _enemyStats.TargetPosition, _enemyStats.damage);
+        });
+        
     }
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MeleeAttackBehaviour : AttackBehaviour
 {
-
     public GameObject sphereCollider;
-    public float delayToActivateAttack;
     public float attackDuration;
     
     public override void Attack()
