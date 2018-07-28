@@ -27,7 +27,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    void UnlockLevelExit()
+    private void UnlockLevelExit()
     {
         exitDoor.GetComponent<Animation>().Play("ANIM_Door Open");
     }
