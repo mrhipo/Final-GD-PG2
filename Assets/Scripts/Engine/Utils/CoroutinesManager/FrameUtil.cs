@@ -66,9 +66,28 @@ public static class FrameUtil
         action();
     }
 
-    private static IEnumerator RunAfterDelay(float delayInSeconds, Action action)
+    /*private static IEnumerator RunAfterDelay(float delayInSeconds, Action action)
     {
         yield return new WaitForSeconds(delayInSeconds);
+
+        action();
+    }*/
+
+    private static IEnumerator RunAfterDelay(float delayInSeconds, Action action)
+    {
+        bool succes = false;
+        float timer = 0f;
+
+        while (!succes)
+        {
+            if (!UpdateManager.instance.pause)
+                timer += Time.deltaTime;
+
+            if (timer >= delayInSeconds)
+                succes = true;
+
+            yield return null;
+        }
 
         action();
     }

@@ -9,6 +9,10 @@ public class Attack : StateMachineBehaviour {
 	
 	private bool canAttack = true;
 
+	public GameObject attackComponent;
+	public float delayToActivateAttack;
+	public float attackDuration;
+	
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
 		enemyStats.currentState = state;
@@ -26,6 +30,9 @@ public class Attack : StateMachineBehaviour {
 	        enemyStats.animator.SetTrigger("Attack");
             canAttack = false;
             FrameUtil.AfterDelay(enemyStats.attackRate, () => canAttack = true);
+	        
+	        FrameUtil.AfterDelay(delayToActivateAttack, () => attackComponent.SetActive(true));
+	        FrameUtil.AfterDelay(delayToActivateAttack + attackDuration, () => attackComponent.SetActive(false));
         }
 
         if(enemyStats.TargetDistance > enemyStats.attackRange)
