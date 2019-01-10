@@ -14,6 +14,9 @@ public class AchievementsEventHandler : MonoBehaviour
 	[HideInInspector]
 	public bool playerDead;
 	
+    /// <summary>
+    /// Max time in second for win The Flash Achievement.
+    /// </summary>
 	public float limitTime;
 	
 	float startTime;

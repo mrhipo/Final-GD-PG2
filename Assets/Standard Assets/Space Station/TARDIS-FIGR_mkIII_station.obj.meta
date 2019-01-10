@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 21c8c1c8a406bb14082d0c8eb159169f
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Bay_Face_003
     100002: Bay_Face_02
@@ -125,6 +125,21 @@ ModelImporter:
     2100074: Wheel02Mat
     2100076: Wheel_Gird002Mat
     2100078: Wheel_Gird01Mat
+    2100080: hubface
+    2100082: block
+    2100084: cable_brackets
+    2100086: cables
+    2100088: Bay_Side
+    2100090: Bay_Top
+    2100092: Material__28
+    2100094: spindle
+    2100096: Material__302
+    2100098: Material__30
+    2100100: spokes
+    2100102: spoke_support
+    2100104: Face
+    2100106: Rim
+    2100108: wheel_girders
     2300000: Bay_Face_003
     2300002: Bay_Face_02
     2300004: Blocks005
@@ -279,6 +294,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -296,11 +312,16 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -315,7 +336,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
