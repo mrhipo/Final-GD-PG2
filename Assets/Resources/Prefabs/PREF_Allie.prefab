@@ -227,7 +227,8 @@ GameObject:
   - component: {fileID: 7405327365704355526}
   - component: {fileID: 5877454845175780685}
   - component: {fileID: 9192623430235232907}
-  m_Layer: 8
+  - component: {fileID: 677892545993123170}
+  m_Layer: 11
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,8 +276,28 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &677892545993123170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699576268611972449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fe3fe41cb808246bdabe1d99d06990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorWaypoint: {fileID: 0}
+  InDoorWaypoint: {fileID: 0}
+  ExploreTransform: {fileID: 0}
+  movementTutorial: {fileID: 0}
+  LookAroundTutorial: {fileID: 0}
+  ShootTutorial: {fileID: 0}
+  doorGoForMaterial: {fileID: 0}
+  doorCollider: {fileID: 0}
 --- !u!1 &732992102529413443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4161,7 +4182,6 @@ GameObject:
   - component: {fileID: 6938736397092984750}
   - component: {fileID: 6071156091156128702}
   - component: {fileID: 5675211605476945395}
-  - component: {fileID: 2888830792736278323}
   m_Layer: 0
   m_Name: PREF_Allie
   m_TagString: Untagged
@@ -4227,22 +4247,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2888830792736278323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8564552982067115462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fe3fe41cb808246bdabe1d99d06990, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoint: []
-  movementTutorial: {fileID: 0}
-  LookAroundTutorial: {fileID: 0}
-  ShootTutorial: {fileID: 0}
 --- !u!1 &8646582537585803466
 GameObject:
   m_ObjectHideFlags: 0

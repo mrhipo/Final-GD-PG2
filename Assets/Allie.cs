@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class Allie : MonoBehaviour
 {
-    public List<Transform> waypoint;
-    int waypointIndex;
+    public Transform doorWaypoint;
+    public Transform InDoorWaypoint;
+    public Transform ExploreTransform;
 
     public GameObject movementTutorial;
     public GameObject LookAroundTutorial;
@@ -20,14 +21,14 @@ public class Allie : MonoBehaviour
     NavMeshAgent agent;
     Collider triggerCollider;
 
-    int amountCodeFound;
+    //int amountCodeFound;
 
     void Start()
     {
         agent = GetComponentInParent<NavMeshAgent>();
         triggerCollider = GetComponent<Collider>();
         triggerCollider.enabled = false;
-        agent.SetDestination(waypoint[waypointIndex++].position);
+        agent.SetDestination(doorWaypoint.position);
         FrameUtil.AfterFrames(2, () => DialogueSystem.ShowText("Follow Me! We have to find the Epic Weapon!", 6));
         FrameUtil.AfterDelay(2, ShowMovementTutorial);
         FrameUtil.AfterDelay(6, () => triggerCollider.enabled = true);
@@ -40,9 +41,9 @@ public class Allie : MonoBehaviour
         movementTutorial.SetActive(true);
         OnPlayerTrigger += ()=>{
             movementTutorial.SetActive(false);
-            DialogueSystem.ShowText("I need the security Code!! Take A Look Around!", 3);
+            DialogueSystem.ShowText("I need the security Code!! Take A Look Around!", 2.5f);
 
-            FrameUtil.AfterDelay(4, ()=>DialogueSystem.ShowText("If You Find it, Aim it with the flashLight a while, so I can copy that!", 6));
+            FrameUtil.AfterDelay(3, ()=>DialogueSystem.ShowText("If You Find it, Aim it with the flashLight a while, so I can copy that!", 5));
 
             ShowLookAroundTutorial();
             OnPlayerTrigger = delegate { };
@@ -65,12 +66,18 @@ public class Allie : MonoBehaviour
         doorGoForMaterial.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
         doorCollider.enabled = true;
         DialogueSystem.ShowText("It's open! go go go!", 3);
+        OnPlayerTrigger = () => {
+            agent.SetDestination(ExploreTransform.position);
+            OnPlayerTrigger = delegate { };
+        };
+        agent.SetDestination(InDoorWaypoint.position);
+
     }
 
 
     public void CodeFoundIt()
     {
-        amountCodeFound++;
+        /*amountCodeFound++;
         if(amountCodeFound == 1)
         {
             DialogueSystem.ShowText("I need another one, Keep Searching!", 3);
@@ -79,6 +86,8 @@ public class Allie : MonoBehaviour
         {
             UnlockDoor();
         }
+        */
+        UnlockDoor();
 
     }
 }
