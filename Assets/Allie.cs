@@ -30,6 +30,7 @@ public class Allie : MonoBehaviour
         triggerCollider.enabled = false;
         agent.SetDestination(doorWaypoint.position);
         FrameUtil.AfterFrames(2, () => DialogueSystem.ShowText("Follow Me! We have to find the Epic Weapon!", 6));
+        FrameUtil.AfterDelay(7, () => DialogueSystem.ShowText("Help Me Here!!", 3));
         FrameUtil.AfterDelay(2, ShowMovementTutorial);
         FrameUtil.AfterDelay(6, () => triggerCollider.enabled = true);
         doorCollider.enabled = false;

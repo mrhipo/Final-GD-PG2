@@ -23,7 +23,12 @@ public class TutorialScript : MonoBehaviour
         //playerInputController.checkTriggerShoot = true;
         particlePoison.SetActive(true);
         DialogueSystem.ShowText("Ohh noo! I don't feel well",3);
-        FrameUtil.AfterDelay(5, ActiveZombie);
+        FrameUtil.AfterDelay(3, ()=>
+        {
+            DialogueSystem.ShowText("Run away from me!", 3);
+        });
+
+        FrameUtil.AfterDelay(7, ActiveZombie);
     }
 
     public void ActiveZombie()
