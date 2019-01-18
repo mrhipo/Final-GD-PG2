@@ -10,19 +10,35 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     public RangeValue mp;
     public float mpRecovery;
 
-    public float damage;
-    public float attackSpeed;
-
-    public float magicPower = 1;
+    public float increntByLevel = 1.1f;
+    public int currentHpLevel;
+    public int currentMpLevel;
 
     //MP EVENT
     public Action OnMpChange = delegate { };
 
     private void Start()
     {
+        currentHpLevel = PlayerPrefs.GetInt("LevelStats-HP", 1);
+        currentMpLevel = PlayerPrefs.GetInt("LevelStats-MP", 1);
+
         UpdateManager.instance.AddUpdate(this);
         lifeObject.OnDead += OnDead;
         lifeObject.OnTakeDamage += OnTakeDamage;
+        Set_HP_Level(currentHpLevel);
+        Set_MP_Level(currentMpLevel);
+    }
+
+    private void Set_HP_Level(int level)
+    {
+        var multiplier = Mathf.Pow(increntByLevel, level); 
+        lifeObject.hp.maxValue *= multiplier;
+    }
+
+    private void Set_MP_Level(int level)
+    {
+        var multiplier = Mathf.Pow(increntByLevel, level);
+        mpRecovery *= multiplier;
     }
 
     private void OnTakeDamage(Damage obj)

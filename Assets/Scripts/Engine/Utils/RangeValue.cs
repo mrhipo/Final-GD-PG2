@@ -4,9 +4,9 @@
 public class RangeValue
 {
     [SerializeField]
-    private float crrValue;
+    public float crrValue;
     [SerializeField]
-    private float maxValue;
+    public float maxValue;
 
     public float CurrentValue { get { return crrValue; } set { crrValue = Mathf.Clamp(value, 0, maxValue); } }
     public float MaxValue { get { return maxValue; } }
