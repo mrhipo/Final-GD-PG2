@@ -11,6 +11,7 @@ public class UI_Upgrade : MonoBehaviour
         {
             container.SetActive(!container.activeSelf);
             textK.SetActive(!container.activeSelf);
+            Mouse.ShowCursor(container.activeSelf);
         }
     }
 

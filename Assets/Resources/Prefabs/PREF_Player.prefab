@@ -1910,8 +1910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjects: []
   hp:
-    crrValue: 0
-    maxValue: 0
+    crrValue: 100
+    maxValue: 100
 --- !u!95 &95333634271806114
 Animator:
   serializedVersion: 3
