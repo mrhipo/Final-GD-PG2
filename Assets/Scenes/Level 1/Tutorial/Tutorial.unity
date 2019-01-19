@@ -4947,10 +4947,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieFemale (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1723242786511378, guid: 2b3a988208154034cba182bac428d2d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4493897234469514, guid: 2b3a988208154034cba182bac428d2d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.79
@@ -5199,6 +5195,11 @@ PrefabInstance:
     - target: {fileID: 1227641009327280, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821910960450010539, guid: 1681267c98608b24792fc1ad9960b5c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
@@ -9230,10 +9231,6 @@ PrefabInstance:
     - target: {fileID: 1723242786511378, guid: 2b3a988208154034cba182bac428d2d4, type: 3}
       propertyPath: m_Name
       value: ZombieFemale (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723242786511378, guid: 2b3a988208154034cba182bac428d2d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4493897234469514, guid: 2b3a988208154034cba182bac428d2d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25626,6 +25623,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1959408137}
     m_Modifications:
+    - target: {fileID: 8564552982067115462, guid: 7b9f591b29b3c3044985f37561e95807,
+        type: 3}
+      propertyPath: m_Name
+      value: PREF_Allie
+      objectReference: {fileID: 0}
     - target: {fileID: 677892545993123170, guid: 7b9f591b29b3c3044985f37561e95807,
         type: 3}
       propertyPath: movementTutorial
@@ -25720,11 +25722,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564552982067115462, guid: 7b9f591b29b3c3044985f37561e95807,
-        type: 3}
-      propertyPath: m_Name
-      value: PREF_Allie
       objectReference: {fileID: 0}
     - target: {fileID: 4507626710002127207, guid: 7b9f591b29b3c3044985f37561e95807,
         type: 3}
