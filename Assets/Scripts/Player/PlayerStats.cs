@@ -80,7 +80,8 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
 
     #region "StatsIncremente by Level"
-
+    [Header("Level Stats")]
+    [Tooltip("For each level the stats will increment by this percentage.")]
     public float increntByLevel = 0.1f;
     private int currentHpLevel;
     private int currentMpLevel;
