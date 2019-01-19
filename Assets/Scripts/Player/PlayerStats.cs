@@ -8,6 +8,9 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     public float mpRecovery;
     public float speed;
 
+    public float damage = 1;
+    public float attackSpeed = .5f;
+
     public Action OnMpChange = delegate { };
 
     private void Start()
@@ -138,7 +141,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private void Set_Speed_Level(int level)
     {
-        GetComponent<PlayerInputController>().speed = initialSpeed + initialSpeed * increntByLevel * level;
+        GetComponent<PlayerController>().speed = initialSpeed + initialSpeed * increntByLevel * level;
     }
 
     private void Set_MP_Recovery_Level(int level)
