@@ -27,16 +27,17 @@ public class DebugPanel : MonoBehaviour {
         playerLifeToggle.onValueChanged.AddListener(OnToggleLife);
         wizzarToggle.onValueChanged.AddListener(OnToggleWizzard);
 
-        Sk1.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,1));
-        Sk2.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,2));
-        Sk3.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,3));
-        Sk4.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,4));
+        Sk1.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,0));
+        Sk2.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,1));
+        Sk3.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,2));
+        Sk4.onValueChanged.AddListener((b)=>OnChangeToggleSkill(b,3));
     }
 
 
     private void OnChangeToggleSkill(bool boolean, int i)
     {
-        print(String.Format("TODO LOGIC!!! Skill {0} is now {1}",i,boolean));
+        if(boolean)
+            GlobalEvent.Instance.Dispatch(new NewSkillEvent((SpellType)i, Color.red, null));
     }
 
     private void OnToggleLife(bool isOn)

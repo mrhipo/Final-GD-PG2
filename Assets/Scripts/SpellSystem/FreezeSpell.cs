@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
-public class FreezeSpell : MonoBehaviour, IUpdate
+public class FreezeSpell : MonoBehaviour, IUpdate , ILevel
 {
     public float power;
+    public float freezeTime;
     public float speed;
 
-    void Start()
+    private float initialPower;
+    private float initialFreezeTime;
+
+    void Start()  
     {
         UpdateManager.instance.AddUpdate(this);
     }
@@ -32,12 +36,20 @@ public class FreezeSpell : MonoBehaviour, IUpdate
             else
             {
                 freeze = collision.gameObject.AddComponent<Freeze>();
-                freeze.duration = power * 2f;
+                freeze.duration = freezeTime;
             }
         }
 
         Destroy(gameObject);
     }
 
+    public void SetLevel(int level, float percentage)
+    {
 
+        initialPower = power;
+        initialFreezeTime = freezeTime;
+
+        power = initialPower * initialPower * level * percentage;
+        freezeTime = initialFreezeTime * initialFreezeTime * level * percentage;
+    }
 }

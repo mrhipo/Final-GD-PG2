@@ -4,14 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class Spell : IUpdate
 {
-    public string name;
+    public SpellType type;
     public float coolDown;
     public float mpCost;
     public bool CanUseSpell { get; private set; }
 
     public GameObject spellPrefab;
 
-    public bool IsUnlocked { get; private set; }
+    public bool IsBlocked { get; private set; }
 
     //private WaitForSeconds coolDownWait;
     private float timer;
@@ -19,21 +19,24 @@ public class Spell : IUpdate
     public void Init()
     {
         CanUseSpell = true;
-        IsUnlocked = false;
+        IsBlocked = true;
         GlobalEvent.Instance.AddEventHandler<NewSkillEvent>(OnNewSkill);
     }
 
     private void OnNewSkill(NewSkillEvent newSkillEvent)
     {
-        if (newSkillEvent.skillName == name)
-            IsUnlocked = true;
+        if (newSkillEvent.type == type)
+            IsBlocked = !IsBlocked;
     }
 
     public void UseSpell(Vector3 position)
     {
         GameObject spell = UnityEngine.Object.Instantiate(spellPrefab, position, Quaternion.identity);
-
         spell.transform.forward = GetHitPoint() - position;
+
+        spell.GetComponent<ILevel>().SetLevel(PlayerPrefs.GetInt(type+"-Level", 0), 1.1f);
+
+        Debug.Log(type + "-Level " + PlayerPrefs.GetInt(type + "-Level", 0));
 
         CanUseSpell = false;
         timer = 0;

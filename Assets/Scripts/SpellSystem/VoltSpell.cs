@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class VoltSpell : MonoBehaviour, IUpdate
+public class VoltSpell : MonoBehaviour, IUpdate , ILevel
 {
     public float speed; //Velocidad de movimientio
     public float power; //Daño que causa al impactar.
@@ -15,6 +15,9 @@ public class VoltSpell : MonoBehaviour, IUpdate
     //ToDo: Change for Enemy.
     private HashSet<HitObject> _hitedEnemys;
 
+    private float initialPower;
+    private int initialDurability;
+
     private int kills = 0;
     // Use this for initialization
     void Start()
@@ -23,6 +26,9 @@ public class VoltSpell : MonoBehaviour, IUpdate
 
         _hitedEnemys = new HashSet<HitObject>();
         UpdateManager.instance.AddUpdate(this);
+
+       
+
     }
 
     void IUpdate.Update() { transform.position += transform.forward * speed * Time.deltaTime; }
@@ -73,4 +79,12 @@ public class VoltSpell : MonoBehaviour, IUpdate
         Destroy(gameObject);
     }
 
+    public void SetLevel(int level, float percentage)
+    {
+        initialPower = power;
+        initialDurability = durability;
+
+        power = initialPower * initialPower * level * percentage;
+        durability = initialDurability + level;
+    }
 }

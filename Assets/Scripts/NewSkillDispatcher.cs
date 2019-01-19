@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NewSkillDispatcher : MonoBehaviour
 {
-    public string skilName;
+    public SpellType type;
     public Color skillColor;
     public GameObject skillObj;
 
@@ -12,7 +10,7 @@ public class NewSkillDispatcher : MonoBehaviour
     {
         if (other.gameObject.layer == Layers.player.Index)
         {
-            GlobalEvent.Instance.Dispatch(new NewSkillEvent(skilName, skillColor, skillObj));
+            GlobalEvent.Instance.Dispatch(new NewSkillEvent(type, skillColor, skillObj));
             Destroy(gameObject);
         }
     }

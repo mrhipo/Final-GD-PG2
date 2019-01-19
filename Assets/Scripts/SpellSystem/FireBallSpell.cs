@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class FireBallSpell : MonoBehaviour, IUpdate
+public class FireBallSpell : MonoBehaviour, IUpdate , ILevel
 {
     public float power;
     public float explosionRadius;
@@ -9,10 +9,13 @@ public class FireBallSpell : MonoBehaviour, IUpdate
 
     public GameObject fireExplosion;
 
+    float initialPower;
+    float initialExplosionRadius;
+
     // Use this for initialization
     private void Start()
     {
-        UpdateManager.instance.AddUpdate(this);
+       UpdateManager.instance.AddUpdate(this);
     }
 
     void IUpdate.Update()
@@ -52,5 +55,15 @@ public class FireBallSpell : MonoBehaviour, IUpdate
         GlobalEvent.Instance.Dispatch(new FireBallKillEvent{ killed = kills});
         
         Destroy(gameObject);
+    }
+
+    public void SetLevel(int level, float percentage)
+    {
+        initialPower = power;
+        initialExplosionRadius = explosionRadius;
+
+        power = initialPower + initialPower * level * percentage;
+        explosionRadius = initialExplosionRadius + initialExplosionRadius * level * percentage;
+
     }
 }

@@ -20,6 +20,11 @@ public class UI_Upgrade : MonoBehaviour
         GlobalEvent.Instance.Dispatch<StatUpgrade>(new StatUpgrade { type = Type } );
     }
 
+    private void UpgradeSpells(SpellType Type)
+    {
+        GlobalEvent.Instance.Dispatch<SpellUpgrade>(new SpellUpgrade{ type = Type });
+    }
+
     public void UpgradeHp()
     {
         UpgradeStats(StatType.Hp);
@@ -35,5 +40,18 @@ public class UI_Upgrade : MonoBehaviour
     public void UpgradeSpeed()
     {
         UpgradeStats(StatType.Speed);
+    }
+
+    public void UpgradeFire()
+    {
+        UpgradeSpells(SpellType.Fire);
+    }
+    public void UpgradeFreeze()
+    {
+        UpgradeSpells(SpellType.Freeze);
+    }
+    public void UpgradeVolt()
+    {
+        UpgradeSpells(SpellType.Volt);
     }
 }

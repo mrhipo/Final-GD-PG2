@@ -1825,11 +1825,11 @@ GameObject:
   - component: {fileID: 114186778799650786}
   - component: {fileID: 114479855440046712}
   - component: {fileID: 114984833895909736}
+  - component: {fileID: 186174106}
   - component: {fileID: 95333634271806114}
   - component: {fileID: 136391200160913668}
   - component: {fileID: 54000779312711278}
   - component: {fileID: 195665840738041342}
-  - component: {fileID: 186174106}
   m_Layer: 8
   m_Name: PREF_Player
   m_TagString: Untagged
@@ -1912,6 +1912,38 @@ MonoBehaviour:
   hp:
     crrValue: 100
     maxValue: 100
+--- !u!114 &186174106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689092199066742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3c8e18982f8b44f92aec259586fe8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _availableSpells:
+  - type: 0
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  - type: 1
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 1031130959053874, guid: 2eb8d8d8025e34940ad6ebc78ff75c24,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  - type: 2
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  spawnPoint: {fileID: 4424028626130954}
 --- !u!95 &95333634271806114
 Animator:
   serializedVersion: 3
@@ -1983,38 +2015,6 @@ NavMeshAgent:
   m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &186174106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689092199066742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3c8e18982f8b44f92aec259586fe8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _availableSpells:
-  - name: 
-    coolDown: 2
-    mpCost: 5
-    spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
-      type: 3}
-    p: {x: 0, y: 0, z: 0}
-  - name: 
-    coolDown: 2
-    mpCost: 5
-    spellPrefab: {fileID: 1031130959053874, guid: 2eb8d8d8025e34940ad6ebc78ff75c24,
-      type: 3}
-    p: {x: 0, y: 0, z: 0}
-  - name: 
-    coolDown: 2
-    mpCost: 5
-    spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
-      type: 3}
-    p: {x: 0, y: 0, z: 0}
-  spawnPoint: {fileID: 4424028626130954}
 --- !u!1 &1709749523952050
 GameObject:
   m_ObjectHideFlags: 0

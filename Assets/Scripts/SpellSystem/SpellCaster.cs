@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellCaster : MonoBehaviour, IUpdate
@@ -9,6 +10,11 @@ public class SpellCaster : MonoBehaviour, IUpdate
     private PlayerStats _playersStats;
     private PlayerInputSpell _playerInputController;
 
+
+    private int currentFireLevel;
+    private int currentFreezeLevel;
+    private int currentVoltLevel;
+
     private void Start()
     {
         _playerInputController = new PlayerInputSpell();
@@ -17,17 +23,35 @@ public class SpellCaster : MonoBehaviour, IUpdate
         InitSpell();
 
         UpdateManager.instance.AddUpdate(this);
+
+        GlobalEvent.Instance.AddEventHandler<SpellUpgrade>(OnSpellUpgraded);
+    }
+
+    private void OnSpellUpgraded(SpellUpgrade gameData)
+    {
+        PlayerPrefs.SetInt(gameData.type+"-Level", 1+ PlayerPrefs.GetInt(gameData.type + "-Level", 0));
     }
 
     private void InitSpell()
     {
+        //Remove this line if we wanna keep the level
+        ResetSpellsLevels();
+
         foreach (var item in _availableSpells)
             item.Init();
+       
+    }
+
+    private void ResetSpellsLevels()
+    {
+        PlayerPrefs.SetInt("Fire-Level", 0);
+        PlayerPrefs.SetInt("Freeze-Level", 0);
+        PlayerPrefs.SetInt("Volt-Level", 0);
     }
 
     public void UseSpell(Spell spell)
     {
-        if (!spell.IsUnlocked) return;
+        if (spell.IsBlocked) return;
 
         if (spell.CanUseSpell && spell.mpCost <= _playersStats.mp.CurrentValue)
         {

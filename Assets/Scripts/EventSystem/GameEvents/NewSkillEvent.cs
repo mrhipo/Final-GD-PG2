@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class NewSkillEvent : GameEvent
 {
-    public string skillName;
+    public SpellType type;
     public Color skillColor;
     public GameObject skillObj;
 
-    public NewSkillEvent(string skillName, Color skillColor, GameObject skillObj)
+    public NewSkillEvent(SpellType type, Color skillColor, GameObject skillObj)
     {
-        this.skillName = skillName;
+        this.type = type;
         this.skillColor = skillColor;
         this.skillObj = skillObj;
     }
