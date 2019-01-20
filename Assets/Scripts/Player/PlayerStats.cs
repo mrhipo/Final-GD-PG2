@@ -13,19 +13,27 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     public Action OnMpChange = delegate { };
 
+    int _credits;
+
     private void Start()
     {
         InitStatsLevel();
 
         GlobalEvent.Instance.AddEventHandler<StatUpgrade>(OnStatUpgraded);
+        GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
 
         UpdateManager.instance.AddUpdate(this);
 
         lifeObject.OnDead += OnDead;
         lifeObject.OnTakeDamage += OnTakeDamage;
+
     }
 
-   
+    private void OnCreditsPicked(CreditsPickedEvent credits)
+    {
+        _credits += credits.amount;
+    }
+
     private void OnTakeDamage(Damage obj)
     {
         GlobalEvent.Instance.Dispatch(new PlayerTakeDamageEvent());

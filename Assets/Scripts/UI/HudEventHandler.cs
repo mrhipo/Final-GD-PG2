@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HudEventHandler : MonoBehaviour, IUpdate
@@ -14,6 +15,8 @@ public class HudEventHandler : MonoBehaviour, IUpdate
     public Image voltCD;
     public Image shieldCD;
 
+    [Header("Objects")]
+    public GameObject credits;
 
     void Start()
     {
@@ -22,8 +25,22 @@ public class HudEventHandler : MonoBehaviour, IUpdate
 
         playerStats.lifeObject.OnLifeChange += OnUIChange;
         playerStats.OnMpChange += OnUIChange;
+
+        GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
     }
 
+    private void OnCreditsPicked(CreditsPickedEvent creditsPicked)
+    {
+        credits.SetActive(true);
+        credits.GetComponentInChildren<Text>().text = "Credits x " + creditsPicked.amount;
+
+        FrameUtil.AfterDelay(3, Close);
+    }
+
+    private void Close()
+    {
+        credits.SetActive(false);
+    }
 
     public void Update()
     {

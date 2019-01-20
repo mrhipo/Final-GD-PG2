@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreditsPickedEvent : GameEvent
 {
-    int amount;
+    public int amount;
 
     public CreditsPickedEvent(int amount)
     {

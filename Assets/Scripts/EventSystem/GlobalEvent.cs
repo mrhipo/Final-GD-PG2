@@ -45,7 +45,6 @@ public class GlobalEvent
 
     public void Dispatch<T>(T gameEvent) where T : GameEvent
     {
-        //UnityEngine.Debug.Log(gameEvent);
         dispatchesInProgress++;
 
         globalEvent.Dispatch<T>(gameEvent);

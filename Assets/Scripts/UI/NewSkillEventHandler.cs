@@ -25,7 +25,6 @@ public class NewSkillEventHandler : MonoBehaviour
         text.text = "New Skill Acquired: " + skillEvent.type;
         text.GetComponentInChildren<Outline>().effectColor = skillEvent.skillColor;
         SoundManager.instance.PlayFX("New Skill");
-        //CoroutineManager.Instance.RunCoroutine(Clear());
         FrameUtil.AfterDelay(5, Clear);
     }
 
