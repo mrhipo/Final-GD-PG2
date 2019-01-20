@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     public Action OnMpChange = delegate { };
 
-    int _credits;
+    int credits;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private void OnCreditsPicked(CreditsPickedEvent credits)
     {
-        _credits += credits.amount;
+        this.credits += credits.amount;
     }
 
     private void OnTakeDamage(Damage obj)
