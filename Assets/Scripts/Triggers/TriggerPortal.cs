@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class TriggerPortal : MonoBehaviour
 {
+    bool _triggered;
     public Portal[] portals;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == Layers.player.Index)
+        if (!_triggered)
         {
-            for (int i = 0; i < portals.Length; i++)
+            _triggered = true;
+            if (other.gameObject.layer == Layers.player.Index)
             {
-                portals[i].SpwanEnemies();
+                for (int i = 0; i < portals.Length; i++)
+                {
+                    portals[i].SpwanEnemies();
+                }
             }
         }
     }

@@ -13,8 +13,10 @@ public class Portal : MonoBehaviour
     bool _triggered;
     int _count;
 
-	// Use this for initialization
-	void Start ()
+    public Door[] doors;
+
+    // Use this for initialization
+    void Start ()
     {
         _effects = GetComponentInChildren<Effects>();
         _effects.gameObject.SetActive(false);
@@ -27,7 +29,12 @@ public class Portal : MonoBehaviour
 	}
 
     public void SpwanEnemies()
-    {        
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].LockDoor();
+        }
+
         if (!_triggered)
         {
             _triggered = true;
@@ -50,6 +57,11 @@ public class Portal : MonoBehaviour
     {
         _effects.gameObject.SetActive(false);
         SoundManager.instance.StopFX("Portal Activated");
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].UnLockDoor();
+        }
     }
 
     void OnKilledEnemy()
