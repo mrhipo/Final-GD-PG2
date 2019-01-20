@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -21,6 +22,14 @@ MonoBehaviour:
     loopable: 1
     mixer: {fileID: 243068067461577414, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   sounds:
+  - name: Item Collected
+    clip: {fileID: 8300000, guid: ea297ce1c3b443f47a27a5aa2fb22937, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 0
+    mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   - name: Use Battery
     clip: {fileID: 8300000, guid: 3035b35cb97f04d42a7b7d29ff06ae01, type: 3}
     volume: 1

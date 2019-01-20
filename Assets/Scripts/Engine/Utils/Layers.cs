@@ -13,7 +13,7 @@ public class Layers : MonoBehaviour
     {
         enemies = new MyLayer("Enemy");
         player = new MyLayer("Player");
-        shootable = new MyLayer("Enemy", "Player", "Door", "Default");
+        shootable = new MyLayer("Enemy", "Player", "Door","Camera", "Default");
     }
 
 }
