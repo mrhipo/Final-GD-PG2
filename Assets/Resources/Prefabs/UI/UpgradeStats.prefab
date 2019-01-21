@@ -900,6 +900,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 8950949679887783317}
   textK: {fileID: 647423411}
+  hpCost: {fileID: 821910960324219843}
+  mpCost: {fileID: 821910960660996221}
+  mpRecoveryCost: {fileID: 821910960375535471}
+  speedCost: {fileID: 821910959040858616}
+  fireCost: {fileID: 3328182478745031826}
+  FreezeCost: {fileID: 4584531419831630742}
+  VoltCost: {fileID: 8402629045855142575}
 --- !u!1 &821910960660996211
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-        
+
 public class EnemyStats : MonoBehaviour ,ISpeed{
 
     [HideInInspector]
@@ -18,7 +19,9 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public EnemyStates currentState;
     [HideInInspector]
     public LifeObject lifeObject;
-    
+
+    public int experience;
+
     public float attackRate;
     public float attackRange;
     public float specialAttackRate;
@@ -36,7 +39,13 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
         animator = transform.GetChild(0).GetComponent<Animator>();
         lifeObject = GetComponent<LifeObject>();
         agent.speed = speed;
-        lifeObject.OnDead += () => fsm.SetTrigger("Dead");
+        lifeObject.OnDead += OnDead;
+    }
+
+    private void OnDead()
+    {
+        fsm.SetTrigger("Dead");
+        GlobalEvent.Instance.Dispatch<ExperiencePickedEvent>(new ExperiencePickedEvent() { amount = experience });
     }
 
     public Vector3 TargetPosition { get { return target.position; } }

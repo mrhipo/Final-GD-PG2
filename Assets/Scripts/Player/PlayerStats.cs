@@ -13,7 +13,9 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     public Action OnMpChange = delegate { };
 
-    int credits;
+    [Header("Currency")]
+    public int credits;
+    public int experience;
 
     private void Start()
     {
@@ -21,11 +23,18 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
         GlobalEvent.Instance.AddEventHandler<StatUpgrade>(OnStatUpgraded);
         GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
+        GlobalEvent.Instance.AddEventHandler<ExperiencePickedEvent>(OnExperiencePicked);
 
         UpdateManager.instance.AddUpdate(this);
 
         lifeObject.OnDead += OnDead;
         lifeObject.OnTakeDamage += OnTakeDamage;
+
+    }
+
+    private void OnExperiencePicked(ExperiencePickedEvent experience)
+    {
+        this.experience += experience.amount;
 
     }
 
@@ -64,13 +73,6 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     void IUpdate.Update()
     {
         mp.CurrentValue += Time.deltaTime * mpRecovery;
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            GlobalEvent.Instance.Dispatch(new StatUpgrade { type = StatType.Hp });
-            GlobalEvent.Instance.Dispatch(new StatUpgrade { type = StatType.Mp });
-            GlobalEvent.Instance.Dispatch(new StatUpgrade { type = StatType.MpRecovery });
-            GlobalEvent.Instance.Dispatch(new StatUpgrade { type = StatType.Speed });
-        }
     }
 
     private void OnStatUpgraded(StatUpgrade gameData)
@@ -94,6 +96,10 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     [Header("Level Stats")]
     [Tooltip("For each level the stats will increment by this percentage.")]
     public float increntByLevel = 0.1f;
+    [Tooltip("For each level the cost will increment by this percentage.")]
+    public float increntCostByLevel = .75f;
+
+
     private int currentHpLevel;
     private int currentMpLevel;
     private int currentMpRecoveryLevel;
@@ -103,6 +109,8 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     private float initialMp;
     private float initialMpRecovery;
     private float initialSpeed;
+
+    public float costUpgrade;
 
     public void InitStatsLevel()
     {
@@ -125,8 +133,6 @@ public class PlayerStats : MonoBehaviour ,IUpdate
         Set_MP_Level(currentMpLevel);
         Set_MP_Recovery_Level(currentMpRecoveryLevel);
         Set_Speed_Level(currentSpeedLevel);
-
-        
     }
 
     private void ResetStats()
@@ -162,24 +168,41 @@ public class PlayerStats : MonoBehaviour ,IUpdate
         switch (type)
         {
             case StatType.Hp:
+                if (GetCostUpgrade(currentHpLevel) > credits) return;
+                DiscountCredits(currentHpLevel);
                 PlayerPrefs.SetInt("LevelStats-HP", ++currentHpLevel);
                 Set_HP_Level(currentHpLevel);
                 break;
             case StatType.Mp:
+                if (GetCostUpgrade(currentMpLevel) > credits) return;
+                DiscountCredits(currentMpLevel);
                 PlayerPrefs.SetInt("LevelStats-MP", ++currentMpLevel);
                 Set_MP_Level(currentMpLevel);
                 break;
             case StatType.MpRecovery:
+                if (GetCostUpgrade(currentMpRecoveryLevel) > credits) return;
+                DiscountCredits(currentMpRecoveryLevel);
                 PlayerPrefs.SetInt("LevelStats-MP-Recovery", ++currentMpRecoveryLevel);
                 Set_MP_Recovery_Level(currentMpRecoveryLevel);
                 break;
             case StatType.Speed:
+                if (GetCostUpgrade(currentSpeedLevel) > credits) return;
+                DiscountCredits(currentSpeedLevel);
                 PlayerPrefs.SetInt("LevelStats-SPEED", ++currentSpeedLevel);
                 Set_Speed_Level(currentSpeedLevel);
                 break;
         }
     }
 
+    public void DiscountCredits(int level)
+    {
+        credits -= GetCostUpgrade(level);
+    }
+
+    public int GetCostUpgrade(int level)
+    {
+        return (int)(costUpgrade + costUpgrade * increntCostByLevel * level);
+    }
     #endregion
 }
 

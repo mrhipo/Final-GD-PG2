@@ -29,7 +29,23 @@ public class SpellCaster : MonoBehaviour, IUpdate
 
     private void OnSpellUpgraded(SpellUpgrade gameData)
     {
-        PlayerPrefs.SetInt(gameData.type+"-Level", 1+ PlayerPrefs.GetInt(gameData.type + "-Level", 0));
+        if(_playersStats.experience >= _playersStats.GetCostUpgrade(GetSpellLevel(gameData.type)))
+            PlayerPrefs.SetInt(gameData.type+"-Level", 1+ PlayerPrefs.GetInt(gameData.type + "-Level", 0));
+    }
+
+    private int GetSpellLevel(SpellType type)
+    {
+        switch(type)
+        {
+            case SpellType.Fire:
+                return currentFireLevel;
+            case SpellType.Freeze:
+                return currentFreezeLevel;
+            case SpellType.Volt:
+                return currentVoltLevel;
+            default:
+                return 0;
+        }
     }
 
     private void InitSpell()
