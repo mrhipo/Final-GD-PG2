@@ -26,6 +26,10 @@ public class UI_Upgrade : MonoBehaviour
     public Text FreezeCost;
     public Text VoltCost;
 
+    public Text creditsTxt;
+
+    public Text experienceTxt;
+
     private void UpdateDisplay()
     {
         currentHpLevel = PlayerPrefs.GetInt("LevelStats-HP", 0);
@@ -38,6 +42,11 @@ public class UI_Upgrade : MonoBehaviour
         currentVoltLevel = PlayerPrefs.GetInt("Volt-Level", 0);
 
         var stat = FindObjectOfType<PlayerStats>();
+
+        creditsTxt.text = "Credits: " + stat.credits;
+        experienceTxt.text = "Experience: " + stat.experience;
+
+
         hpCost.text = "Hp (-" + stat.GetCostUpgrade(currentHpLevel) + ")";
         mpCost.text = "Mp (-" + stat.GetCostUpgrade(currentMpLevel) + ")";
         mpRecoveryCost.text = "Mp Recovery (-" + stat.GetCostUpgrade(currentMpRecoveryLevel) + ")";
