@@ -1897,9 +1897,9 @@ MonoBehaviour:
   attackSpeed: 0.5
   credits: 0
   experience: 0
-  increntByLevel: 0.1
-  increntCostByLevel: 0.75
-  costUpgrade: 10
+  increntStatsByLevel: 0.1
+  increntCreditCostByLevel: 0.75
+  costUpgradeStatsSpells: 10
 --- !u!114 &114984833895909736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -95,9 +95,9 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     #region "StatsIncremente by Level"
     [Header("Level Stats")]
     [Tooltip("For each level the stats will increment by this percentage.")]
-    public float increntByLevel = 0.1f;
+    public float increntStatsByLevel = 0.1f;
     [Tooltip("For each level the cost will increment by this percentage.")]
-    public float increntCostByLevel = .75f;
+    public float increntCreditCostByLevel = .75f;
 
 
     private int currentHpLevel;
@@ -110,7 +110,8 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     private float initialMpRecovery;
     private float initialSpeed;
 
-    public float costUpgrade;
+    [Tooltip("Base Cost For Stats & Spells.")]
+    public float costUpgradeStatsSpells;
 
     public void InitStatsLevel()
     {
@@ -145,22 +146,22 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private void Set_HP_Level(int level)
     {
-        lifeObject.hp.maxValue = initialHp + initialHp * increntByLevel * level;
+        lifeObject.hp.maxValue = initialHp + initialHp * increntStatsByLevel * level;
     }
 
     private void Set_MP_Level(int level)
     {
-        mp.maxValue = initialMp + initialMp * increntByLevel * level;
+        mp.maxValue = initialMp + initialMp * increntStatsByLevel * level;
     }
 
     private void Set_Speed_Level(int level)
     {
-        GetComponent<PlayerController>().speed = initialSpeed + initialSpeed * increntByLevel * level;
+        GetComponent<PlayerController>().speed = initialSpeed + initialSpeed * increntStatsByLevel * level;
     }
 
     private void Set_MP_Recovery_Level(int level)
     {
-        mpRecovery = initialMpRecovery + initialMpRecovery * increntByLevel * level;
+        mpRecovery = initialMpRecovery + initialMpRecovery * increntStatsByLevel * level;
     }
 
     public void AddLevel(StatType type)
@@ -201,7 +202,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     public int GetCostUpgrade(int level)
     {
-        return (int)(costUpgrade + costUpgrade * increntCostByLevel * level);
+        return (int)(costUpgradeStatsSpells + costUpgradeStatsSpells * increntCreditCostByLevel * level);
     }
     #endregion
 }
