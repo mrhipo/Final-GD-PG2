@@ -58,5 +58,7 @@ public class LifeObject : HitObject {
             Desactive();
     }
 
+    public bool IsDead {  get{ return hp.CurrentValue <= 0; } }
+
    
 }

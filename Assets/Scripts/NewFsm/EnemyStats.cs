@@ -40,17 +40,28 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
         lifeObject = GetComponent<LifeObject>();
         agent.speed = speed;
         lifeObject.OnDead += OnDead;
+        lifeObject.OnLifeChange += OnLifeChanged;
+    }
+
+    private void OnLifeChanged()
+    {
+        animator.SetTrigger("Hit");
     }
 
     private void OnDead()
     {
+        lifeObject.OnLifeChange -= OnLifeChanged;
+
         fsm.SetTrigger("Dead");
+        agent.isStopped = true;
+        GetComponent<Collider>().enabled = false;
         GlobalEvent.Instance.Dispatch<ExperiencePickedEvent>(new ExperiencePickedEvent() { amount = experience });
     }
 
     public Vector3 TargetPosition { get { return target.position; } }
     public Vector3 Position { get { return transform.position; } }
     public float TargetDistance { get { return Vector3.Distance(TargetPosition, Position); } }
+    public Vector3 TargetDirection { get { return TargetPosition -  Position; } }
 
     public float Speed
     {

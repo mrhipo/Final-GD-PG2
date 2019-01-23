@@ -26,14 +26,14 @@ public class Attack : StateMachineBehaviour {
 
         if (canAttack)
         {
-            Debug.Log("Attack");
 	        enemyStats.animator.SetTrigger("Attack");
             canAttack = false;
             FrameUtil.AfterDelay(enemyStats.attackRate, () => canAttack = true);
 	        _attackBehaviour.Attack();
         }
+        enemyStats.transform.forward = Vector3.Lerp(enemyStats.transform.forward, enemyStats.TargetDirection, .1f);
 
-        if(enemyStats.TargetDistance > enemyStats.attackRange)
+        if (enemyStats.TargetDistance > enemyStats.attackRange)
         {
             animator.SetTrigger("Chase");
         }

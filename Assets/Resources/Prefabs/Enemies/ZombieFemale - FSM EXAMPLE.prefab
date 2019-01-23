@@ -1744,7 +1744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4493897234469514
 Transform:
   m_ObjectHideFlags: 0
@@ -1797,6 +1797,7 @@ MonoBehaviour:
   fsm: {fileID: 0}
   currentState: 0
   lifeObject: {fileID: 0}
+  experience: 0
   attackRate: 1
   attackRange: 1.5
   specialAttackRate: 0
@@ -1817,8 +1818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjects: []
   hp:
-    crrValue: 4
-    maxValue: 4
+    crrValue: 5
+    maxValue: 5
 --- !u!195 &195805931114618958
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1828,12 +1829,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 1723242786511378}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.15
   m_Speed: 3
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 250
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
