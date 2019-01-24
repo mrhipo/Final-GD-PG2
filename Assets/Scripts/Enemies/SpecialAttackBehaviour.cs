@@ -21,7 +21,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (canAttack && (enemyStats.currentState & statesCondition) > 0 && Condition)
+        if (enemyStats.canAttack && canAttack && (enemyStats.currentState & statesCondition) > 0 && Condition)
         {
             enemyStats.fsm.SetTrigger("SpecialAttack");
             ExecuteSpecialAttack();
@@ -39,6 +39,8 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
     public void ToggleCanAttack()
     {
         canAttack = false;
+        enemyStats.canAttack = false;
         FrameUtil.AfterDelay(cdAttack, () => canAttack = true);
+        FrameUtil.AfterDelay(2, () => enemyStats.canAttack = true);
     }
 }

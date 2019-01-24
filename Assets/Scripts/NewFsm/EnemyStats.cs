@@ -31,6 +31,9 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public float speed;
     public float damage;
 
+    [HideInInspector]
+    public bool canAttack = true;
+
     private void Awake()
     {
         target = FindObjectOfType<PlayerController>().transform;

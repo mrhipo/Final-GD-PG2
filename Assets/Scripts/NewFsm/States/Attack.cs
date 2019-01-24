@@ -7,8 +7,6 @@ public class Attack : StateMachineBehaviour {
     private EnemyStats enemyStats;
 	public EnemyStates state;
 	
-	private bool canAttack = true;
-
 	private AttackBehaviour _attackBehaviour;
 	
 	public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -24,11 +22,11 @@ public class Attack : StateMachineBehaviour {
 
 	public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        if (canAttack)
+        if (enemyStats.canAttack)
         {
 	        enemyStats.animator.SetTrigger("Attack");
-            canAttack = false;
-            FrameUtil.AfterDelay(enemyStats.attackRate, () => canAttack = true);
+            enemyStats.canAttack = false;
+            FrameUtil.AfterDelay(enemyStats.attackRate, () => enemyStats.canAttack = true);
 	        _attackBehaviour.Attack();
         }
         enemyStats.transform.forward = Vector3.Lerp(enemyStats.transform.forward, enemyStats.TargetDirection, .1f);

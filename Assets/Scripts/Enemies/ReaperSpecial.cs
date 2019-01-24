@@ -28,14 +28,15 @@ public class ReaperSpecial : SpecialAttackBehaviour
 
     public override void ExecuteSpecialAttack()
     {
-        //TODO CAST SPEHERE TO FrEEZE PLAYER
-        //instanciar q si toca alplayer lo frene
         FrameUtil.AfterDelay(timeCastInjure, CastFreezeSpell);
     }
 
+
+    //TODO Do Feedback!
     private void CastFreezeSpell()
     {
-        if(enemyStats.TargetDistance < rangeAffected)
+        enemyStats.agent.isStopped = true;
+        if (enemyStats.TargetDistance < rangeAffected)
         {
             Freeze freeze = enemyStats.target.GetComponent<Freeze>();
 
@@ -47,7 +48,9 @@ public class ReaperSpecial : SpecialAttackBehaviour
                 freeze.duration = freezeDuration;
             }
         }
-
-        FrameUtil.AfterDelay(finishTime, SpecialFinish);
+        FrameUtil.AfterDelay(finishTime, ()=> {
+            SpecialFinish();
+            enemyStats.agent.isStopped = false;
+        });
     }
 }
