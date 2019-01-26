@@ -8,44 +8,42 @@ using UnityEngine;
 public class GruntSpecial : SpecialAttackBehaviour
 {
 	public float attackRange;
-	public float castDashDelay;
-	
-	private Vector3 _dashPosition;
-	
+	public float prewarmCastDashDelay;
+    public float dashTime;
+
+    public float speedMultiplier;
+    public MeleeAttackBehaviour meleDashDamage;
+
 	//Cabeceada para testeo
 	public override bool Condition
 	{
 		get {
-			return Vector3.Distance(transform.position, enemyStats.target.position) <= attackRange &&
-			       Vector3.Distance(transform.position, _dashPosition) >= enemyStats.agent.stoppingDistance;	
+            var d = Vector3.Distance(transform.position, enemyStats.target.position);
+            return d <= attackRange && d >= enemyStats.agent.stoppingDistance;	
 		}
 	}
 
     public override void ExecuteSpecialAttack()
     {
-	    print("//TODO MAGIC");
 	    enemyStats.agent.isStopped = true;
-		FrameUtil.AfterDelay(castDashDelay, () => Dash());
+		FrameUtil.AfterDelay(prewarmCastDashDelay, () => Dash());
     }
 
 	private void Dash()
 	{
-		_dashPosition = enemyStats.TargetPosition;
-		enemyStats.agent.speed = enemyStats.speed * 2;
-
-		enemyStats.agent.SetDestination(_dashPosition);
-		enemyStats.agent.isStopped = false;
-	    
-		SpecialFinish();
-		
-		FrameUtil.AfterDelay(4, () => FinishAttack());
+        enemyStats.agent.isStopped = false;
+        var dashPosition = enemyStats.TargetPosition;
+		enemyStats.agent.speed = enemyStats.speed * speedMultiplier;
+        meleDashDamage.Attack(0,dashTime);
+        enemyStats.agent.SetDestination(dashPosition);
+		FrameUtil.AfterDelay(dashTime, () => FinishAttack());
 	}
 
 	private void FinishAttack()
 	{
-		enemyStats.agent.speed = enemyStats.speed;
-		Debug.Log("End Magic");
-	}
+        SpecialFinish();
+        enemyStats.agent.speed = enemyStats.speed;
+    }
 }
 
 

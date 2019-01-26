@@ -7,7 +7,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
     [EnumFlagsAttribute]
     public EnemyStates statesCondition;
 
-    public bool canAttack = true;
+    public bool canReCastSpecial = true;
     public float cdAttack = 6;
 
     public abstract bool Condition { get; }
@@ -21,7 +21,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (enemyStats.canAttack && canAttack && (enemyStats.currentState & statesCondition) > 0 && Condition)
+        if (enemyStats.canAttack && canReCastSpecial && (enemyStats.currentState & statesCondition) > 0 && Condition)
         {
             enemyStats.fsm.SetTrigger("SpecialAttack");
             ExecuteSpecialAttack();
@@ -38,9 +38,9 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
 
     public void ToggleCanAttack()
     {
-        canAttack = false;
+        canReCastSpecial = false;
         enemyStats.canAttack = false;
-        FrameUtil.AfterDelay(cdAttack, () => canAttack = true);
+        FrameUtil.AfterDelay(cdAttack, () => canReCastSpecial = true);
         FrameUtil.AfterDelay(2, () => enemyStats.canAttack = true);
     }
 }
