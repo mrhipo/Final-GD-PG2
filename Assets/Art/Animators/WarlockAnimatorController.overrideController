@@ -3,8 +3,9 @@
 --- !u!221 &22100000
 AnimatorOverrideController:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: WarlockAnimatorController
   m_Controller: {fileID: 9100000, guid: 09f84615549dacd49b53e6d3799498d2, type: 2}
   m_Clips:
@@ -18,3 +19,5 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: d86162d678529a540a50b0faa12a3260, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 83704c43bbcb3f7459e9251003ffe7ca, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 83704c43bbcb3f7459e9251003ffe7ca, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fe26eb70847ca724fb1fee16909bea92, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: fe26eb70847ca724fb1fee16909bea92, type: 3}
