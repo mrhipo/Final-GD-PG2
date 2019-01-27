@@ -2346,7 +2346,7 @@ MonoBehaviour:
   attackRange: 7
   prewarmCastDashDelay: 2
   dashTime: 5
-  speedMultiplier: 0
+  speedMultiplier: 5
   meleDashDamage: {fileID: 5135497538362548167}
 --- !u!1 &1954366418031060
 GameObject:
