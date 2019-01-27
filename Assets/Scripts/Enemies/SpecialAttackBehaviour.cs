@@ -6,7 +6,7 @@ public abstract class SpecialAttackBehaviour : MonoBehaviour
 {
     [EnumFlagsAttribute]
     public EnemyStates statesCondition;
-
+    [HideInInspector]
     public bool canReCastSpecial = true;
     public float cdAttack = 6;
 

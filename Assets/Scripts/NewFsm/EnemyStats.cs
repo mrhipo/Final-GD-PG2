@@ -29,10 +29,16 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public float sightDistance;
 
     public float speed;
-    public float damage;
+    [Header("Damage")]
+    public DamageTest basicDamageGameObject;
+    public float basicDamage;
+    public DamageTest specialDamageGameObject;
+    public float specialDamage;
 
     [HideInInspector]
     public bool canAttack = true;
+
+    
 
     private void Awake()
     {
@@ -44,6 +50,10 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
         agent.speed = speed;
         lifeObject.OnDead += OnDead;
         lifeObject.OnLifeChange += OnLifeChanged;
+        if (basicDamageGameObject != null)
+            basicDamageGameObject.amount = basicDamage;
+        if (specialDamageGameObject != null)
+            specialDamageGameObject.amount = specialDamage;
     }
 
     private void OnLifeChanged()

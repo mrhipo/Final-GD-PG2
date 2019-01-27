@@ -29,11 +29,14 @@ public class GruntSpecial : SpecialAttackBehaviour
 		FrameUtil.AfterDelay(prewarmCastDashDelay, () => Dash());
     }
 
-	private void Dash()
+    float acelerationAux;
+    private void Dash()
 	{
         enemyStats.agent.isStopped = false;
         var dashPosition = enemyStats.TargetPosition;
-		enemyStats.agent.speed = enemyStats.speed * speedMultiplier;
+        acelerationAux = enemyStats.agent.acceleration;
+        enemyStats.agent.acceleration *= 4.3f;
+        enemyStats.agent.speed = enemyStats.speed * speedMultiplier;
         meleDashDamage.Attack(0,dashTime);
         enemyStats.agent.SetDestination(dashPosition);
 		FrameUtil.AfterDelay(dashTime, () => FinishAttack());
@@ -42,6 +45,8 @@ public class GruntSpecial : SpecialAttackBehaviour
 	private void FinishAttack()
 	{
         SpecialFinish();
+        enemyStats.agent.acceleration = acelerationAux;
+
         enemyStats.agent.speed = enemyStats.speed;
     }
 }
