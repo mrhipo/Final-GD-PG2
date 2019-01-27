@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barrier : MonoBehaviour {
+public class Barrier : MonoBehaviour
+{
+
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +15,12 @@ public class Barrier : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == Layers.player.Index)
+        {
+          //Matar al player. 
+        }
+    }
 }

@@ -9,16 +9,13 @@ public class TriggerPortal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!_triggered)
+       if (other.gameObject.layer == Layers.player.Index && !_triggered)
         {
             _triggered = true;
-            if (other.gameObject.layer == Layers.player.Index)
+            for (int i = 0; i < portals.Length; i++)
             {
-                for (int i = 0; i < portals.Length; i++)
-                {
-                    portals[i].SpwanEnemies();
-                }
+                portals[i].SpwanEnemies();
             }
-        }
+        } 
     }
 }

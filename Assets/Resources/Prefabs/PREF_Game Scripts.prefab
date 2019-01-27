@@ -218,6 +218,7 @@ MonoBehaviour:
   voltCD: {fileID: 0}
   shieldCD: {fileID: 0}
   credits: {fileID: 0}
+  missionObjetive: {fileID: 0}
 --- !u!114 &114992515477474442
 MonoBehaviour:
   m_ObjectHideFlags: 0

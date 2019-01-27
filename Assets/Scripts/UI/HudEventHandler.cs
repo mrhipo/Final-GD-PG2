@@ -18,6 +18,9 @@ public class HudEventHandler : MonoBehaviour, IUpdate
     [Header("Objects")]
     public GameObject credits;
 
+    [Header("Texts")]
+    public Text missionObjetive;
+   
     void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
@@ -25,8 +28,14 @@ public class HudEventHandler : MonoBehaviour, IUpdate
 
         playerStats.lifeObject.OnLifeChange += OnUIChange;
         playerStats.OnMpChange += OnUIChange;
-
+      
         GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
+        GlobalEvent.Instance.AddEventHandler<LevelStartEvent>(OnLevelStart);
+    }
+
+    private void OnLevelStart(LevelStartEvent objetive)
+    {
+        missionObjetive.text = objetive.objetive;
     }
 
     private void OnCreditsPicked(CreditsPickedEvent creditsPicked)
@@ -54,7 +63,6 @@ public class HudEventHandler : MonoBehaviour, IUpdate
     {
         healthFill.fillAmount = playerStats.lifeObject.hp.Percentage;
         manaFill.fillAmount = playerStats.mp.Percentage;
-
     }
 }
 
