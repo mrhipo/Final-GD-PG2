@@ -1956,7 +1956,10 @@ MonoBehaviour:
   specialAttackRate: 0
   sightDistance: 12
   speed: 3
-  damage: 1
+  basicDamageGameObject: {fileID: 168863629153681943}
+  basicDamage: 3
+  specialDamageGameObject: {fileID: 0}
+  specialDamage: 0
   canAttack: 1
 --- !u!114 &114304422999845756
 MonoBehaviour:
@@ -1971,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statesCondition: 6
-  canAttack: 1
+  canReCastSpecial: 1
   cdAttack: 10
   finishTime: 5
   minDistance: 3

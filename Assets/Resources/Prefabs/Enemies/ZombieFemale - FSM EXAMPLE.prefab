@@ -1803,7 +1803,11 @@ MonoBehaviour:
   specialAttackRate: 0
   sightDistance: 10
   speed: 3
-  damage: 1
+  basicDamageGameObject: {fileID: 114190204108818750}
+  basicDamage: 3
+  specialDamageGameObject: {fileID: 0}
+  specialDamage: 0
+  canAttack: 1
 --- !u!114 &114915003738951082
 MonoBehaviour:
   m_ObjectHideFlags: 0

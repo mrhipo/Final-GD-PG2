@@ -196,11 +196,14 @@ MonoBehaviour:
   lifeObject: {fileID: 0}
   experience: 5
   attackRate: 3
-  attackRange: 1.5
+  attackRange: 7
   specialAttackRate: 0
   sightDistance: 8
   speed: 3
-  damage: 1
+  basicDamageGameObject: {fileID: 0}
+  basicDamage: 0
+  specialDamageGameObject: {fileID: 0}
+  specialDamage: 0
   canAttack: 1
 --- !u!195 &195276800171786736
 NavMeshAgent:
@@ -241,7 +244,6 @@ MonoBehaviour:
   bulletPrfab: {fileID: 114653267316994706, guid: 263bc3344dc9b244dbb82237297b8f55,
     type: 3}
   spawnPoint: {fileID: 3109999339727675787}
-  autoRotate: 0
 --- !u!114 &7000547882303177142
 MonoBehaviour:
   m_ObjectHideFlags: 0

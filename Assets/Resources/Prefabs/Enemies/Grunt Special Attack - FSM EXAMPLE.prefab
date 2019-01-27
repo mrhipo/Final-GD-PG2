@@ -2256,7 +2256,10 @@ MonoBehaviour:
   specialAttackRate: 5
   sightDistance: 10
   speed: 3
-  damage: 1
+  basicDamageGameObject: {fileID: 624343149}
+  basicDamage: 100
+  specialDamageGameObject: {fileID: 7513719142703783440}
+  specialDamage: 200
   canAttack: 1
 --- !u!114 &180372277
 MonoBehaviour:
@@ -2343,7 +2346,7 @@ MonoBehaviour:
   attackRange: 7
   prewarmCastDashDelay: 2
   dashTime: 5
-  dashSpeed: 0
+  speedMultiplier: 0
   meleDashDamage: {fileID: 5135497538362548167}
 --- !u!1 &1954366418031060
 GameObject:
@@ -2583,12 +2586,12 @@ GameObject:
   - component: {fileID: 7513719142703783440}
   - component: {fileID: 3944774218049821776}
   m_Layer: 11
-  m_Name: Sphere (1)
+  m_Name: SpecialDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6303600749762228577
 Transform:
   m_ObjectHideFlags: 0

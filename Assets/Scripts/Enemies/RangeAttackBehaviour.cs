@@ -31,7 +31,7 @@ public class RangeAttackBehaviour : AttackBehaviour
         FrameUtil.AfterDelay(delayToActivateAttack, () =>
         {
             var warlockBullet = Instantiate(bulletPrfab);
-            warlockBullet.Initialize(spawnPoint.position, _enemyStats.TargetPosition, _enemyStats.damage);
+            warlockBullet.Initialize(spawnPoint.position, _enemyStats.TargetPosition, _enemyStats.basicDamage);
         });
         
         FrameUtil.AfterDelay(delayToActivateAttack + attackDuration, () =>
