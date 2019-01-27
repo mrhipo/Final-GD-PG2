@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class LevelController : MonoBehaviour
 
     private void OnPortalClosed(PortalClosedEvent portalClosedEvent)
     {
+
         _closedPortals++;
-        if(_closedPortals >= _portals.Count)
+        FindObjectOfType<HudEventHandler>().missionObjetive.text = "Close all portals.               Portals closed: " + _closedPortals + " / " + _portals.Count;
+        if (_closedPortals >= _portals.Count)
         {
             _closedPortals = 0;
-            FindObjectOfType<HudEventHandler>().missionObjetive.text = "Close all portals.               Portals closed: " + _closedPortals + " / " + _portals.Count;
+            FindObjectOfType<HudEventHandler>().missionObjetive.text = "Escapes from the facilities";
             UnlockLevelExit();
         }
     }
@@ -41,7 +44,7 @@ public class LevelController : MonoBehaviour
         if (other.gameObject.layer == Layers.player.Index)
         {
             loading.SetActive(true);
-            //Cargar nivel 2
+            SceneManager.LoadScene(2);
         }  
     }
 

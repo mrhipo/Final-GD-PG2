@@ -13,7 +13,7 @@ public class Chase : StateMachineBehaviour {
         enemyStats = enemyStats ?? animator.GetComponent<EnemyStats>();
 		enemyStats.currentState = state;
 
-		Debug.Log("Chanse enter");
+		//Debug.Log("Chanse enter");
     }
 
 	public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

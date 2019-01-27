@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level2Controller : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class Level2Controller : MonoBehaviour
         if (other.gameObject.layer == Layers.player.Index)
         {
             loading.SetActive(true);
-            //Cargar nivel 3
+            SceneManager.LoadScene(3);
         }
     }
 }

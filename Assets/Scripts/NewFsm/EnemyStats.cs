@@ -80,4 +80,9 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
                 agent.velocity = Vector3.zero;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, sightDistance);
+    }
 }
