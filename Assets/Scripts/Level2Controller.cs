@@ -11,14 +11,14 @@ public class Level2Controller : MonoBehaviour
 
     private void Start()
     {
-        GlobalEvent.Instance.Dispatch(new LevelStartEvent("Shut down the barriers.                 Barriers deactivated: " + _count + " / 3"));
+        GlobalEvent.Instance.Dispatch(new LevelStartEvent("Shut down the barriers.                 Barriers deactivated: " + _count + " / 4"));
         GlobalEvent.Instance.AddEventHandler<BarrierOffEvent>(OnBarrierOff);
     }
 
     private void OnBarrierOff()
     {
         _count++;
-        FindObjectOfType<HudEventHandler>().missionObjetive.text = "Shut down the barriers.                 Barriers deactivated: " + _count + " / 3";
+        FindObjectOfType<HudEventHandler>().missionObjetive.text = "Shut down the barriers.                 Barriers deactivated: " + _count + " / 4";
     }
 
     private void OnTriggerEnter(Collider other)
