@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  freezeTime: 2
+  freezeTime: 5
   speed: 6
 --- !u!1 &1445831198376562
 GameObject:
