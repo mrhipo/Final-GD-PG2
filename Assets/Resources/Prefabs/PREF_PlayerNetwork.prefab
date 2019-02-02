@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6162624409546822453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6160935318438821703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3c8e18982f8b44f92aec259586fe8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _availableSpells:
-  - type: 0
-    coolDown: 2
-    mpCost: 5
-    spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
-      type: 3}
-    p: {x: 0, y: 0, z: 0}
-  - type: 0
-    coolDown: 2
-    mpCost: 5
-    spellPrefab: {fileID: 1031130959053874, guid: 2eb8d8d8025e34940ad6ebc78ff75c24,
-      type: 3}
-    p: {x: 0, y: 0, z: 0}
-  - type: 0
-    coolDown: 2
-    mpCost: 5
-    spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
-      type: 3}
-    p: {x: 0, y: 0, z: 0}
-  spawnPoint: {fileID: 6163666054314462011}
 --- !u!114 &1737666457663381960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +33,38 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &6162624409546822453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160935318438821703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3c8e18982f8b44f92aec259586fe8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _availableSpells:
+  - type: 0
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  - type: 0
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 1031130959053874, guid: 2eb8d8d8025e34940ad6ebc78ff75c24,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  - type: 0
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  spawnPoint: {fileID: 6163666054314462011}
 --- !u!1 &6543015108663847359
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +337,11 @@ PrefabInstance:
       propertyPath: camAim
       value: 
       objectReference: {fileID: 6057749921654117521}
+    - target: {fileID: 114186778799650786, guid: 96cb8d4be284e8b489ecf223a5bc6767,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96cb8d4be284e8b489ecf223a5bc6767, type: 3}
 --- !u!1 &6160935318438821703 stripped
