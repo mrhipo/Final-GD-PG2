@@ -128,6 +128,14 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
     {
         var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
         bullet.Initialize(bulletSpawn.position, bulletSpawn.forward, stats.damage);
+        NetworkServer.Spawn(bullet.gameObject);
+    }
+
+    [ClientRpc]
+    public void Rpc_ShootClient()
+    {
+        var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
+        bullet.Initialize(bulletSpawn.position, bulletSpawn.forward, stats.damage);
     }
 
     private IEnumerator ToggleShoot()

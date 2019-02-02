@@ -8,7 +8,7 @@ public class LocalPlayer : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>(true).gameObject.SetActive(true);
-        GetComponentInChildren<PlayerController>(true).enabled = true;
+        GetComponentInChildren<PlayerControllerNetwork>(true).enabled = true;
 
     }
 }

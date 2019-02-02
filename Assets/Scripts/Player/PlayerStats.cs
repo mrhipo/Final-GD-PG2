@@ -172,7 +172,8 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private void Set_Speed_Level(int level)
     {
-        GetComponent<PlayerController>().speed = initialSpeed + initialSpeed * increntStatsByLevel * level;
+        if(GetComponent<PlayerController>()!=null)
+            GetComponent<PlayerController>().speed = initialSpeed + initialSpeed * increntStatsByLevel * level;
     }
 
     private void Set_MP_Recovery_Level(int level)
