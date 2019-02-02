@@ -22,6 +22,8 @@ public class Bullet : MonoBehaviour, IUpdate {
         transform.forward = dest - init;
         if (lifeTimeCoroutine != null) StopCoroutine(lifeTimeCoroutine);
         lifeTimeCoroutine = StartCoroutine(LifeTime());
+        UpdateManager.instance.AddUpdate(this);
+
     }
 
     void IUpdate.Update()
@@ -43,6 +45,7 @@ public class Bullet : MonoBehaviour, IUpdate {
     {
         BulletDestroy();
         StopCoroutine(lifeTimeCoroutine);
+        UpdateManager.instance.RemoveUpdate(this);
     }
 
     Coroutine lifeTimeCoroutine;

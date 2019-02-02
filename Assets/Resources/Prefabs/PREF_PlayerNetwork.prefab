@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6160935318438821703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a122161c35d59684893ed316474adad5, type: 3}
   m_Name: 
@@ -386,6 +386,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AssetId.i15
       value: 237
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000008731429
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.13922365
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000040621458
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99026096
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.7070107
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.61999965
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000081956387
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -16.006
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed, type: 3}

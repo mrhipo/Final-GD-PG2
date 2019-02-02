@@ -120,6 +120,8 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
     {
         SoundManager.instance.PlayFX("Normal Shot");
         Cmd_ShootNet();
+        //var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
+       // bullet.Initialize(bulletSpawn.position, -bulletSpawn.right*100, stats.damage);
         StartCoroutine(ToggleShoot());
     }
 
@@ -127,15 +129,8 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
     public void Cmd_ShootNet()
     {
         var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
-        bullet.Initialize(bulletSpawn.position, bulletSpawn.forward, stats.damage);
+        bullet.Initialize(bulletSpawn.position, -bulletSpawn.right * 100, stats.damage);
         NetworkServer.Spawn(bullet.gameObject);
-    }
-
-    [ClientRpc]
-    public void Rpc_ShootClient()
-    {
-        var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
-        bullet.Initialize(bulletSpawn.position, bulletSpawn.forward, stats.damage);
     }
 
     private IEnumerator ToggleShoot()

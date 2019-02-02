@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class UpdateManager: MonoBehaviour
 {
-    private List<IUpdate> toUpdate = new List<IUpdate>();
+    private HashSet<IUpdate> toUpdate = new HashSet<IUpdate>();
+    private List<IUpdate> ToRunFor = new List<IUpdate>();
 
     public static UpdateManager instance { get { return _instance; } }
     private static UpdateManager _instance;
@@ -20,20 +22,23 @@ public class UpdateManager: MonoBehaviour
     public void AddUpdate(IUpdate updateObj)
     {
         toUpdate.Add(updateObj);
+        ToRunFor = toUpdate.ToList();
     }
 
     public void RemoveUpdate(IUpdate updateObj)
     {
         toUpdate.Remove(updateObj);
+        ToRunFor = toUpdate.ToList();
     }
 
     public void Update()
     {
         if (!pause)
         {
-            for (int i = 0; i < toUpdate.Count; i++)
+            
+            for (int i = 0; i < ToRunFor.Count; i++)
             {
-                toUpdate[i].Update();
+                ToRunFor[i].Update();
             }
         }
     }
