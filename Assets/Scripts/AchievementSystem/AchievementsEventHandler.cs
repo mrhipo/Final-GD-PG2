@@ -33,9 +33,12 @@ public class AchievementsEventHandler : MonoBehaviour
 		
 		GlobalEvent.Instance.AddEventHandler<LevelStartEvent>(OnLevelStart);
 
-		GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnLevelComplete);
-		
-		achievements.Init();
+		GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnGameEndedGodModeAchievement);
+
+        GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnLevelCompleteTimer);
+
+
+        achievements.Init();
 	}
 
 	void OnDestroy()
@@ -50,14 +53,13 @@ public class AchievementsEventHandler : MonoBehaviour
 		
 		GlobalEvent.Instance.RemoveEventHandler<LevelStartEvent>(OnLevelStart);
 
-		GlobalEvent.Instance.RemoveEventHandler<LevelCompletedEvent>(OnLevelComplete);
+		GlobalEvent.Instance.RemoveEventHandler<LevelCompletedEvent>(OnGameEndedGodModeAchievement);
 
 		GlobalEvent.Instance.RemoveEventHandler<LevelCompletedEvent>(OnLevelCompleteTimer);
 		
 		achievements.Remove();
 
 	}
-	
 
 	private void OnLevelStart(LevelStartEvent obj)
 	{
@@ -67,7 +69,9 @@ public class AchievementsEventHandler : MonoBehaviour
 
 	private void OnLevelCompleteTimer()
 	{
-		if (Time.time - startTime < limitTime)
+        GlobalEvent.Instance.Dispatch<LevelCompleteTimedEvent>(new LevelCompleteTimedEvent { time = Time.time - startTime });
+
+        if (Time.time - startTime < limitTime)
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.Flash});
 	}
 
@@ -90,7 +94,7 @@ public class AchievementsEventHandler : MonoBehaviour
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.Finder});
 	}
 
-	private void OnLevelComplete(LevelCompletedEvent gameEvent)
+	private void OnGameEndedGodModeAchievement(LevelCompletedEvent gameEvent)
 	{
 		if (gameEvent.level == 3 && !playerDead)
 			GlobalEvent.Instance.Dispatch<AchievementCompleteEvent>(new AchievementCompleteEvent{type = AchievementType.GodMode});
@@ -108,4 +112,9 @@ public class AchievementsEventHandler : MonoBehaviour
 	}
 }
 
+
+public class LevelCompleteTimedEvent : GameEvent
+{
+    public float time;
+}
 

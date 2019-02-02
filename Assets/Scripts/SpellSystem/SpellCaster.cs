@@ -71,19 +71,49 @@ public class SpellCaster : MonoBehaviour, IUpdate
 
         if (spell.CanUseSpell && spell.mpCost <= _playersStats.mp.CurrentValue)
         {
+            SendAnalytics(spell.type);
             spell.UseSpell(spawnPoint.position);
             _playersStats.ConsumeMp(spell.mpCost);
         }
     }
 
+    private void SendAnalytics(SpellType type)
+    {
+        switch (type)
+        {
+            case SpellType.Fire:
+                GlobalEvent.Instance.Dispatch(new FireBallCasted());
+                break;
+            case SpellType.Freeze:
+                GlobalEvent.Instance.Dispatch(new FreezeBallCasted());
+                break;
+            case SpellType.Volt:
+                GlobalEvent.Instance.Dispatch(new VoltBallCasted());
+                break;
+            case SpellType.Shield:
+                GlobalEvent.Instance.Dispatch(new ShieldBallCasted());
+                break;
+        }
+    }
+
     void IUpdate.Update()
     {
-        if (_playerInputController.Sk1)//Fire
+        if (_playerInputController.Sk1)//Fire{
+        {
             UseSpell(_availableSpells[0]);
+        }
         if (_playerInputController.Sk2)//Freeze
+        {
             UseSpell(_availableSpells[1]);
+        }
         if (_playerInputController.Sk3)//Volt.
+        {
             UseSpell(_availableSpells[2]);
+        }
+        if (_playerInputController.Sk4)//Volt.
+        {
+            UseSpell(_availableSpells[3]);
+        }
     }
 
     private void OnDrawGizmos()
