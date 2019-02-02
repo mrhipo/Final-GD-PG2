@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_Upgrade : MonoBehaviour
@@ -15,7 +16,8 @@ public class UI_Upgrade : MonoBehaviour
     int currentFireLevel;
     int currentFreezeLevel;   
     int currentVoltLevel;
-    PlayerStats stats;
+    PlayerStats stat;
+    SpellCaster spells;
 
     public Text hpCost;
     public Text mpCost;
@@ -30,8 +32,16 @@ public class UI_Upgrade : MonoBehaviour
 
     public Text experienceTxt;
 
+    private void Start()
+    {
+        spells = FindObjectOfType<SpellCaster>();
+        stat = FindObjectOfType<PlayerStats>();
+    }
+
     private void UpdateDisplay()
     {
+        DisableBlockedSpells();
+        
         currentHpLevel = PlayerPrefs.GetInt("LevelStats-HP", 0);
         currentMpLevel = PlayerPrefs.GetInt("LevelStats-MP", 0);
         currentMpRecoveryLevel = PlayerPrefs.GetInt("LevelStats-MP-Recovery", 0);
@@ -40,8 +50,6 @@ public class UI_Upgrade : MonoBehaviour
         currentFireLevel = PlayerPrefs.GetInt("Fire-Level", 0);
         currentFreezeLevel = PlayerPrefs.GetInt("Freeze-Level", 0);
         currentVoltLevel = PlayerPrefs.GetInt("Volt-Level", 0);
-
-        var stat = FindObjectOfType<PlayerStats>();
 
         creditsTxt.text = "Credits: " + stat.credits;
         experienceTxt.text = "Experience: " + stat.experience;
@@ -55,6 +63,13 @@ public class UI_Upgrade : MonoBehaviour
         fireCost.text = "Fire (-" + stat.GetCostUpgrade(currentFireLevel) + ")";
         FreezeCost.text = "Freeze (-" + stat.GetCostUpgrade(currentFreezeLevel) + ")";
         VoltCost.text = "Volt (-" + stat.GetCostUpgrade(currentVoltLevel) + ")";
+    }
+
+    private void DisableBlockedSpells()
+    {
+        fireCost.transform.parent.gameObject.SetActive(!spells.IsBlocked(SpellType.Fire));
+        FreezeCost.transform.parent.gameObject.SetActive(!spells.IsBlocked(SpellType.Freeze));
+        VoltCost.transform.parent.gameObject.SetActive(!spells.IsBlocked(SpellType.Volt));
     }
 
     private void Update()

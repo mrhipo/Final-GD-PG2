@@ -10,11 +10,6 @@ public class SpellCaster : MonoBehaviour, IUpdate
     private PlayerStats _playersStats;
     private PlayerInputSpell _playerInputController;
 
-
-    private int currentFireLevel;
-    private int currentFreezeLevel;
-    private int currentVoltLevel;
-
     private void Start()
     {
         _playerInputController = new PlayerInputSpell();
@@ -29,8 +24,11 @@ public class SpellCaster : MonoBehaviour, IUpdate
 
     private void OnSpellUpgraded(SpellUpgrade gameData)
     {
-        if(_playersStats.experience >= _playersStats.GetCostUpgrade(GetSpellLevel(gameData.type)))
+        if (_playersStats.experience >= _playersStats.GetCostUpgrade(GetSpellLevel(gameData.type)))
+        {
+            _playersStats.experience -= _playersStats.GetCostUpgrade(GetSpellLevel(gameData.type));
             PlayerPrefs.SetInt(gameData.type+"-Level", 1+ PlayerPrefs.GetInt(gameData.type + "-Level", 0));
+        }
     }
 
     private int GetSpellLevel(SpellType type)
@@ -38,11 +36,11 @@ public class SpellCaster : MonoBehaviour, IUpdate
         switch(type)
         {
             case SpellType.Fire:
-                return currentFireLevel;
+                return PlayerPrefs.GetInt("Fire-Level", 0);
             case SpellType.Freeze:
-                return currentFreezeLevel;
+                return PlayerPrefs.GetInt("Freeze-Level", 0);
             case SpellType.Volt:
-                return currentVoltLevel;
+                return PlayerPrefs.GetInt("Volt-Level", 0);
             default:
                 return 0;
         }
