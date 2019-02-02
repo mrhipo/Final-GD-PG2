@@ -20,6 +20,7 @@ public class NewSkillEventHandler : MonoBehaviour
     {
         GameObject obj = GetSkillObject(skillEvent);
         obj.SetActive(true);
+        if (skillEvent.skillColor == Color.black) return;
         newSkillUI.SetActive(true);
         var text = newSkillUI.GetComponentInChildren<Text>();
         text.text = "New Skill Acquired: " + skillEvent.type;

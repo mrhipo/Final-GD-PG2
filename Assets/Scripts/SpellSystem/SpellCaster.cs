@@ -51,7 +51,7 @@ public class SpellCaster : MonoBehaviour, IUpdate
     private void InitSpell()
     {
         //Remove this line if we wanna keep the level
-        ResetSpellsLevels();
+        //ResetSpellsLevels();
 
         foreach (var item in _availableSpells)
             item.Init();
@@ -89,5 +89,11 @@ public class SpellCaster : MonoBehaviour, IUpdate
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(_availableSpells[0].p, 1f);
+    }
+
+    public bool IsBlocked(SpellType spell)
+    {
+        if ((int)spell >= _availableSpells.Count) return true;
+        return _availableSpells[(int)spell].IsBlocked;
     }
 }

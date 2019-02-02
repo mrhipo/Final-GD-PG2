@@ -1891,6 +1891,7 @@ GameObject:
   - component: {fileID: 3831867209290149682}
   - component: {fileID: 2023464075882678220}
   - component: {fileID: 1671716209374017326}
+  - component: {fileID: 1536552508211274783}
   m_Layer: 9
   m_Name: Reaper Special Attack
   m_TagString: Untagged
@@ -2048,6 +2049,19 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!114 &1536552508211274783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851796689378364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88832526f887784439239f2bc5c100c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!1 &1869504710568504
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour ,IUpdate
 {
@@ -17,9 +19,14 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     public int credits;
     public int experience;
 
+
+    private Animator animator;
+
     private void Start()
     {
         InitStatsLevel();
+
+        animator = GetComponent<Animator>();
 
         GlobalEvent.Instance.AddEventHandler<StatUpgrade>(OnStatUpgraded);
         GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
@@ -51,6 +58,15 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     private void OnDead()
     {
         GlobalEvent.Instance.Dispatch(new PlayerDeadEvent());
+        animator.SetTrigger("Dead");
+        StartCoroutine(WaitThenReload());
+    }
+
+    private IEnumerator WaitThenReload()
+    {
+        yield return new WaitForSeconds(3);
+        SaveGameManager.loadGame = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Destroy()
@@ -116,7 +132,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     public void InitStatsLevel()
     {
         //TODO delete this when the game has to save the stats progress.
-        ResetStats();
+        //ResetStats();
 
         initialHp = lifeObject.hp.maxValue;
         initialMp = mp.maxValue;

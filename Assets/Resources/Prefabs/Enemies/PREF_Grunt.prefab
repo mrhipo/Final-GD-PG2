@@ -2191,6 +2191,7 @@ GameObject:
   - component: {fileID: 180372276}
   - component: {fileID: 180372275}
   - component: {fileID: 180372279}
+  - component: {fileID: 1584360864457788690}
   m_Layer: 9
   m_Name: PREF_Grunt
   m_TagString: Untagged
@@ -2348,6 +2349,19 @@ MonoBehaviour:
   dashTime: 5
   speedMultiplier: 5
   meleDashDamage: {fileID: 5135497538362548167}
+--- !u!114 &1584360864457788690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942799760346036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88832526f887784439239f2bc5c100c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!1 &1954366418031060
 GameObject:
   m_ObjectHideFlags: 0

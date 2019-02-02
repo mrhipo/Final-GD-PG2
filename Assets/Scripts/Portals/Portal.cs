@@ -30,13 +30,14 @@ public class Portal : MonoBehaviour
 
     public void SpwanEnemies()
     {
-        for (int i = 0; i < doors.Length; i++)
-        {
-            doors[i].LockDoor();
-        }
-
         if (!_triggered)
         {
+            for (int i = 0; i < doors.Length; i++)
+            {
+                doors[i].LockDoor();
+            }
+
+       
             _triggered = true;
             _effects.gameObject.SetActive(true);
             SoundManager.instance.PlayFX("Portal Activated");
@@ -58,6 +59,11 @@ public class Portal : MonoBehaviour
         _effects.gameObject.SetActive(false);
         SoundManager.instance.StopFX("Portal Activated");
 
+        OpenDoors();
+    }
+
+    void OpenDoors()
+    {
         for (int i = 0; i < doors.Length; i++)
         {
             doors[i].UnLockDoor();
@@ -75,4 +81,5 @@ public class Portal : MonoBehaviour
         }
     }
 
+   
 }

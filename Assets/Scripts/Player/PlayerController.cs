@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour  , ISpeed {
 
     Pool<GameObject> bullets;
 
+
     private void Start()
     {
         bullets = new Pool<GameObject>(5, Bullet.Factory, Bullet.OnInit, Bullet.OnStore, true);
@@ -40,10 +41,16 @@ public class PlayerController : MonoBehaviour  , ISpeed {
 
         Mouse.ShowCursor(false);
 
+        GlobalEvent.Instance.AddEventHandler<PlayerDeadEvent>(OnDead);
         spine = animator.GetBoneTransform(HumanBodyBones.Spine);
 
         composer = camAim.GetCinemachineComponent<Cinemachine.CinemachineComposer>();
         transposer = camAim.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();
+    }
+
+    private void OnDead()
+    {
+        enabled = false;
     }
 
     void Update () {

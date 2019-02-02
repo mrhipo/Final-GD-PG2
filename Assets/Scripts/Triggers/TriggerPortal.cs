@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerPortal : MonoBehaviour
+public class TriggerPortal : SaveObject
 {
     bool _triggered;
     public Portal[] portals;
@@ -17,5 +17,19 @@ public class TriggerPortal : MonoBehaviour
                 portals[i].SpwanEnemies();
             }
         } 
+    }
+
+    public override void Load()
+    {
+        var booleanMemento = GetValue<BooleanMemento>();
+        if (booleanMemento != null)
+        {
+            _triggered = booleanMemento.boolean;
+        }
+    }
+
+    public override void Save()
+    {
+        SaveData(Key, JsonUtility.ToJson(new BooleanMemento { boolean = _triggered }));
     }
 }
