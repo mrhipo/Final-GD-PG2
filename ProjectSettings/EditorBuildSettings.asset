@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3/Level 3.unity
     guid: ed479c7f465b658449bb5af79291e84a
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/MainMenu-Multiplayer.unity
+    guid: 6b5ad55bf6c477a4d8fb20ef3bf37ab4
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/Arena.unity
+    guid: fb6ccdec4c64f2d48bbb6a6e66288b7d
   m_configObjects: {}
