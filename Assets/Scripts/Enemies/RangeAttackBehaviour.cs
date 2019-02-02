@@ -31,7 +31,7 @@ public class RangeAttackBehaviour : AttackBehaviour
         FrameUtil.AfterDelay(delayToActivateAttack, () =>
         {
             var warlockBullet = Instantiate(bulletPrfab);
-            warlockBullet.Initialize(spawnPoint.position, _enemyStats.TargetPosition, _enemyStats.basicDamage);
+            warlockBullet.Initialize(spawnPoint.position, _enemyStats.TargetPosition+Vector3.up, _enemyStats.basicDamage);
         });
         
         FrameUtil.AfterDelay(delayToActivateAttack + attackDuration, () =>
@@ -41,7 +41,6 @@ public class RangeAttackBehaviour : AttackBehaviour
             OnUpdate -= LookToTarget;
 
             _enemyStats.fsm.SetTrigger("Idle");
-            Debug.Log("End Magic");
         });
         
     }

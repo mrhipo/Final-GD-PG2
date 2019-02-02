@@ -88,6 +88,7 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
             agent.speed = value;
             if (value == 0)
                 agent.velocity = Vector3.zero;
+            agent.isStopped = value == 0;
         }
     }
 

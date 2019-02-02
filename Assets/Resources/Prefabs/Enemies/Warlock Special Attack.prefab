@@ -135,7 +135,8 @@ GameObject:
   - component: {fileID: 195276800171786736}
   - component: {fileID: 7235358959796572681}
   - component: {fileID: 7000547882303177142}
-  m_Layer: 0
+  - component: {fileID: 2597446508713482107}
+  m_Layer: 9
   m_Name: Warlock Special Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +196,7 @@ MonoBehaviour:
   currentState: 0
   lifeObject: {fileID: 0}
   experience: 5
-  attackRate: 3
+  attackRate: 3.5
   attackRange: 7
   specialAttackRate: 0
   sightDistance: 8
@@ -240,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayToActivateAttack: 1
-  attackDuration: 1
+  attackDuration: 1.2
   bulletPrfab: {fileID: 114653267316994706, guid: 263bc3344dc9b244dbb82237297b8f55,
     type: 3}
   spawnPoint: {fileID: 3109999339727675787}
@@ -260,6 +261,20 @@ MonoBehaviour:
   hp:
     crrValue: 5
     maxValue: 5
+--- !u!136 &2597446508713482107
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048438526230014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1053253954509182
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,7 +84,7 @@ public class VoltSpell : MonoBehaviour, IUpdate , ILevel
         initialPower = power;
         initialDurability = durability;
 
-        power = initialPower * initialPower * level * percentage;
+        power = initialPower + initialPower * level * percentage;
         durability = initialDurability + level;
     }
 }

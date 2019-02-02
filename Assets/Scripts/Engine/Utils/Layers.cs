@@ -11,9 +11,9 @@ public class Layers : MonoBehaviour
 
     static Layers()
     {
-        enemies = new MyLayer("Enemy");
+        enemies = new MyLayer("Enemies");
         player = new MyLayer("Player");
-        shootable = new MyLayer("Enemy", "Player", "Door","Camera", "Default");
+        shootable = new MyLayer("Enemies", "Player", "Door","Camera", "Default");
     }
 
 }

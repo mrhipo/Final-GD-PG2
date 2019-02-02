@@ -23,7 +23,7 @@ public class FreezeSpell : MonoBehaviour, IUpdate , ILevel
     {
         UpdateManager.instance.RemoveUpdate(this);
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.layer == Layers.enemies.Index)
         {
             HitObject ho = collision.gameObject.GetComponent<HitObject>();
             if (ho) ho.OnTakeDamage(new Damage(gameObject, power));
@@ -49,7 +49,7 @@ public class FreezeSpell : MonoBehaviour, IUpdate , ILevel
         initialPower = power;
         initialFreezeTime = freezeTime;
 
-        power = initialPower * initialPower * level * percentage;
-        freezeTime = initialFreezeTime * initialFreezeTime * level * percentage;
+        power = initialPower + initialPower * level * percentage;
+        freezeTime = initialFreezeTime + initialFreezeTime * level * percentage;
     }
 }

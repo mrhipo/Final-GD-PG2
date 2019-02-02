@@ -22,7 +22,11 @@ public class Freeze : MonoBehaviour, IUpdate
         _enemySpeed = speeder.Speed;
         speeder.Speed = 0;
         UpdateManager.instance.AddUpdate(this);
-        animator = GetComponent<Animator>();
+        var enemyStats = GetComponent<EnemyStats>();
+        if (enemyStats != null)
+            animator = enemyStats.animator;
+        else
+            animator = GetComponent<Animator>();
         animator.enabled = false;
     }
 

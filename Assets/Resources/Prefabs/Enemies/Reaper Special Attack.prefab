@@ -1891,7 +1891,7 @@ GameObject:
   - component: {fileID: 3831867209290149682}
   - component: {fileID: 2023464075882678220}
   - component: {fileID: 1671716209374017326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Reaper Special Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
