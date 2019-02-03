@@ -15,7 +15,7 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
     Cinemachine.CinemachineComposer composer;
     Cinemachine.CinemachineTransposer transposer;
 
-    public Bullet bulletNetworkPrefab;
+    public GameObject bulletNetworkPrefab;
 
     Transform spine;
 
@@ -128,9 +128,9 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
     [Command]
     public void Cmd_ShootNet()
     {
-        var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
-        bullet.Initialize(bulletSpawn.position, -bulletSpawn.right * 100, stats.damage);
-        NetworkServer.Spawn(bullet.gameObject);
+        GameObject bullet = Instantiate(bulletNetworkPrefab);
+        bullet.GetComponent<Bullet>().Initialize(bulletSpawn.position, -bulletSpawn.right * 100, stats.damage);
+        NetworkServer.Spawn(bullet);
     }
 
     private IEnumerator ToggleShoot()
