@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -18,7 +17,6 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
     public GameObject bulletNetworkPrefab;
 
     Transform spine;
-
     
     [Header("Ik")]
     public HandIk aimIk;
@@ -32,12 +30,8 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
 
     bool canShoot = true;
 
-    Pool<GameObject> bullets;
-
-
     private void Start()
     {
-        bullets = new Pool<GameObject>(5, Bullet.Factory, Bullet.OnInit, Bullet.OnStore, true);
         stats = GetComponent<PlayerStats>();
 
         animator = GetComponent<Animator>();
@@ -46,7 +40,7 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
 
         GlobalEvent.Instance.AddEventHandler<PlayerDeadEvent>(OnDead);
         spine = animator.GetBoneTransform(HumanBodyBones.Spine);
-
+        Debug.Log(spine.name);
         composer = camAim.GetCinemachineComponent<Cinemachine.CinemachineComposer>();
         transposer = camAim.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();
     }
@@ -107,31 +101,26 @@ public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
        
         composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY, -1, 1);
         transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY, -1,1);
-
-        if (canShoot && input.Shooting)
-        {
-            Shoot();
-        }
+        if (input.Shooting)
+            if (canShoot)
+                Shoot();
 
         lastAiming = aiming;
     }
 
+    public Action OnRealShoot = delegate { };
+
     public void Shoot()
     {
         SoundManager.instance.PlayFX("Normal Shot");
-        Cmd_ShootNet();
+       
+        OnRealShoot();
         //var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
        // bullet.Initialize(bulletSpawn.position, -bulletSpawn.right*100, stats.damage);
         StartCoroutine(ToggleShoot());
     }
 
-    [Command]
-    public void Cmd_ShootNet()
-    {
-        GameObject bullet = Instantiate(bulletNetworkPrefab);
-        bullet.GetComponent<Bullet>().Initialize(bulletSpawn.position, -bulletSpawn.right * 100, stats.damage);
-        NetworkServer.Spawn(bullet);
-    }
+   
 
     private IEnumerator ToggleShoot()
     {

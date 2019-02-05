@@ -18,7 +18,7 @@ MonoBehaviour:
   animator: {fileID: 6112716549521117587}
   bulletSpawn: {fileID: 6163666054314462011}
   camAim: {fileID: 6057749921654117521}
-  bulletNetworkPrefab: {fileID: 114534763640808804, guid: 2f11627db2886004c9cc544fe0f9c393,
+  bulletNetworkPrefab: {fileID: 1365325129771572, guid: 2f11627db2886004c9cc544fe0f9c393,
     type: 3}
   aimIk:
     leftHand: {fileID: 6167391938732619817}
@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 2296618169003917299}
   - component: {fileID: 7027930518257035801}
   - component: {fileID: 6952817774594042747}
+  - component: {fileID: 16195637732770284}
   m_Layer: 0
   m_Name: PREF_PlayerNetwork
   m_TagString: Untagged
@@ -91,7 +92,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &2296618169003917299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef429bf5bd4cb344b1ca6365269e30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pcn: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!114 &7027930518257035801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +143,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 6167506960501438223}
   m_ChildIndex: 0
-  m_SendInterval: 0.037037037
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
+--- !u!114 &16195637732770284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6543015108663847359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 6167457014814385575}
+  m_ChildIndex: 1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_MovementThreshold: 0.001
@@ -302,11 +325,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed,
-        type: 3}
-      propertyPath: camAim
-      value: 
-      objectReference: {fileID: 6057749921654117521}
     - target: {fileID: 1737666457663381960, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_AssetId.i0
@@ -387,6 +405,16 @@ PrefabInstance:
       propertyPath: m_AssetId.i15
       value: 237
       objectReference: {fileID: 0}
+    - target: {fileID: 1737666457663381960, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalPlayerAuthority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737666457663381960, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_ServerOnly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -427,6 +455,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -16.006
       objectReference: {fileID: 0}
+    - target: {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: camAim
+      value: 
+      objectReference: {fileID: 6057749921654117521}
     m_RemovedComponents:
     - {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52245385b686dca458821a23f97bb9ed, type: 3}
@@ -451,6 +484,12 @@ Animator:
 --- !u!4 &6163707054249670045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 27249615246870539, guid: 52245385b686dca458821a23f97bb9ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 6190529232604544406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6167457014814385575 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 35493282218776625, guid: 52245385b686dca458821a23f97bb9ed,
     type: 3}
   m_PrefabInstance: {fileID: 6190529232604544406}
   m_PrefabAsset: {fileID: 0}
