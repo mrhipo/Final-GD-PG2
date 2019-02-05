@@ -92,7 +92,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &2296618169003917299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 6057749921654117521}
     m_RemovedComponents:
     - {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed, type: 3}
+    - {fileID: 1737666457663381960, guid: 52245385b686dca458821a23f97bb9ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52245385b686dca458821a23f97bb9ed, type: 3}
 --- !u!1 &6160935318438821703 stripped
 GameObject:

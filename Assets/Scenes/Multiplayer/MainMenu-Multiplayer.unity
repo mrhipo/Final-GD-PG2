@@ -172,7 +172,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: MainMenu-Multiplayer
-  m_OnlineScene: EmptyScene
+  m_OnlineScene: Arena
   m_SpawnPrefabs:
   - {fileID: 2028582134407651220, guid: 29105df1953b586409431e31d5a33445, type: 3}
   m_CustomConfig: 0

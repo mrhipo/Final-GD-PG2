@@ -9,13 +9,17 @@ public class LocalPlayer : NetworkBehaviour
     public PlayerControllerNetwork pcn;
     public PlayerStats stats;
 
+    public void Start()
+    {
+        pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
+        stats = GetComponentInChildren<PlayerStats>(true);
+        pcn.OnRealShoot += OnShoot;
+    }
     public override void OnStartLocalPlayer()
     {
         GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>(true).gameObject.SetActive(true);
         GetComponentInChildren<PlayerControllerNetwork>(true).enabled = true;
-        pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
-        stats = GetComponentInChildren<PlayerStats>(true);
-        pcn.OnRealShoot += OnShoot;
+
 
     }
 

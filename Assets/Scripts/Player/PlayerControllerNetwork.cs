@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerControllerNetwork : NetworkBehaviour  , ISpeed {
+public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     public float speed = 5;
     public float mouseSensitivity = 5;
