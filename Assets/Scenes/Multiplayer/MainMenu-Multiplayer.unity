@@ -174,7 +174,7 @@ MonoBehaviour:
   m_OfflineScene: MainMenu-Multiplayer
   m_OnlineScene: Arena
   m_SpawnPrefabs:
-  - {fileID: 2028582134407651220, guid: 29105df1953b586409431e31d5a33445, type: 3}
+  - {fileID: 1365325129771572, guid: 2f11627db2886004c9cc544fe0f9c393, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
