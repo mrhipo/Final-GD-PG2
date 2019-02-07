@@ -26,7 +26,7 @@ public class Level2Controller : MonoBehaviour
         if (other.gameObject.layer == Layers.player.Index)
         {
             loading.SetActive(true);
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
     }
 }
