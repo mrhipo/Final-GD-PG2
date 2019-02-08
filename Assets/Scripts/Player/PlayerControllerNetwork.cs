@@ -16,7 +16,6 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     public GameObject bulletNetworkPrefab;
 
-    [HideInInspector]
     public Transform spine;
     
     [Header("Ik")]
@@ -40,7 +39,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
         Mouse.ShowCursor(false);
 
         GlobalEvent.Instance.AddEventHandler<PlayerDeadEvent>(OnDead);
-        spine = animator.GetBoneTransform(HumanBodyBones.Spine);
+        //spine = animator.GetBoneTransform(HumanBodyBones.Spine);
         Debug.Log(spine.name);
         composer = camAim.GetCinemachineComponent<Cinemachine.CinemachineComposer>();
         transposer = camAim.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();

@@ -20,6 +20,7 @@ MonoBehaviour:
   camAim: {fileID: 6057749921654117521}
   bulletNetworkPrefab: {fileID: 1365325129771572, guid: 2f11627db2886004c9cc544fe0f9c393,
     type: 3}
+  spine: {fileID: 6167472575954726977}
   aimIk:
     leftHand: {fileID: 6167391938732619817}
     rightHand: {fileID: 6167539965351921581}
@@ -273,22 +274,22 @@ PrefabInstance:
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000008731429
+      value: 0.07700205
       objectReference: {fileID: 0}
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.13922365
+      value: -0.104851454
       objectReference: {fileID: 0}
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000040621458
+      value: 0.08110842
       objectReference: {fileID: 0}
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99026096
+      value: 0.9881793
       objectReference: {fileID: 0}
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
@@ -308,7 +309,17 @@ PrefabInstance:
     - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -16.006
+      value: -11.396001
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 9.741
+      objectReference: {fileID: 0}
+    - target: {fileID: 27180028246406829, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 8.410001
       objectReference: {fileID: 0}
     - target: {fileID: 35553183405132441, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
@@ -503,6 +514,12 @@ Transform:
 --- !u!4 &6167539965351921581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 35656484251712059, guid: 52245385b686dca458821a23f97bb9ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 6190529232604544406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6167472575954726977 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 35586966664646103, guid: 52245385b686dca458821a23f97bb9ed,
     type: 3}
   m_PrefabInstance: {fileID: 6190529232604544406}
   m_PrefabAsset: {fileID: 0}
