@@ -13,8 +13,13 @@ public class LocalPlayer : NetworkBehaviour
     {
         pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
         stats = GetComponentInChildren<PlayerStats>(true);
-        pcn.OnRealShoot += OnShoot;
+        pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
+    }
+
+    private void OnShootDos(Vector3 o, Vector3 d)
+    {
+        CmdFire(o , d);
     }
 
     private void OnRotate(Vector3 obj)
@@ -35,25 +40,17 @@ public class LocalPlayer : NetworkBehaviour
         pcn.spine.eulerAngles = v3;
     }
 
-
     public override void OnStartLocalPlayer()
     {
         GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>(true).gameObject.SetActive(true);
         GetComponentInChildren<PlayerControllerNetwork>(true).enabled = true;
-
-
-    }
-
-    private void OnShoot()
-    {
-        CmdFire();
     }
 
     [Command]
-    public void CmdFire()
+    public void CmdFire(Vector3 o, Vector3 d)
     {
         GameObject bullet = GameObject.Instantiate(pcn.bulletNetworkPrefab);
-        bullet.GetComponent<BulletNetwork>().Initialize(pcn.bulletSpawn.position, pcn.bulletSpawn.position - pcn.bulletSpawn.right * 100, stats.damage);
+        bullet.GetComponent<BulletNetwork>().Initialize(o, d, stats.damage);
         NetworkServer.Spawn(bullet);
     }
 

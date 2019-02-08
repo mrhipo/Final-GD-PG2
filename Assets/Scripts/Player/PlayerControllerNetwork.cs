@@ -109,14 +109,16 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
         lastAiming = aiming;
     }
 
-    public Action OnRealShoot = delegate { };
+    public Action<Vector3,Vector3> OnRealShoot = delegate { };
     public Action<Vector3> OnRotate = delegate { };
 
     public void Shoot()
     {
         SoundManager.instance.PlayFX("Normal Shot");
-       
-        OnRealShoot();
+
+        //(pcn.bulletSpawn.position, pcn.bulletSpawn.position - pcn.bulletSpawn.right * 100, stats.damage
+
+        OnRealShoot(bulletSpawn.position, bulletSpawn.position - bulletSpawn.right * 100);
         //var bullet = Instantiate<Bullet>(bulletNetworkPrefab);
        // bullet.Initialize(bulletSpawn.position, -bulletSpawn.right*100, stats.damage);
         StartCoroutine(ToggleShoot());
