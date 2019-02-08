@@ -58566,7 +58566,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1685480363799284, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224895237926449898, guid: 1681267c98608b24792fc1ad9960b5c6,
         type: 3}
@@ -58663,8 +58663,48 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 355517635, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732007781954636, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821910960450010538, guid: 1681267c98608b24792fc1ad9960b5c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182084915292510, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714688315954470, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1681267c98608b24792fc1ad9960b5c6, type: 3}
+--- !u!1 &1463079122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1031177092594360, guid: 1681267c98608b24792fc1ad9960b5c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1463079121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1463079123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463079122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce09dd7d246b9b245a550f076d9f8fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageFill: {fileID: 0}
 --- !u!1 &1464750543
 GameObject:
   m_ObjectHideFlags: 0

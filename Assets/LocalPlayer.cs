@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class LocalPlayer : NetworkBehaviour
 {
     public PlayerControllerNetwork pcn;
     public PlayerStats stats;
-
+    Image imageHp;
     public void Start()
     {
         pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
@@ -18,6 +19,14 @@ public class LocalPlayer : NetworkBehaviour
         if (!isLocalPlayer)
         {
             GetComponentInChildren<Animator>().enabled = false;
+        }
+        else
+        {
+            imageHp = GetComponentInChildren<NetworkHud>().imageFill;
+            stats.lifeObject.OnLifeChange += () =>
+            {
+                imageHp.fillAmount = stats.lifeObject.hp.Percentage;
+            };
         }
     }
 

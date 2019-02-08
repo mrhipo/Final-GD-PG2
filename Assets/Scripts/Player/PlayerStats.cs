@@ -22,11 +22,15 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private Animator animator;
 
+    bool IsNetworking;
+
     private void Start()
     {
         InitStatsLevel();
 
         animator = GetComponent<Animator>();
+
+        
 
         GlobalEvent.Instance.AddEventHandler<StatUpgrade>(OnStatUpgraded);
         GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
@@ -57,7 +61,8 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private void OnDead()
     {
-        GlobalEvent.Instance.Dispatch(new PlayerDeadEvent());
+        if(!IsNetworking)
+            GlobalEvent.Instance.Dispatch(new PlayerDeadEvent());
         animator.SetTrigger("Dead");
         StartCoroutine(WaitThenReload());
     }
