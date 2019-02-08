@@ -15,6 +15,10 @@ public class LocalPlayer : NetworkBehaviour
         stats = GetComponentInChildren<PlayerStats>(true);
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
+        if (!isLocalPlayer)
+        {
+            GetComponentInChildren<Animator>().enabled = false;
+        }
     }
 
     private void OnShootDos(Vector3 o, Vector3 d)

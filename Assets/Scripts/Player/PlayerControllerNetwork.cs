@@ -135,6 +135,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     private void LateUpdate()
     {
+        if (!enabled) return;
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         spine.forward = ray.GetPoint(20) - spine.position;
         spine.Rotate(Vector3.up, spineRotation);
@@ -143,7 +144,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     private void OnAnimatorIK(int layerIndex)
     {
-        
+        if (!enabled) return;
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
         animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
         animator.SetIKPosition(AvatarIKGoal.RightHand, aimIk.rightHand.position);
