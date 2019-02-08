@@ -14,7 +14,28 @@ public class LocalPlayer : NetworkBehaviour
         pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
         stats = GetComponentInChildren<PlayerStats>(true);
         pcn.OnRealShoot += OnShoot;
+        pcn.OnRotate += OnRotate;
     }
+
+    private void OnRotate(Vector3 obj)
+    {
+        CmdOnRotate(obj);  
+    }
+
+    [Command]
+    private void CmdOnRotate(Vector3 v3)
+    {
+        pcn.spine.eulerAngles = v3;
+        RpcOnRotate(v3);
+    }
+
+    [ClientRpc]
+    private void RpcOnRotate(Vector3 v3)
+    {
+        pcn.spine.eulerAngles = v3;
+    }
+
+
     public override void OnStartLocalPlayer()
     {
         GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>(true).gameObject.SetActive(true);

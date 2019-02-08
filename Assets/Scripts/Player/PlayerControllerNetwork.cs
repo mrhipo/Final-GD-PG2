@@ -16,7 +16,8 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     public GameObject bulletNetworkPrefab;
 
-    Transform spine;
+    [HideInInspector]
+    public Transform spine;
     
     [Header("Ik")]
     public HandIk aimIk;
@@ -80,6 +81,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
         }
     }
 
+
     private void CheckAiming()
     {
         aiming = input.Aiming;
@@ -109,6 +111,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
     }
 
     public Action OnRealShoot = delegate { };
+    public Action<Vector3> OnRotate = delegate { };
 
     public void Shoot()
     {
@@ -134,6 +137,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         spine.forward = ray.GetPoint(20) - spine.position;
         spine.Rotate(Vector3.up, spineRotation);
+        OnRotate(spine.eulerAngles);
     }
 
     private void OnAnimatorIK(int layerIndex)
