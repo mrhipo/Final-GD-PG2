@@ -52,6 +52,10 @@ public class BulletNetwork : NetworkBehaviour, IUpdate {
         BulletDestroy();
         StopCoroutine(lifeTimeCoroutine);
         UpdateManager.instance.RemoveUpdate(this);
+        if (isServer)
+        {
+            NetworkServer.Destroy(gameObject);
+        }
     }
 
     Coroutine lifeTimeCoroutine;
@@ -61,23 +65,4 @@ public class BulletNetwork : NetworkBehaviour, IUpdate {
         BulletDead();
     }
 
-    public static GameObject Factory()
-    {
-        return GameObject.Instantiate((GameObject)Resources.Load("Prefabs/Spells/Bullet"));
-    }
-
-    public static void OnInit(GameObject obj)
-    {
-        obj.SetActive(true);
-        UpdateManager.instance.AddUpdate(obj.GetComponent<Bullet>());
-    }
-
-    public static void OnStore(GameObject obj)
-    {
-        obj.SetActive(false);
-        obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        UpdateManager.instance.RemoveUpdate(obj.GetComponent<Bullet>());
-    }
-
-   
 }

@@ -4788,7 +4788,7 @@ GameObject:
   - component: {fileID: 7876551473822378288}
   - component: {fileID: 5680855369939316061}
   - component: {fileID: 6567033471817552088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BulletNetwork
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
