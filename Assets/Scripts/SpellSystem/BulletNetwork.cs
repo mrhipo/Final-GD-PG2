@@ -26,6 +26,12 @@ public class BulletNetwork : NetworkBehaviour, IUpdate {
 
     }
 
+    [ClientRpc]
+    public void RpcInitialized(Vector3 init, Vector3 dest, float damageAmount)
+    {
+        Initialize(init, dest, damageAmount);
+    }
+
     void IUpdate.Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
