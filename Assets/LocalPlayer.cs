@@ -33,7 +33,6 @@ public class LocalPlayer : NetworkBehaviour
     {
         GameObject bullet = GameObject.Instantiate(pcn.bulletNetworkPrefab);
         bullet.GetComponent<BulletNetwork>().Initialize(pcn.bulletSpawn.position, pcn.bulletSpawn.position - pcn.bulletSpawn.right * 100, stats.damage);
-        bullet.GetComponent<BulletNetwork>().RpcInitialized(pcn.bulletSpawn.position, pcn.bulletSpawn.position - pcn.bulletSpawn.right * 100, stats.damage);
         NetworkServer.Spawn(bullet);
     }
 
