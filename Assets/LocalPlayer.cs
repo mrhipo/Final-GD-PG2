@@ -22,7 +22,7 @@ public class LocalPlayer : NetworkBehaviour
         }
         else
         {
-            imageHp = GetComponentInChildren<NetworkHud>().imageFill;
+            imageHp = FindObjectOfType<NetworkHud>().imageFill;
             stats.lifeObject.OnLifeChange += () =>
             {
                 imageHp.fillAmount = stats.lifeObject.hp.Percentage;
