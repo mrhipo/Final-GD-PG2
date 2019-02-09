@@ -23,6 +23,7 @@ public class LocalPlayer : NetworkBehaviour
         {
             stats.lifeObject.OnDead += OnDead;
             stats.lifeObject.OnLifeChange += OnLifeChanged;
+            Respos();
         }
         animator = GetComponentInChildren<Animator>();
         if (!isLocalPlayer)
