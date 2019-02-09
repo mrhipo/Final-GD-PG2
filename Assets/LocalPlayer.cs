@@ -19,6 +19,9 @@ public class LocalPlayer : NetworkBehaviour
         stats.IsNetworking = true;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
+        stats.lifeObject.OnDead += OnDead;
+        stats.lifeObject.OnLifeChange += OnLifeChanged;
+
         animator = GetComponentInChildren<Animator>();
         if (!isLocalPlayer)
         {
@@ -26,16 +29,25 @@ public class LocalPlayer : NetworkBehaviour
         }
         else
         {
-            stats.lifeObject.OnDead += OnDead;
 
-            imageHp = FindObjectOfType<NetworkHud>().imageFill;
-            stats.lifeObject.OnLifeChange += () =>
-            {
-                imageHp.fillAmount = stats.lifeObject.hp.Percentage;
-            };
+           
         }
     }
 
+    private void OnLifeChanged()
+    {
+        RpcUpdateLife(stats.lifeObject.hp.crrValue);
+    }
+
+    [ClientRpc]
+    public void RpcUpdateLife(float hp)
+    {
+        if (!isLocalPlayer) return;
+        if(imageHp == null)
+            imageHp = FindObjectOfType<NetworkHud>().imageFill;
+        stats.lifeObject.hp.crrValue = hp;
+       imageHp.fillAmount = stats.lifeObject.hp.Percentage;
+    }
     public void OnDead()
     {
         CmdOnDead();
@@ -50,7 +62,7 @@ public class LocalPlayer : NetworkBehaviour
 
     private IEnumerator WaitToRespawn()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(.1f);
         RpcRespawn();
         Respos();
     }
