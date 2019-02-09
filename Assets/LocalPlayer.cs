@@ -46,6 +46,8 @@ public class LocalPlayer : NetworkBehaviour
     {
         animator.SetTrigger("Dead");
         animator.enabled = true;
+        pcn.OnRealShoot -= OnShootDos;
+        pcn.OnRotate -= OnRotate;
         pcn.speed = 0;
         RpcOnDead();
     }
@@ -55,6 +57,8 @@ public class LocalPlayer : NetworkBehaviour
     {
         animator.enabled = true;
         pcn.speed = 0;
+        pcn.OnRealShoot -= OnShootDos;
+        pcn.OnRotate -= OnRotate;
         animator.SetTrigger("Dead");
     }
 
