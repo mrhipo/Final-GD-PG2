@@ -58,11 +58,12 @@ public class LocalPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcOnDead()
     {
-        animator.enabled = true;
-        pcn.speed = 0;
+        animator.enabled = !isLocalPlayer;
+        pcn.canMove = false;
         pcn.OnRealShoot -= OnShootDos;
         pcn.OnRotate -= OnRotate;
-        animator.SetTrigger("Dead");
+        if(!isLocalPlayer)
+            animator.SetTrigger("Dead");
     }
 
     [ClientRpc]
@@ -71,7 +72,8 @@ public class LocalPlayer : NetworkBehaviour
         animator.enabled = isLocalPlayer;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
-        pcn.speed = 5;
+        pcn.canMove = true;
+        stats.lifeObject.Heal(1000);
         animator.SetTrigger("StandUp");
     }
 
