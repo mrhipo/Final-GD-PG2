@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pcn: {fileID: 0}
   stats: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &7027930518257035801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +165,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114693676419106992, guid: 6a4cd2fea30f9914480ece52f1d6de2b,
+        type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 6163707054249670045}
+    - target: {fileID: 114693676419106992, guid: 6a4cd2fea30f9914480ece52f1d6de2b,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 6163707054249670045}
     - target: {fileID: 4432946633334804, guid: 6a4cd2fea30f9914480ece52f1d6de2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.18820953
@@ -208,16 +219,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114693676419106992, guid: 6a4cd2fea30f9914480ece52f1d6de2b,
-        type: 3}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 6163707054249670045}
-    - target: {fileID: 114693676419106992, guid: 6a4cd2fea30f9914480ece52f1d6de2b,
-        type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 6163707054249670045}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a4cd2fea30f9914480ece52f1d6de2b, type: 3}
 --- !u!4 &6163657135181446197 stripped
@@ -355,6 +356,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 141764084135389135, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: hp.crrValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 141764084135389135, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: hp.maxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 142304723990545631, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: mp.maxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 142304723990545631, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: mp.crrValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed,
+        type: 3}
+      propertyPath: camAim
+      value: 
+      objectReference: {fileID: 6057749921654117521}
     - target: {fileID: 1737666457663381960, guid: 52245385b686dca458821a23f97bb9ed,
         type: 3}
       propertyPath: m_AssetId.i0
@@ -444,21 +470,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ServerOnly
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed,
-        type: 3}
-      propertyPath: camAim
-      value: 
-      objectReference: {fileID: 6057749921654117521}
-    - target: {fileID: 142304723990545631, guid: 52245385b686dca458821a23f97bb9ed,
-        type: 3}
-      propertyPath: mp.maxValue
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 142304723990545631, guid: 52245385b686dca458821a23f97bb9ed,
-        type: 3}
-      propertyPath: mp.crrValue
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 142580214583925061, guid: 52245385b686dca458821a23f97bb9ed, type: 3}

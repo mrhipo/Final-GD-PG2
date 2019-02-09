@@ -58704,7 +58704,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce09dd7d246b9b245a550f076d9f8fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageFill: {fileID: 0}
+  imageFill: {fileID: 1463079124}
+--- !u!114 &1463079124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114893447248422500, guid: 1681267c98608b24792fc1ad9960b5c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1463079121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1464750543
 GameObject:
   m_ObjectHideFlags: 0

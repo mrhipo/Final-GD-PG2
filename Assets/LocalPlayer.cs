@@ -9,6 +9,8 @@ public class LocalPlayer : NetworkBehaviour
 {
     public PlayerControllerNetwork pcn;
     public PlayerStats stats;
+    public Animator animator;
+
     Image imageHp;
     public void Start()
     {
@@ -16,9 +18,11 @@ public class LocalPlayer : NetworkBehaviour
         stats = GetComponentInChildren<PlayerStats>(true);
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
+        animator = GetComponentInChildren<Animator>();
+        stats.lifeObject.OnDead += OnDead;
         if (!isLocalPlayer)
         {
-            GetComponentInChildren<Animator>().enabled = false;
+            animator.enabled = false;
         }
         else
         {
@@ -29,6 +33,25 @@ public class LocalPlayer : NetworkBehaviour
             };
         }
     }
+
+    private void OnDead()
+    {
+        CmdOnDead();
+    }
+
+    [Command]
+    private void CmdOnDead()
+    {
+        animator.SetTrigger("Dead");
+        RpcOnDead();
+    }
+
+    [ClientRpc]
+    private void RpcOnDead()
+    {
+        animator.SetTrigger("Dead");
+    }
+
 
     private void OnShootDos(Vector3 o, Vector3 d)
     {
@@ -50,6 +73,7 @@ public class LocalPlayer : NetworkBehaviour
     [ClientRpc]
     private void RpcOnRotate(Vector3 v3)
     {
+        if(pcn!=null && pcn.spine != null)
         pcn.spine.eulerAngles = v3;
     }
 
