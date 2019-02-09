@@ -25,6 +25,8 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     PlayerInput input = new PlayerInput();
 
+    public bool canMove;
+
     PlayerStats stats;
     float speedMultiplier = 1;
 
@@ -52,6 +54,7 @@ public class PlayerControllerNetwork : MonoBehaviour  , ISpeed {
 
     void Update () {
 
+        if (!canMove) return;
         //Movement
         animator.SetFloat("Horizontal", input.Horizontal);
         animator.SetFloat("Vertical", input.Vertical*speedMultiplier);

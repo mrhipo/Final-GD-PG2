@@ -49,7 +49,15 @@ public class LocalPlayer : NetworkBehaviour
         pcn.OnRealShoot -= OnShootDos;
         pcn.OnRotate -= OnRotate;
         pcn.speed = 0;
+        StartCoroutine(WaitToRespawn());
         RpcOnDead();
+    }
+
+    private IEnumerator WaitToRespawn()
+    {
+        yield return new WaitForSeconds(3);
+        RpcRespawn();
+        animator.SetTrigger("StandUp");
     }
 
     [ClientRpc]
@@ -62,6 +70,15 @@ public class LocalPlayer : NetworkBehaviour
         animator.SetTrigger("Dead");
     }
 
+    [ClientRpc]
+    public void RpcRespawn()
+    {
+        animator.enabled = false;
+        pcn.OnRealShoot += OnShootDos;
+        pcn.OnRotate += OnRotate;
+        pcn.speed = 5;
+        animator.SetTrigger("StandUp");
+    }
 
     private void OnShootDos(Vector3 o, Vector3 d)
     {
