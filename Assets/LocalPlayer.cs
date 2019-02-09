@@ -44,11 +44,6 @@ public class LocalPlayer : NetworkBehaviour
     [Command]
     public void CmdOnDead()
     {
-        animator.SetTrigger("Dead");
-        animator.enabled = true;
-        pcn.OnRealShoot -= OnShootDos;
-        pcn.OnRotate -= OnRotate;
-        pcn.speed = 0;
         StartCoroutine(WaitToRespawn());
         RpcOnDead();
     }
@@ -73,7 +68,7 @@ public class LocalPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcRespawn()
     {
-        animator.enabled = false;
+        animator.enabled = isLocalPlayer;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
         pcn.speed = 5;
@@ -93,7 +88,7 @@ public class LocalPlayer : NetworkBehaviour
     [Command]
     private void CmdOnRotate(Vector3 v3)
     {
-        pcn.spine.eulerAngles = v3;
+        //pcn.spine.eulerAngles = v3;
         RpcOnRotate(v3);
     }
 
