@@ -24,6 +24,7 @@ MonoBehaviour:
   aimIk:
     leftHand: {fileID: 6167391938732619817}
     rightHand: {fileID: 6167539965351921581}
+  canMove: 1
 --- !u!1 &6543015108663847359
 GameObject:
   m_ObjectHideFlags: 0
