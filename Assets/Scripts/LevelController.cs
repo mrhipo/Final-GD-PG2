@@ -44,7 +44,7 @@ public class LevelController : MonoBehaviour
         if (other.gameObject.layer == Layers.player.Index)
         {
             loading.SetActive(true);
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }  
     }
 

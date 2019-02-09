@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeObject : HitObject {
+public class LifeObject : HitObject
+{
 
     public List<HitObject> hitObjects;
 
@@ -12,6 +13,8 @@ public class LifeObject : HitObject {
     public Action OnDead = delegate { };
     public Action OnLifeChange = delegate { };
 
+    public bool IsInvulnerable { get; set; } 
+
     private void Start()
     {
         Active();
@@ -19,7 +22,7 @@ public class LifeObject : HitObject {
 
     public void Takedamage(float amount)
     {
-        hp.CurrentValue -= amount;
+        hp.CurrentValue -= (IsInvulnerable) ? 0 : amount;
         OnLifeChange();
         if (hp.CurrentValue == 0)
             OnDead();
@@ -58,7 +61,7 @@ public class LifeObject : HitObject {
             Desactive();
     }
 
-    public bool IsDead {  get{ return hp.CurrentValue <= 0; } }
+    public bool IsDead { get { return hp.CurrentValue <= 0; } }
 
-   
+
 }
