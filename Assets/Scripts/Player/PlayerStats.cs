@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
     private Animator animator;
 
-    bool IsNetworking;
+    public bool IsNetworking;
 
     private void Start()
     {

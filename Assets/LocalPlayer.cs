@@ -16,6 +16,7 @@ public class LocalPlayer : NetworkBehaviour
     {
         pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
         stats = GetComponentInChildren<PlayerStats>(true);
+        stats.IsNetworking = true;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
         animator = GetComponentInChildren<Animator>();
