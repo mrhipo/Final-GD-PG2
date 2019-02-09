@@ -19,7 +19,8 @@ public class LocalPlayer : NetworkBehaviour
         stats.IsNetworking = true;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
-        stats.lifeObject.OnDead += OnDead;
+        if(isServer)
+            stats.lifeObject.OnDead += OnDead;
         stats.lifeObject.OnLifeChange += OnLifeChanged;
 
         animator = GetComponentInChildren<Animator>();
