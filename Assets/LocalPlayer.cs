@@ -69,6 +69,10 @@ public class LocalPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcRespawn()
     {
+        animator.SetFloat("Horizontal",1);
+        animator.SetFloat("Vertical",1);
+        animator.SetFloat("Horizontal", 0);
+        animator.SetFloat("Vertical", 0);
         animator.enabled = isLocalPlayer;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
