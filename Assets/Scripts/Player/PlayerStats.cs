@@ -64,7 +64,8 @@ public class PlayerStats : MonoBehaviour ,IUpdate
         if(!IsNetworking)
             GlobalEvent.Instance.Dispatch(new PlayerDeadEvent());
         animator.SetTrigger("Dead");
-        StartCoroutine(WaitThenReload());
+        if (!IsNetworking)
+            StartCoroutine(WaitThenReload());
     }
 
     private IEnumerator WaitThenReload()
