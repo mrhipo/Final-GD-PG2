@@ -45,12 +45,16 @@ public class LocalPlayer : NetworkBehaviour
     public void CmdOnDead()
     {
         animator.SetTrigger("Dead");
+        animator.enabled = true;
+        pcn.speed = 0;
         RpcOnDead();
     }
 
     [ClientRpc]
     public void RpcOnDead()
     {
+        animator.enabled = true;
+        pcn.speed = 0;
         animator.SetTrigger("Dead");
     }
 
