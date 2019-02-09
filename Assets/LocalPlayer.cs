@@ -59,6 +59,10 @@ public class LocalPlayer : NetworkBehaviour
     [Command]
     public void CmdOnDead()
     {
+        GameObject blood = GameObject.Instantiate(Resources.Load <GameObject> ("Prefabs/Particles/PREF_NetworkBlood"));
+        blood.transform.position = transform.position;
+        NetworkServer.Spawn(blood);
+
         StartCoroutine(WaitToRespawn());
         RpcOnDead();
     }
