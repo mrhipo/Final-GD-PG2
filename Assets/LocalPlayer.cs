@@ -69,6 +69,7 @@ public class LocalPlayer : NetworkBehaviour
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
         pcn.canMove = true;
+        animator.SetTrigger("StandUp");
         stats.lifeObject.Heal(1000);
     }
 
