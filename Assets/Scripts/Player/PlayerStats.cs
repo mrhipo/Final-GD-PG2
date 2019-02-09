@@ -30,8 +30,6 @@ public class PlayerStats : MonoBehaviour ,IUpdate
 
         animator = GetComponent<Animator>();
 
-        
-
         GlobalEvent.Instance.AddEventHandler<StatUpgrade>(OnStatUpgraded);
         GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
         GlobalEvent.Instance.AddEventHandler<ExperiencePickedEvent>(OnExperiencePicked);

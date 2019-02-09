@@ -19,13 +19,14 @@ public class LocalPlayer : NetworkBehaviour
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
         animator = GetComponentInChildren<Animator>();
-        stats.lifeObject.OnDead += OnDead;
         if (!isLocalPlayer)
         {
             animator.enabled = false;
         }
         else
         {
+            stats.lifeObject.OnDead += OnDead;
+
             imageHp = FindObjectOfType<NetworkHud>().imageFill;
             stats.lifeObject.OnLifeChange += () =>
             {
@@ -34,20 +35,20 @@ public class LocalPlayer : NetworkBehaviour
         }
     }
 
-    private void OnDead()
+    public void OnDead()
     {
         CmdOnDead();
     }
 
     [Command]
-    private void CmdOnDead()
+    public void CmdOnDead()
     {
         animator.SetTrigger("Dead");
         RpcOnDead();
     }
 
     [ClientRpc]
-    private void RpcOnDead()
+    public void RpcOnDead()
     {
         animator.SetTrigger("Dead");
     }
