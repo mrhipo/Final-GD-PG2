@@ -52,6 +52,7 @@ public class LocalPlayer : NetworkBehaviour
     {
         yield return new WaitForSeconds(3);
         RpcRespawn();
+        Respos();
     }
 
     [ClientRpc]
@@ -69,7 +70,18 @@ public class LocalPlayer : NetworkBehaviour
         pcn.OnRotate += OnRotate;
         pcn.canMove = true;
         stats.lifeObject.Heal(1000);
+    }
+
+    public void Respos()
+    {
         transform.position = FindObjectOfType<NetworkRandomPosition>().RandomPos();
+        RpcRespos(transform.position);
+    }
+
+    [ClientRpc]
+    public void RpcRespos(Vector3 pos)
+    {
+        transform.position = pos;
     }
 
     private void OnShootDos(Vector3 o, Vector3 d)
