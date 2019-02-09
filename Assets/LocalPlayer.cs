@@ -52,33 +52,24 @@ public class LocalPlayer : NetworkBehaviour
     {
         yield return new WaitForSeconds(3);
         RpcRespawn();
-        animator.SetTrigger("StandUp");
     }
 
     [ClientRpc]
     public void RpcOnDead()
     {
-        animator.enabled = !isLocalPlayer;
         pcn.canMove = false;
         pcn.OnRealShoot -= OnShootDos;
         pcn.OnRotate -= OnRotate;
-        if(!isLocalPlayer)
-            animator.SetTrigger("Dead");
     }
 
     [ClientRpc]
     public void RpcRespawn()
     {
-        animator.SetFloat("Horizontal",1);
-        animator.SetFloat("Vertical",1);
-        animator.SetFloat("Horizontal", 0);
-        animator.SetFloat("Vertical", 0);
-        animator.enabled = isLocalPlayer;
         pcn.OnRealShoot += OnShootDos;
         pcn.OnRotate += OnRotate;
         pcn.canMove = true;
         stats.lifeObject.Heal(1000);
-        animator.SetTrigger("StandUp");
+        transform.position = FindObjectOfType<NetworkRandomPosition>().RandomPos();
     }
 
     private void OnShootDos(Vector3 o, Vector3 d)
