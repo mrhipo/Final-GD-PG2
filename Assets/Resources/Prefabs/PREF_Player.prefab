@@ -1898,6 +1898,7 @@ MonoBehaviour:
   attackSpeed: 0.5
   credits: 0
   experience: 0
+  IsNetworking: 0
   increntStatsByLevel: 0.1
   increntCreditCostByLevel: 0.75
   costUpgradeStatsSpells: 10
@@ -1946,6 +1947,12 @@ MonoBehaviour:
     coolDown: 2
     mpCost: 5
     spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
+      type: 3}
+    p: {x: 0, y: 0, z: 0}
+  - type: 3
+    coolDown: 2
+    mpCost: 5
+    spellPrefab: {fileID: 5931661776035555627, guid: 483e23f90ed68db4aaa7e95cfa362a16,
       type: 3}
     p: {x: 0, y: 0, z: 0}
   spawnPoint: {fileID: 4424028626130954}

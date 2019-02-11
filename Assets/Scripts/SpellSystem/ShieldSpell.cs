@@ -5,12 +5,11 @@ public class ShieldSpell : MonoBehaviour, ILevel
     private GameObject player;
     private LifeObject playerLifeObject;
 
-    private float initialDuration;
+    private float initialDuration = 2;
     private float duration;
 
     void Start()
     {
-        initialDuration = 2;
         player = GameObject.Find("PREF_Player");
         playerLifeObject = player.GetComponent<LifeObject>();
 
@@ -20,8 +19,6 @@ public class ShieldSpell : MonoBehaviour, ILevel
         transform.localPosition = new Vector3(0, 1, 0);
 
         FrameUtil.AfterDelay(duration, () => Destroy(this.gameObject));
-
-        Debug.Log("Duration: " + duration);
     }
 
     public void SetLevel(int level, float percentage)
