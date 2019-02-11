@@ -5,5 +5,4 @@ using UnityEngine;
 public class LevelCompletedEvent : GameEvent
 {
     public int level;
-    
 }
