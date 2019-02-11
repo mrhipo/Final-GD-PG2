@@ -25,7 +25,10 @@ public class LifeObject : HitObject
         hp.CurrentValue -= (IsInvulnerable) ? 0 : amount;
         OnLifeChange();
         if (hp.CurrentValue == 0)
+        {
+            Desactive();
             OnDead();
+        }
     }
 
     public void Heal(float amount)

@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour
     public float spawnDelay;
 
     Effects _effects;
-    bool _triggered;
+    protected bool triggered;
     int _count;
 
     public Door[] doors;
@@ -22,15 +22,10 @@ public class Portal : MonoBehaviour
         _effects.gameObject.SetActive(false);
     }
 	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-
+	
     public void SpwanEnemies()
     {
-        if (!_triggered)
+        if (!triggered)
         {
             for (int i = 0; i < doors.Length; i++)
             {
@@ -38,7 +33,7 @@ public class Portal : MonoBehaviour
             }
 
        
-            _triggered = true;
+            triggered = true;
             _effects.gameObject.SetActive(true);
             SoundManager.instance.PlayFX("Portal Activated");
 
@@ -47,11 +42,15 @@ public class Portal : MonoBehaviour
     }
 
     Vector3 offset = Vector3.up * .2f;
-    void Spawn()
+    public virtual void Spawn()
     {
         var enemyStats = Instantiate(enemyType[UnityEngine.Random.Range(0, enemyType.Count)]).GetComponent<EnemyStats>();
         enemyStats.lifeObject.OnDead += OnKilledEnemy;
-        enemyStats.transform.position = transform.position + offset;
+        enemyStats.lifeObject.OnDead += () =>
+        {
+            enemyStats.lifeObject.OnDead -= OnKilledEnemy;
+        };
+        enemyStats.agent.Warp(transform.position + offset);
     }
 
     void ClosePortal()
@@ -70,7 +69,7 @@ public class Portal : MonoBehaviour
         }
     }
 
-    void OnKilledEnemy()
+    public virtual void OnKilledEnemy()
     {
         _count++;
         if (_count >= amountToSpwan)
