@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class CommandLineConsole : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class CommandLineConsole : MonoBehaviour
         actionMap.Add("addxp", AddXp);
         actionMap.Add("addcredits", AddCredits);
         actionMap.Add("ihavethepower", AllSkills);
+        actionMap.Add("restart", RestartLevel);
     }
 
     private void AllSkills(string obj)
@@ -62,15 +64,20 @@ public class CommandLineConsole : MonoBehaviour
             GlobalEvent.Instance.Dispatch<ExperiencePickedEvent>(new ExperiencePickedEvent() { amount = val });
     }
 
+    private void RestartLevel(string obj)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void SendCommand()
     {
-            var twoValues = input.text.Split(' ');
-            var key = twoValues.First().ToLower();
-            if (actionMap.ContainsKey(key))
-            {
+        var twoValues = input.text.Split(' ');
+        var key = twoValues.First().ToLower();
+        if (actionMap.ContainsKey(key))
+        {
 
-                actionMap[key](input.text);
-                input.text = "";
-            }
+            actionMap[key](input.text);
+            input.text = "";
+        }
     }
 }

@@ -2513,7 +2513,7 @@ MonoBehaviour:
 
     ihavethepower desc: Unlock all spells.
 
-'
+    restart: Restart current level.'
 --- !u!1 &3767255790075634176
 GameObject:
   m_ObjectHideFlags: 0
