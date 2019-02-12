@@ -19,6 +19,8 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public EnemyStates currentState;
     [HideInInspector]
     public LifeObject lifeObject;
+    [HideInInspector]
+    public bool spawned;
 
     public int experience;
 

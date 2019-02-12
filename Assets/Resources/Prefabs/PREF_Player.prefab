@@ -1892,10 +1892,10 @@ MonoBehaviour:
   mp:
     crrValue: 100
     maxValue: 100
-  mpRecovery: 1
+  mpRecovery: 0.5
   speed: 5
   damage: 1
-  attackSpeed: 0.5
+  attackSpeed: 1
   credits: 0
   experience: 0
   IsNetworking: 0
@@ -1932,26 +1932,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableSpells:
   - type: 0
-    coolDown: 2
-    mpCost: 5
+    coolDown: 10
+    mpCost: 20
     spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
       type: 3}
     p: {x: 0, y: 0, z: 0}
   - type: 1
-    coolDown: 2
-    mpCost: 5
+    coolDown: 5
+    mpCost: 10
     spellPrefab: {fileID: 1031130959053874, guid: 2eb8d8d8025e34940ad6ebc78ff75c24,
       type: 3}
     p: {x: 0, y: 0, z: 0}
   - type: 2
-    coolDown: 2
-    mpCost: 5
+    coolDown: 4
+    mpCost: 10
     spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
       type: 3}
     p: {x: 0, y: 0, z: 0}
   - type: 3
-    coolDown: 2
-    mpCost: 5
+    coolDown: 7
+    mpCost: 10
     spellPrefab: {fileID: 5931661776035555627, guid: 483e23f90ed68db4aaa7e95cfa362a16,
       type: 3}
     p: {x: 0, y: 0, z: 0}
@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e66e59424a5b741b36160882680c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
 --- !u!1 &1709749523952050
 GameObject:
   m_ObjectHideFlags: 0

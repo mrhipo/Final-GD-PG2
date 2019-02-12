@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2588e54b438377a45aa06e6893b546fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 5
+  amount: 10
 --- !u!1 &1489249773425436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,12 +1798,13 @@ MonoBehaviour:
   fsm: {fileID: 0}
   currentState: 0
   lifeObject: {fileID: 0}
-  experience: 0
-  attackRate: 1
-  attackRange: 1.5
+  spawned: 0
+  experience: 10
+  attackRate: 1.5
+  attackRange: 2
   specialAttackRate: 0
   sightDistance: 10
-  speed: 4
+  speed: 5
   basicDamageGameObject: {fileID: 0}
   basicDamage: 0
   specialDamageGameObject: {fileID: 0}
@@ -1888,7 +1889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88832526f887784439239f2bc5c100c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 11
 --- !u!1 &1739161007325550
 GameObject:
   m_ObjectHideFlags: 0
