@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SavePlayer : SaveObject
 {
@@ -17,7 +18,7 @@ public class SavePlayer : SaveObject
         var playerm = GetValue<PlayerMemento>();
         if (playerm != null)
         {
-            stats.transform.position = playerm.position;
+            stats.GetComponent<NavMeshAgent>().Warp(playerm.position);
             stats.credits = playerm.credits;
             stats.experience = playerm.experience;
             if(playerm.fire)

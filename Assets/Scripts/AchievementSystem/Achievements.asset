@@ -3,13 +3,20 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80b666460036b4cdfba2ab8431f4557a, type: 3}
   m_Name: Achievements
   m_EditorClassIdentifier: 
-  allAchievements: []
-  achievementPopUp: {fileID: 0}
+  allAchievements:
+  - {fileID: 11400000, guid: 54a4cf5b34e564e5d99c51369b320f29, type: 2}
+  - {fileID: 11400000, guid: 0e073968a30f14403b14bada11d3dfcb, type: 2}
+  - {fileID: 11400000, guid: 4b96e307050504e4dae68f78cb71fc14, type: 2}
+  - {fileID: 11400000, guid: 6fe31d02c52d04c3a99dfc9d31dbc0b0, type: 2}
+  - {fileID: 11400000, guid: 2a6a18591fe2e4f30ab34c185f7d18ba, type: 2}
+  achievementPopUp: {fileID: 114117586966762782, guid: dccc3750b86e945dc87e6c71e1f4ae94,
+    type: 3}

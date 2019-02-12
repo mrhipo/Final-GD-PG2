@@ -93,6 +93,7 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     void IUpdate.Update()
     {
         mp.CurrentValue += Time.deltaTime * mpRecovery;
+        OnMpChange();
     }
 
     private void OnStatUpgraded(StatUpgrade gameData)
