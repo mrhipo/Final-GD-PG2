@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Spell : IUpdate
@@ -10,6 +11,8 @@ public class Spell : IUpdate
     public bool CanUseSpell { get; private set; }
 
     public GameObject spellPrefab;
+
+    public Image uiSprite;
 
     public bool IsBlocked { get; private set; }
 
@@ -34,7 +37,7 @@ public class Spell : IUpdate
         GameObject spell = UnityEngine.Object.Instantiate(spellPrefab, position, Quaternion.identity);
         spell.transform.forward = GetHitPoint() - position;
 
-        spell.GetComponent<ILevel>().SetLevel(PlayerPrefs.GetInt(type+"-Level", 0), 1.1f);
+        spell.GetComponent<ILevel>().SetLevel(PlayerPrefs.GetInt(type + "-Level", 0), 1.1f);
 
         Debug.Log(type + "-Level " + PlayerPrefs.GetInt(type + "-Level", 0));
 
@@ -66,6 +69,7 @@ public class Spell : IUpdate
     public void Update()
     {
         timer += Time.deltaTime;
+        uiSprite.fillAmount = timer / coolDown;
 
         if (timer >= coolDown)
         {
