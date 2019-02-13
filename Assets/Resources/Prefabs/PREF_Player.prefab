@@ -1901,6 +1901,13 @@ MonoBehaviour:
   IsNetworking: 0
   increntStatsByLevel: 0.1
   increntCreditCostByLevel: 0.75
+  currentHpLevel: 0
+  currentMpLevel: 0
+  currentMpRecoveryLevel: 0
+  currentSpeedLevel: 0
+  fireLevel: 0
+  freezeLevel: 0
+  voltLevel: 0
   costUpgradeStatsSpells: 10
 --- !u!114 &114984833895909736
 MonoBehaviour:
@@ -1955,7 +1962,7 @@ MonoBehaviour:
   - type: 3
     coolDown: 15
     mpCost: 20
-    spellPrefab: {fileID: 5931661776035555627, guid: 483e23f90ed68db4aaa7e95cfa362a16,
+    spellPrefab: {fileID: 6967797211912246286, guid: 6f30947ac5178db48a529c83d20eee0e,
       type: 3}
     uiSprite: {fileID: 0}
     p: {x: 0, y: 0, z: 0}

@@ -27,7 +27,7 @@ public class Dron : MonoBehaviour, IUpdate
 
     void IUpdate.Update()
     {
-        if (agent.remainingDistance <= 0)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.isStopped = true;
             FindWayPoint();

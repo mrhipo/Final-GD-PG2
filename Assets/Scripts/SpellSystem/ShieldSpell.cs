@@ -14,8 +14,8 @@ public class ShieldSpell : MonoBehaviour, ILevel
         playerLifeObject = player.GetComponent<LifeObject>();
 
         playerLifeObject.IsInvulnerable = true;
-
         transform.parent = player.transform;
+
         transform.localPosition = new Vector3(0, 1, 0);
 
         FrameUtil.AfterDelay(duration, () => Destroy(this.gameObject));

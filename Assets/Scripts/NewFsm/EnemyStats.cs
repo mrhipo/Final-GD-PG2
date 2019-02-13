@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class EnemyStats : MonoBehaviour ,ISpeed{
+public class EnemyStats : MonoBehaviour, ISpeed
+{
 
     [HideInInspector]
     public NavMeshAgent agent;
@@ -40,7 +41,7 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     [HideInInspector]
     public bool canAttack = true;
 
-    
+
 
     private void Awake()
     {
@@ -69,6 +70,7 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
 
         fsm.SetTrigger("Dead");
         agent.isStopped = true;
+        agent.enabled = false; //
         GetComponent<Collider>().enabled = false;
         GlobalEvent.Instance.Dispatch<ExperiencePickedEvent>(new ExperiencePickedEvent() { amount = experience });
     }
@@ -76,7 +78,7 @@ public class EnemyStats : MonoBehaviour ,ISpeed{
     public Vector3 TargetPosition { get { return target.position; } }
     public Vector3 Position { get { return transform.position; } }
     public float TargetDistance { get { return Vector3.Distance(TargetPosition, Position); } }
-    public Vector3 TargetDirection { get { return TargetPosition -  Position; } }
+    public Vector3 TargetDirection { get { return TargetPosition - Position; } }
 
     public float Speed
     {
