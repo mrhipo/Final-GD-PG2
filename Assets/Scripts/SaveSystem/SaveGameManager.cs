@@ -40,8 +40,10 @@ public class SaveGameManager : MonoBehaviour
 
     private void OnLevelStart()
     {
-        if(playerMemento != null)
+        if(playerMemento != null){
             FindObjectOfType<SavePlayer>().Load(playerMemento,false);
+            playerMemento = null;
+        }
     }
 
     private void OnCompleteLevel()
