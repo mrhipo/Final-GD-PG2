@@ -22,6 +22,14 @@ MonoBehaviour:
     loopable: 1
     mixer: {fileID: 243068067461577414, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   sounds:
+  - name: Explosion
+    clip: {fileID: 8300000, guid: d871ec322421c794d9c9e5b0f7a6921c, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loopable: 0
+    mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   - name: Console Activated
     clip: {fileID: 8300000, guid: 98fbd7dcc62b7414998774ecf6cbd264, type: 3}
     volume: 1

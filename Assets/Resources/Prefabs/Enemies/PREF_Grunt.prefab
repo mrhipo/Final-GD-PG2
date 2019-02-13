@@ -2251,14 +2251,15 @@ MonoBehaviour:
   fsm: {fileID: 0}
   currentState: 0
   lifeObject: {fileID: 0}
-  experience: 10
-  attackRate: 3
-  attackRange: 1.5
+  spawned: 0
+  experience: 30
+  attackRate: 1
+  attackRange: 1
   specialAttackRate: 5
-  sightDistance: 10
-  speed: 3
+  sightDistance: 20
+  speed: 4
   basicDamageGameObject: {fileID: 624343149}
-  basicDamage: 100
+  basicDamage: 15
   specialDamageGameObject: {fileID: 7513719142703783440}
   specialDamage: 200
   canAttack: 1
@@ -2276,8 +2277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjects: []
   hp:
-    crrValue: 5
-    maxValue: 5
+    crrValue: 20
+    maxValue: 20
 --- !u!114 &180372274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,7 +2362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88832526f887784439239f2bc5c100c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
 --- !u!1 &1954366418031060
 GameObject:
   m_ObjectHideFlags: 0

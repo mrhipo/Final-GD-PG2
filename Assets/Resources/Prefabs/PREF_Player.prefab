@@ -1893,7 +1893,7 @@ MonoBehaviour:
     crrValue: 100
     maxValue: 100
   mpRecovery: 0.5
-  speed: 5
+  speed: 4
   damage: 1
   attackSpeed: 1
   credits: 0
@@ -1936,24 +1936,28 @@ MonoBehaviour:
     mpCost: 20
     spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
       type: 3}
+    uiSprite: {fileID: 0}
     p: {x: 0, y: 0, z: 0}
   - type: 1
-    coolDown: 5
-    mpCost: 10
+    coolDown: 7
+    mpCost: 15
     spellPrefab: {fileID: 1031130959053874, guid: 2eb8d8d8025e34940ad6ebc78ff75c24,
       type: 3}
+    uiSprite: {fileID: 0}
     p: {x: 0, y: 0, z: 0}
   - type: 2
-    coolDown: 4
-    mpCost: 10
+    coolDown: 6
+    mpCost: 15
     spellPrefab: {fileID: 1021645480995152, guid: 063ce964a4a1e034e859a4c7bfe22f83,
       type: 3}
+    uiSprite: {fileID: 0}
     p: {x: 0, y: 0, z: 0}
   - type: 3
-    coolDown: 7
-    mpCost: 10
+    coolDown: 15
+    mpCost: 20
     spellPrefab: {fileID: 5931661776035555627, guid: 483e23f90ed68db4aaa7e95cfa362a16,
       type: 3}
+    uiSprite: {fileID: 0}
     p: {x: 0, y: 0, z: 0}
   spawnPoint: {fileID: 4424028626130954}
 --- !u!95 &95333634271806114

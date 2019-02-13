@@ -5,7 +5,7 @@ public class ShieldSpell : MonoBehaviour, ILevel
     private GameObject player;
     private LifeObject playerLifeObject;
 
-    private float initialDuration = 2;
+    private float initialDuration = 5;
     private float duration;
 
     void Start()
