@@ -65,8 +65,6 @@ public class UpgradeEventHandler : MonoBehaviour {
         if(Time.time - initTime > levelTime)
             currentStatsValue -= levelTimeReward;
 
-        print("Upgrade Skill " + currentStatsValue);
-
         GlobalEvent.Instance.RemoveEventHandler<LevelCompletedEvent>(OnLevelComplete);
     }
 

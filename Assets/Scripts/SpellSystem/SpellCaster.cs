@@ -27,7 +27,18 @@ public class SpellCaster : MonoBehaviour, IUpdate
         if (_playersStats.experience >= _playersStats.GetCostUpgrade(GetSpellLevel(gameData.type)))
         {
             _playersStats.experience -= _playersStats.GetCostUpgrade(GetSpellLevel(gameData.type));
-            PlayerPrefs.SetInt(gameData.type+"-Level", 1+ PlayerPrefs.GetInt(gameData.type + "-Level", 0));
+            switch (gameData.type)
+            {
+                case SpellType.Fire:
+                    _playersStats.fireLevel++;
+                    break;
+                case SpellType.Freeze:
+                    _playersStats.freezeLevel++;
+                    break;
+                case SpellType.Volt:
+                    _playersStats.voltLevel++;
+                    break;
+            }
         }
     }
 
@@ -36,11 +47,11 @@ public class SpellCaster : MonoBehaviour, IUpdate
         switch(type)
         {
             case SpellType.Fire:
-                return PlayerPrefs.GetInt("Fire-Level", 0);
+                return _playersStats.fireLevel;
             case SpellType.Freeze:
-                return PlayerPrefs.GetInt("Freeze-Level", 0);
+                return _playersStats.freezeLevel;
             case SpellType.Volt:
-                return PlayerPrefs.GetInt("Volt-Level", 0);
+                return _playersStats.voltLevel;
             default:
                 return 0;
         }
@@ -50,17 +61,9 @@ public class SpellCaster : MonoBehaviour, IUpdate
     {
         //Remove this line if we wanna keep the level
         //ResetSpellsLevels();
-
         foreach (var item in _availableSpells)
             item.Init();
        
-    }
-
-    private void ResetSpellsLevels()
-    {
-        PlayerPrefs.SetInt("Fire-Level", 0);
-        PlayerPrefs.SetInt("Freeze-Level", 0);
-        PlayerPrefs.SetInt("Volt-Level", 0);
     }
 
     public void UseSpell(Spell spell)
@@ -70,7 +73,7 @@ public class SpellCaster : MonoBehaviour, IUpdate
         if (spell.CanUseSpell && spell.mpCost <= _playersStats.mp.CurrentValue)
         {
             SendAnalytics(spell.type);
-            spell.UseSpell(spawnPoint.position);
+            spell.UseSpell(spawnPoint.position, GetSpellLevel(spell.type));
             _playersStats.ConsumeMp(spell.mpCost);
         }
     }

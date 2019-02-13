@@ -44,8 +44,10 @@ public class LevelController : MonoBehaviour
         if (other.gameObject.layer == Layers.player.Index)
         {
             loading.SetActive(true);
+            GlobalEvent.Instance.Dispatch(new LevelCompletedEvent { level = 1 });
             SceneManager.LoadScene(3);
-        }  
+
+        }
     }
 
 }

@@ -37,11 +37,18 @@ public class AchievementsEventHandler : MonoBehaviour
 
         GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnLevelCompleteTimer);
 
+        GlobalEvent.Instance.AddEventHandler<RestartStatsEvent>(OnRestartGame);
 
         achievements.Init();
 	}
 
-	void OnDestroy()
+    private void OnRestartGame()
+    {
+        foreach (var item in achievements.allAchievements)
+            item.completed = false;
+    }
+
+    void OnDestroy()
 	{
 		GlobalEvent.Instance.RemoveEventHandler<FinderCollectEvent>(OnFinderCollect);
 		

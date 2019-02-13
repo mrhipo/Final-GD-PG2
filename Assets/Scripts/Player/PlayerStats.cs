@@ -120,11 +120,16 @@ public class PlayerStats : MonoBehaviour ,IUpdate
     [Tooltip("For each level the cost will increment by this percentage.")]
     public float increntCreditCostByLevel = .75f;
 
+    [Header("StatsLevel")]
+    public int currentHpLevel;
+    public int currentMpLevel;
+    public int currentMpRecoveryLevel;
+    public int currentSpeedLevel;
 
-    private int currentHpLevel;
-    private int currentMpLevel;
-    private int currentMpRecoveryLevel;
-    private int currentSpeedLevel;
+    [Header("SpellsLevel")]
+    public int fireLevel;
+    public int freezeLevel;
+    public int voltLevel;
 
     private float initialHp;
     private float initialMp;
@@ -144,25 +149,17 @@ public class PlayerStats : MonoBehaviour ,IUpdate
         initialMpRecovery = mpRecovery;
         initialSpeed = speed;
 
-        currentHpLevel = PlayerPrefs.GetInt("LevelStats-HP", 0);
-        currentMpLevel = PlayerPrefs.GetInt("LevelStats-MP", 0);
-        currentMpRecoveryLevel = PlayerPrefs.GetInt("LevelStats-MP-Recovery", 0);
-        currentSpeedLevel = PlayerPrefs.GetInt("LevelStats-SPEED", 0);
-
         //Debug.Log($"Levels:  hp:{currentHpLevel} mp:{currentMpLevel} MPrecovery:{currentMpRecoveryLevel} speed:{currentSpeedLevel}");
 
+        RefreshStats();
+    }
+
+    public void RefreshStats()
+    {
         Set_HP_Level(currentHpLevel);
         Set_MP_Level(currentMpLevel);
         Set_MP_Recovery_Level(currentMpRecoveryLevel);
         Set_Speed_Level(currentSpeedLevel);
-    }
-
-    private void ResetStats()
-    {
-        PlayerPrefs.SetInt("LevelStats-HP", 0);
-        PlayerPrefs.SetInt("LevelStats-MP", 0);
-        PlayerPrefs.SetInt("LevelStats-MP-Recovery", 0);
-        PlayerPrefs.SetInt("LevelStats-SPEED", 0);
     }
 
     private void Set_HP_Level(int level)

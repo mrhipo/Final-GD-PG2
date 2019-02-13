@@ -29,17 +29,15 @@ public class Spell : IUpdate
     private void OnNewSkill(NewSkillEvent newSkillEvent)
     {
         if (newSkillEvent.type == type)
-            IsBlocked = !IsBlocked;
+            IsBlocked = false;
     }
 
-    public void UseSpell(Vector3 position)
+    public void UseSpell(Vector3 position, int level)
     {
         GameObject spell = UnityEngine.Object.Instantiate(spellPrefab, position, Quaternion.identity);
         spell.transform.forward = GetHitPoint() - position;
 
-        spell.GetComponent<ILevel>().SetLevel(PlayerPrefs.GetInt(type + "-Level", 0), 1.1f);
-
-        Debug.Log(type + "-Level " + PlayerPrefs.GetInt(type + "-Level", 0));
+        spell.GetComponent<ILevel>().SetLevel(level, 1.1f);
 
         CanUseSpell = false;
         timer = 0;

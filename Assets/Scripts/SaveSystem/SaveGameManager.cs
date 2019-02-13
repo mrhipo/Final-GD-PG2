@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,8 @@ public class SaveGameManager : MonoBehaviour
     public static Dictionary<int, string> pokePref = new Dictionary<int, string>();
 
     public static SaveObject[] allSaveObjects;
+
+    public static PlayerMemento playerMemento = null;
 
     static bool canSaveGame = false;
     private void Start()
@@ -31,7 +34,19 @@ public class SaveGameManager : MonoBehaviour
             canSaveGame = true;
         }
 
+        GlobalEvent.Instance.AddEventHandler<LevelCompletedEvent>(OnCompleteLevel);
+        GlobalEvent.Instance.AddEventHandler<LevelStartEvent>(OnLevelStart);
+    }
 
+    private void OnLevelStart()
+    {
+        if(playerMemento != null)
+            FindObjectOfType<SavePlayer>().Load(playerMemento,false);
+    }
+
+    private void OnCompleteLevel()
+    {
+        playerMemento = FindObjectOfType<SavePlayer>().GetPlayerMemento();
     }
 
     private IEnumerator ReLoadGame()

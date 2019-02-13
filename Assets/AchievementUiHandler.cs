@@ -11,31 +11,42 @@ public class AchievementUiHandler : MonoBehaviour
     public GameObject finder;
     public GameObject theFlash;
 
+    AchievementsEventHandler achievementsEventHandler;
     // Start is called before the first frame update
     void Start()
     {
+        if (achievementsEventHandler == null)
+            achievementsEventHandler = FindObjectOfType<AchievementsEventHandler>();
         GlobalEvent.Instance.AddEventHandler<AchievementCompleteEvent>(OnAchievementComplete);
     }
-
+    
     private void OnAchievementComplete(AchievementCompleteEvent a)
     {
-        switch (a.type)
+        UpdateHud();
+    }
+
+    public void UpdateHud()
+    {
+        foreach (var item in achievementsEventHandler.achievements.allAchievements)
         {
-            case AchievementType.GodMode:
-                godMode.SetActive(true);
-                break;
-            case AchievementType.Finder:
-                finder.SetActive(true);
-                break;
-            case AchievementType.Parrillero:
-                parillero.SetActive(true);
-                break;
-            case AchievementType.ShellShock:
-                shellShock.SetActive(true);
-                break;
-            case AchievementType.Flash:
-                theFlash.SetActive(true);
-                break;
+            switch (item.type)
+            {
+                case AchievementType.GodMode:
+                    godMode.SetActive(item.completed);
+                    break;
+                case AchievementType.Finder:
+                    finder.SetActive(item.completed);
+                    break;
+                case AchievementType.Parrillero:
+                    parillero.SetActive(item.completed);
+                    break;
+                case AchievementType.ShellShock:
+                    shellShock.SetActive(item.completed);
+                    break;
+                case AchievementType.Flash:
+                    theFlash.SetActive(item.completed);
+                    break;
+            }
         }
     }
 
@@ -43,6 +54,11 @@ public class AchievementUiHandler : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
+        {
+            if(achievementsEventHandler == null)
+                achievementsEventHandler = FindObjectOfType<AchievementsEventHandler>();
             transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
+            UpdateHud();
+        }
     }
 }

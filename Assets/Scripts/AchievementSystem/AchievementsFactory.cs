@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Achievements",menuName = "Achievement/CreateAll",order = 1)]
@@ -32,14 +31,31 @@ public class AchievementsFactory : ScriptableObject
 	{
 		foreach (var item in allAchievements)
 		{
-			if (!item.CheckComplete(type)) continue;
+			if (!item.IsType(type)) continue;
+            item.completed = true;
 			achievementsQueue.Enqueue(item);
 			if(processingQueueCoroutine == null)
 				processingQueueCoroutine = CoroutineManager.Instance.RunCoroutine(ProcessQueue());
 		}
 	}
 
-	private IEnumerator ProcessQueue()
+    public void MakeComplete(AchievementType type)
+    {
+        foreach (var item in allAchievements)
+        {
+            if (!item.IsType(type)) continue;
+            item.completed = true;
+        }
+    }
+    public bool CheckComplete(AchievementType type)
+    {
+        foreach (var item in allAchievements)
+            if (item.type == type)
+                return item.completed;
+        return false;
+    }
+
+    private IEnumerator ProcessQueue()
 	{
 		do
 		{

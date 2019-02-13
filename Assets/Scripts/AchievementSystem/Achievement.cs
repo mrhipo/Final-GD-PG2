@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Achievement-xxxx",menuName = "Achievement/CreateAchievement")]
 public class Achievement : ScriptableObject
@@ -11,7 +9,7 @@ public class Achievement : ScriptableObject
 	public string text;
 	public bool completed;
 	
-	public bool CheckComplete(AchievementType t)
+	public bool IsType(AchievementType t)
 	{
 		return t == type;
 	}

@@ -42,14 +42,14 @@ public class UI_Upgrade : MonoBehaviour
     {
         DisableBlockedSpells();
         
-        currentHpLevel = PlayerPrefs.GetInt("LevelStats-HP", 0);
-        currentMpLevel = PlayerPrefs.GetInt("LevelStats-MP", 0);
-        currentMpRecoveryLevel = PlayerPrefs.GetInt("LevelStats-MP-Recovery", 0);
-        currentSpeedLevel = PlayerPrefs.GetInt("LevelStats-SPEED", 0);
+        currentHpLevel = stat.currentHpLevel;
+        currentMpLevel = stat.currentMpLevel;
+        currentMpRecoveryLevel = stat.currentMpRecoveryLevel;
+        currentSpeedLevel = stat.currentSpeedLevel;
 
-        currentFireLevel = PlayerPrefs.GetInt("Fire-Level", 0);
-        currentFreezeLevel = PlayerPrefs.GetInt("Freeze-Level", 0);
-        currentVoltLevel = PlayerPrefs.GetInt("Volt-Level", 0);
+        currentFireLevel = stat.fireLevel;
+        currentFreezeLevel = stat.freezeLevel;
+        currentVoltLevel = stat.voltLevel;
 
         creditsTxt.text = "Credits: " + stat.credits;
         experienceTxt.text = "Experience: " + stat.experience;
