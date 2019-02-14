@@ -7,7 +7,7 @@
   "21": "{\"boolean\":false}",
   "14": "{\"boolean\":false}",
   "17": "{\"boolean\":false}",
-  "1": "{\"position\":{\"x\":0.031140081584453584,\"y\":-0.1371413618326187,\"z\":41.162471771240237},\"credits\":0,\"experience\":0,\"fire\":false,\"freeze\":false,\"volt\":false,\"shield\":false,\"parrillero\":false,\"flash\":false,\"godMode\":true,\"finder\":false,\"shellShock\":false,\"currentHpLevel\":0,\"currentMpLevel\":0,\"currentMpRecoveryLevel\":0,\"currentSpeedLevel\":0,\"fireLevel\":0,\"freezeLevel\":0,\"voltLevel\":0}",
+  "1": "{\"position\":{\"x\":0.028729727491736413,\"y\":-0.1370997577905655,\"z\":41.13765335083008},\"credits\":0,\"experience\":0,\"fire\":false,\"freeze\":false,\"volt\":false,\"shield\":false,\"parrillero\":true,\"flash\":false,\"godMode\":true,\"finder\":false,\"shellShock\":true,\"currentHpLevel\":0,\"currentMpLevel\":0,\"currentMpRecoveryLevel\":0,\"currentSpeedLevel\":0,\"fireLevel\":0,\"freezeLevel\":0,\"voltLevel\":0}",
   "28": "{\"boolean\":false}",
   "12": "{\"boolean\":false}",
   "16": "{\"boolean\":false}",
