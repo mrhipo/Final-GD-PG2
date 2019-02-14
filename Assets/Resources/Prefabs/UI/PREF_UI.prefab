@@ -11305,7 +11305,7 @@ PrefabInstance:
       propertyPath: m_Text
       value: Stats (K)
       objectReference: {fileID: 0}
-    - target: {fileID: 821910960324219843, guid: de5c24683ad80e24ab3a7a5b156314a3,
+    - target: {fileID: 821910959040858616, guid: de5c24683ad80e24ab3a7a5b156314a3,
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
@@ -11323,7 +11323,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: e48d936a8a42c8e47b85bfec1753ca78,
         type: 3}
-    - target: {fileID: 821910959040858616, guid: de5c24683ad80e24ab3a7a5b156314a3,
+    - target: {fileID: 821910960324219843, guid: de5c24683ad80e24ab3a7a5b156314a3,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e48d936a8a42c8e47b85bfec1753ca78,
+        type: 3}
+    - target: {fileID: 2179965196071977656, guid: de5c24683ad80e24ab3a7a5b156314a3,
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
@@ -11341,19 +11347,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: e48d936a8a42c8e47b85bfec1753ca78,
         type: 3}
-    - target: {fileID: 8402629045855142575, guid: de5c24683ad80e24ab3a7a5b156314a3,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e48d936a8a42c8e47b85bfec1753ca78,
-        type: 3}
-    - target: {fileID: 2179965196071977656, guid: de5c24683ad80e24ab3a7a5b156314a3,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e48d936a8a42c8e47b85bfec1753ca78,
-        type: 3}
     - target: {fileID: 5449796989035624676, guid: de5c24683ad80e24ab3a7a5b156314a3,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e48d936a8a42c8e47b85bfec1753ca78,
+        type: 3}
+    - target: {fileID: 8402629045855142575, guid: de5c24683ad80e24ab3a7a5b156314a3,
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 

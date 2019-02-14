@@ -20,7 +20,6 @@ public class Level3Controller : MonoBehaviour
     private void OnDroneDestroyed()
     {
         dronLifeObject.OnDead -= OnDroneDestroyed;
-
         barrier.SetActive(false);
         FindObjectOfType<HudEventHandler>().missionObjetive.text = "Destroy the Main Core";
     }

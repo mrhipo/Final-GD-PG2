@@ -19,7 +19,8 @@ public class Dron : MonoBehaviour, IUpdate
         agent.speed = speed;
 
         _lifeObject = GetComponent<LifeObject>();
-        _lifeObject.OnDead += () => { };
+        //_lifeObject.OnDead += () => { };
+        _lifeObject.OnDead += OnDead;
 
         FindWayPoint();
         UpdateManager.instance.AddUpdate(this);
