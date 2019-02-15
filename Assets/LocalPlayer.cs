@@ -11,10 +11,7 @@ public class LocalPlayer : NetworkBehaviour
     public PlayerStats stats;
     public Animator animator;
 
-    public Text score;
-    public static int otherScore;
-    public static int myScore;
-
+ 
     Image imageHp;
     public void Start()
     {
@@ -76,13 +73,6 @@ public class LocalPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcOnDead()
     {
-        if (isLocalPlayer)
-            otherScore++;
-        else
-            myScore++;
-
-        Debug.Log("my : " + myScore + " other: " + otherScore);
-
         pcn.canMove = false;
         pcn.OnRealShoot -= OnShootDos;
         pcn.OnRotate -= OnRotate;
