@@ -10,7 +10,14 @@ public class MainMenu : MonoBehaviour
     public GameObject credtis;
 
     public AudioSource click;
-	
+
+    GameObject multiplayer;
+    private void Start()
+    {
+        multiplayer = FindObjectOfType<MainMenuNetworkHud>().gameObject;
+        multiplayer.SetActive(false);
+
+    }
     public void NewGame()
     {
         click.Play();
@@ -23,6 +30,7 @@ public class MainMenu : MonoBehaviour
     {
         click.Play();
         //TO DO
+        multiplayer.gameObject.SetActive(!multiplayer.activeSelf);
     }
 
     public void Credits()
