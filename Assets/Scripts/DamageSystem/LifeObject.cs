@@ -42,7 +42,7 @@ public class LifeObject : HitObject
         Takedamage(damage.Amount);
     }
 
-    private void Active()
+    public void Active()
     {
         OnTakeDamage += OnTakeDamage_;
         foreach (var item in hitObjects)

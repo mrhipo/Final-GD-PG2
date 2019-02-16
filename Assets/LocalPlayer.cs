@@ -11,13 +11,16 @@ public class LocalPlayer : NetworkBehaviour
     public PlayerStats stats;
     public Animator animator;
 
+
     public Text score;
     public static int otherScore;
     public static int myScore;
 
+    private string baseScore;
     Image imageHp;
     public void Start()
     {
+        baseScore = "You :{0}\nOtherGuy : {1}";
         pcn = GetComponentInChildren<PlayerControllerNetwork>(true);
         stats = GetComponentInChildren<PlayerStats>(true);
         stats.IsNetworking = true;
@@ -61,7 +64,7 @@ public class LocalPlayer : NetworkBehaviour
         GameObject blood = GameObject.Instantiate(Resources.Load <GameObject> ("Prefabs/Particles/PREF_NetworkBlood"));
         blood.transform.position = pcn.transform.position;
         NetworkServer.Spawn(blood);
-
+        stats.lifeObject.Active();
         StartCoroutine(WaitToRespawn());
         RpcOnDead();
     }
@@ -81,7 +84,7 @@ public class LocalPlayer : NetworkBehaviour
         else
             myScore++;
 
-        Debug.Log("my : " + myScore + " other: " + otherScore);
+        FindObjectOfType<NetworkHudManager>().scoreText.text = String.Format(baseScore, myScore, otherScore);
 
         pcn.canMove = false;
         pcn.OnRealShoot -= OnShootDos;
