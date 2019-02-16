@@ -866,19 +866,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.5041906
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12351488
+      value: 0.09066485
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.35882163
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9923427
+      value: -0.7802683
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_RootOrder
@@ -898,15 +898,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 14.19
+      value: 24.880001
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 58.417004
       objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 32.857002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 474fef6854aa0844fbc8d38cf7753546, type: 3}
@@ -3929,3 +3929,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034428674}
   m_CullTransparentMesh: 0
+--- !u!1 &2059946905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100072, guid: 474fef6854aa0844fbc8d38cf7753546,
+    type: 3}
+  m_PrefabInstance: {fileID: 756748041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2059946907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059946905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e73af798fb808439b9e62df7c6d2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.05
