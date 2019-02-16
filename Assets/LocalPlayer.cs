@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
@@ -103,17 +104,14 @@ public class LocalPlayer : NetworkBehaviour
 
     public void Respos()
     {
-        transform.position = FindObjectOfType<NetworkRandomPosition>().RandomPos();
+        transform.GetComponentInChildren<NavMeshAgent>().Warp(FindObjectOfType<NetworkRandomPosition>().RandomPos());
         RpcRespos(transform.position);
     }
 
     [ClientRpc]
     public void RpcRespos(Vector3 pos)
     {
-        var ntc = GetComponent<NetworkTransformChild>();
-        ntc.enabled = false;
-        transform.position = pos;
-        ntc.enabled = true;
+        transform.GetComponentInChildren<NavMeshAgent>().Warp(pos);
     }
 
     private void OnShootDos(Vector3 o, Vector3 d)
