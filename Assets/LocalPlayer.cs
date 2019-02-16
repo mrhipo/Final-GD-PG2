@@ -104,8 +104,8 @@ public class LocalPlayer : NetworkBehaviour
 
     public void Respos()
     {
-        transform.GetComponentInChildren<NavMeshAgent>().Warp(FindObjectOfType<NetworkRandomPosition>().RandomPos());
-        RpcRespos(transform.position);
+        RpcRespos(FindObjectOfType<NetworkRandomPosition>().RandomPos());
+
     }
 
     [ClientRpc]
