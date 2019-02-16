@@ -110,7 +110,10 @@ public class LocalPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcRespos(Vector3 pos)
     {
+        var ntc = GetComponent<NetworkTransformChild>();
+        ntc.enabled = false;
         transform.position = pos;
+        ntc.enabled = true;
     }
 
     private void OnShootDos(Vector3 o, Vector3 d)
