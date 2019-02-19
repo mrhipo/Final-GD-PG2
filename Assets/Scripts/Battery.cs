@@ -9,16 +9,17 @@ public class Battery : MonoBehaviour
     bool used;
     Light _light;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         _light = GetComponent<Light>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,7 +31,7 @@ public class Battery : MonoBehaviour
                 {
                     case BatteryType.Health:
                         var life = other.GetComponent<LifeObject>();
-                        if(life.hp.CurrentValue < life.hp.MaxValue)
+                        if (life.hp.CurrentValue < life.hp.MaxValue)
                         {
                             life.Heal(life.hp.MaxValue);
                             used = true;
@@ -40,7 +41,7 @@ public class Battery : MonoBehaviour
                         break;
                     case BatteryType.Mana:
                         var mana = other.GetComponent<PlayerStats>();
-                        if(mana.mp.CurrentValue < mana.mp.MaxValue)
+                        if (mana.mp.CurrentValue < mana.mp.MaxValue)
                         {
                             mana.RecoverMp(mana.mp.MaxValue);
                             used = true;
@@ -49,6 +50,8 @@ public class Battery : MonoBehaviour
                         }
                         break;
                 }
+
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }
