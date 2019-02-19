@@ -59,6 +59,11 @@ public class EnemyStats : MonoBehaviour, ISpeed
             specialDamageGameObject.amount = specialDamage;
     }
 
+    public void OnSpawn()
+    {
+        agent.SetDestination(target.position);
+    }
+
     private void OnLifeChanged()
     {
         animator.SetTrigger("Hit");

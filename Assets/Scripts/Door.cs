@@ -10,19 +10,21 @@ public class Door : MonoBehaviour
     public GameObject door;
     public Material doorLocked;
     public Material doorUnLocked;
-   
+
+
     private void Start()
     {
         _anim = GetComponent<Animation>();
     }
 
-    
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == Layers.player.Index && !_locked)
+        if (other.gameObject.layer == Layers.player.Index && !_locked)
         {
             SoundManager.instance.PlayFX("Door");
             _anim.Play("ANIM_Door Open");
+            gameObject.layer = 5;
         }
     }
 
@@ -32,6 +34,7 @@ public class Door : MonoBehaviour
         {
             SoundManager.instance.PlayFX("Door");
             _anim.Play("ANIM_Door Close");
+            gameObject.layer = 10;
         }
     }
 

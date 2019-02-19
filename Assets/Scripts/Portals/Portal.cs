@@ -16,13 +16,13 @@ public class Portal : MonoBehaviour
     public Door[] doors;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         _effects = GetComponentInChildren<Effects>();
         _effects.gameObject.SetActive(false);
     }
-	
-	
+
+
     public void SpwanEnemies()
     {
         if (!triggered)
@@ -32,7 +32,7 @@ public class Portal : MonoBehaviour
                 doors[i].LockDoor();
             }
 
-       
+
             triggered = true;
             _effects.gameObject.SetActive(true);
             SoundManager.instance.PlayFX("Portal Activated");
@@ -51,6 +51,7 @@ public class Portal : MonoBehaviour
             enemyStats.lifeObject.OnDead -= OnKilledEnemy;
         };
         enemyStats.agent.Warp(transform.position + offset);
+        enemyStats.OnSpawn();
     }
 
     void ClosePortal()
@@ -80,5 +81,5 @@ public class Portal : MonoBehaviour
         }
     }
 
-   
+
 }
