@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelController : MonoBehaviour
+public class LevelController : SaveObject
 {
     List<Portal> _portals = new List<Portal>();
     int _closedPortals;
@@ -14,6 +12,7 @@ public class LevelController : MonoBehaviour
 
 	void Start ()
     {
+        base.Start();
         exitDoor.LockDoor();
         _portals.AddRange(FindObjectsOfType<Portal>());
         GlobalEvent.Instance.Dispatch(new LevelStartEvent("Close all portals.               Portals closed: " + _closedPortals + " / " + _portals.Count));
@@ -22,8 +21,12 @@ public class LevelController : MonoBehaviour
 
     private void OnPortalClosed(PortalClosedEvent portalClosedEvent)
     {
-
         _closedPortals++;
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
         FindObjectOfType<HudEventHandler>().missionObjetive.text = "Close all portals.               Portals closed: " + _closedPortals + " / " + _portals.Count;
         if (_closedPortals >= _portals.Count)
         {
@@ -50,4 +53,29 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    public override void Save()
+    {
+        SaveData(Key, JsonUtility.ToJson(GetPlayerMemento()));
+    }
+
+    public LevelControllerMement GetPlayerMemento()
+    {
+        return new LevelControllerMement
+        {
+            closedPortals = this._closedPortals
+        };
+    }
+
+    public override void Load()
+    {
+        var playerm = GetValue<LevelControllerMement>();
+        _closedPortals = playerm.closedPortals;
+        UpdateUI();
+    }
+
+    [System.Serializable]
+    public class LevelControllerMement
+    {
+        public int closedPortals;
+    }
 }

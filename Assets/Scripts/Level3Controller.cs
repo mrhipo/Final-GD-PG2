@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Level3Controller : MonoBehaviour
+public class Level3Controller : SaveObject
 {
     public GameObject barrier;
     public GameObject lifebar;
@@ -11,6 +8,7 @@ public class Level3Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         GlobalEvent.Instance.Dispatch(new LevelStartEvent("Find and destroy the Security Drone"));
         GlobalEvent.Instance.AddEventHandler<DroneDestroyedEvent>(OnDroneDestroyed);
 
@@ -24,12 +22,6 @@ public class Level3Controller : MonoBehaviour
         FindObjectOfType<HudEventHandler>().missionObjetive.text = "Destroy the Main Core";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == Layers.player.Index)
@@ -38,5 +30,17 @@ public class Level3Controller : MonoBehaviour
             lifebar.SetActive(true);
             GlobalEvent.Instance.Dispatch(new BossEvent());
         }
+    }
+
+    public override void Save()
+    {
+        SaveData(Key, JsonUtility.ToJson(new BooleanMemento { boolean = dronLifeObject.IsDead }));
+    }
+
+    public override void Load()
+    {
+        var dronDead = GetValue<BooleanMemento>().boolean;
+        if (dronDead)
+            OnDroneDestroyed();
     }
 }

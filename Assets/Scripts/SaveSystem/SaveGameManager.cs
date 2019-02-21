@@ -54,7 +54,8 @@ public class SaveGameManager : MonoBehaviour
     private IEnumerator ReLoadGame()
     {
         yield return new WaitForSeconds(.5f);
-        LoadGame("checkpoints");
+        if (File.Exists(GetPath("checkpoints")))
+            LoadGame("checkpoints");
         yield return new WaitForSeconds(3);
         canSaveGame = true;
 

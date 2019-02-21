@@ -24,6 +24,9 @@ public class DebugPanel : MonoBehaviour {
 
     private void Start()
     {
+        playerStats = FindObjectOfType<PlayerStats>();
+        playerLife = playerStats.lifeObject;
+
         playerLifeToggle.onValueChanged.AddListener(OnToggleLife);
         wizzarToggle.onValueChanged.AddListener(OnToggleWizzard);
 
