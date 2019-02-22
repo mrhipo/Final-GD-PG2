@@ -1939,8 +1939,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableSpells:
   - type: 0
-    coolDown: 10
-    mpCost: 20
+    coolDown: 15
+    mpCost: 25
     spellPrefab: {fileID: 1365325129771572, guid: 74600c9542ec44e4e9c39e854a0aee2a,
       type: 3}
     uiSprite: {fileID: 0}
