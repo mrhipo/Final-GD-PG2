@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  mouseSensitivity: 5
+  mouseSensitivity: 2
   spineRotation: 40
   animator: {fileID: 6112716549521117587}
   bulletSpawn: {fileID: 6163666054314462011}
@@ -109,6 +109,7 @@ MonoBehaviour:
   pcn: {fileID: 0}
   stats: {fileID: 0}
   animator: {fileID: 0}
+  score: {fileID: 0}
 --- !u!114 &7027930518257035801
 MonoBehaviour:
   m_ObjectHideFlags: 0

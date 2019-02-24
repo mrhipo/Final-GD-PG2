@@ -31,6 +31,12 @@ public class HudEventHandler : MonoBehaviour, IUpdate
       
         GlobalEvent.Instance.AddEventHandler<CreditsPickedEvent>(OnCreditsPicked);
         GlobalEvent.Instance.AddEventHandler<LevelStartEvent>(OnLevelStart);
+        GlobalEvent.Instance.AddEventHandler<ManaEmptyEvent>(OnManaEmpty);
+    }
+
+    private void OnManaEmpty()
+    {
+        manaFill.GetComponent<Animator>().SetTrigger("ManaEmpty");
     }
 
     private void OnLevelStart(LevelStartEvent objetive)

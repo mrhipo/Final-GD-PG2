@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour  , ISpeed {
     public Cinemachine.CinemachineVirtualCamera camAim;
     Cinemachine.CinemachineComposer composer;
     Cinemachine.CinemachineTransposer transposer;
-
+    public Transform directionBullet;
     Transform spine;
 
     
@@ -102,8 +102,8 @@ public class PlayerController : MonoBehaviour  , ISpeed {
             }
         }
        
-        composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY, -1, 1);
-        transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY, -1,1);
+        composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y + input.RotationY * mouseSensitivity, -1, 1);
+        transposer.m_FollowOffset.y = Mathf.Clamp(transposer.m_FollowOffset.y - input.RotationY * mouseSensitivity, -1,1);
 
         if (canShoot && input.Shooting)
         {
@@ -118,17 +118,7 @@ public class PlayerController : MonoBehaviour  , ISpeed {
         SoundManager.instance.PlayFX("Normal Shot");
         var bullet = bullets.GetObjectFromPool().GetComponent<Bullet>();
         bullet.BulletDestroy += () => bullets.DisablePoolObject(bullet.gameObject);
-
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray,out hit,500f))
-        {
-            bullet.Initialize(bulletSpawn.position, hit.point, stats.damage);
-        }
-        else
-        {
-            bullet.Initialize(bulletSpawn.position, ray.GetPoint(100), stats.damage);
-        }
+        bullet.Initialize(bulletSpawn.position, bulletSpawn.position - directionBullet.right * 100, stats.damage);
         StartCoroutine(ToggleShoot());
     }
 

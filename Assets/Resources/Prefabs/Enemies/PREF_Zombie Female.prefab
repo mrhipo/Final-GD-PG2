@@ -1800,7 +1800,7 @@ MonoBehaviour:
   currentState: 0
   lifeObject: {fileID: 0}
   spawned: 0
-  experience: 10
+  experience: 2
   attackRate: 1.5
   attackRange: 2
   specialAttackRate: 0

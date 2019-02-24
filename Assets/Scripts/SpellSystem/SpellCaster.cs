@@ -70,6 +70,10 @@ public class SpellCaster : MonoBehaviour, IUpdate
     {
         if (spell.IsBlocked) return;
 
+        if (spell.mpCost > _playersStats.mp.CurrentValue)
+        {
+            GlobalEvent.Instance.Dispatch(new ManaEmptyEvent());
+        }
         if (spell.CanUseSpell && spell.mpCost <= _playersStats.mp.CurrentValue)
         {
             SendAnalytics(spell.type);
