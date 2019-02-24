@@ -1869,7 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  mouseSensitivity: 5
+  mouseSensitivity: 1.2
   spineRotation: 40
   animator: {fileID: 95333634271806114}
   bulletSpawn: {fileID: 4424028626130954}
