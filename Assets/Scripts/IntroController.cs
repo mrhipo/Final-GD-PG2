@@ -22,7 +22,12 @@ public class IntroController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopCoroutine(Slide());
+            SceneManager.LoadScene(2);
+        }
+
     }
 
     public IEnumerator Slide()

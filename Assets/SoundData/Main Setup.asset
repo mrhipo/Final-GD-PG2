@@ -72,7 +72,7 @@ MonoBehaviour:
     mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   - name: Normal Shot
     clip: {fileID: 8300000, guid: 1a6a887a64a6fae4481e35f5723901aa, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     randomVolume: 0
     randomPitch: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
     mixer: {fileID: 243244149437152184, guid: c3c6133027dc867438f2f80d2241a04a, type: 2}
   - name: Door
     clip: {fileID: 8300000, guid: dc37e4f87a98b4d4fa16b62705cb5a07, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     randomVolume: 0
     randomPitch: 0
